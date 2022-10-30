@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "start.h"
 
-
+static FILE *pita;
 static int retval;
 
 void STARTGAME()
@@ -15,16 +15,22 @@ void STARTGAME()
     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
     START();
     COPYGAME();
-    int i = GetCC() - '0';
+
+    int i = GetCC() - '0'; // konversi char ke int
+
     typedef struct{
-    char TI*[i-1]; /* memori tempat penyimpan elemen (container) */
+    char *TI[i-1]; /* memori tempat penyimpan elemen (container) */
+    int Neff;                     /* banyaknya elemen efektif */
     } TabStr;
-    TabStr *game = (TabStr *) malloc(sizeof(TabStr));
+
+    TabStr *game = (TabStr *) malloc(sizeof(TabStr));   
+    game->Neff = i-1;
+    
     for (int j = 0; j < i; j++)
     {
         ADVGAME();
         COPYGAME();
-        game->TI[j] = (char *) malloc(sizeof(char) * (CKata.Length + 1));
+        game->TI[j] = currentWord.TabWord;
     }
 }
 
@@ -38,9 +44,10 @@ void COPYGAME()
     int i = 0;
     while ((currentChar != MARK) && (i < NMax))
     {
-        currentWord.TabKata[i] = currentChar;
+        currentWord.TabWord[i] = currentChar;
         ADV();
         i++;
     }
     currentWord.Length = i;
 }
+
