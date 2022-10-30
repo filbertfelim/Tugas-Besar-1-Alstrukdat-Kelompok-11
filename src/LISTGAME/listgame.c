@@ -8,6 +8,6 @@ void LISTGAME()
     int i = 0;
     for (i; i < game->Neff; i++)
     {
-        printf("%d. %s\n", i+1, game.TI[i]);
+        printf("%d. %s\n", i+1, game->TI[i]);
     }
 }

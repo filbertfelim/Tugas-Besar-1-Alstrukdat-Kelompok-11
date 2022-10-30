@@ -25,8 +25,8 @@ void STARTGAME()
 
     TabStr *game = (TabStr *) malloc(sizeof(TabStr));   
     game->Neff = i-1;
-    
-    for (int j = 0; j < i; j++)
+
+    for (int j = 0; j < game->Neff; j++)
     {
         ADVGAME();
         COPYGAME();
