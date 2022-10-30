@@ -9,7 +9,7 @@ static FILE *pita;
 static int retval;
 void START()
 {
-    pita = fopen("../../../data/config.txt", "r");
+    pita = fopen("../data/config.txt", "r");
     ADV();
 }
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
