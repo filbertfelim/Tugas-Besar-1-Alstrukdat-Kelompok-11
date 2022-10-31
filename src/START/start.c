@@ -16,15 +16,8 @@ void STARTGAME()
     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
     START();
     int i = GetCC() - '0'; // konversi char ke int
-
-    typedef struct
-    {
-        char *TI[i - 1]; /* memori tempat penyimpan elemen (container) */
-        int Neff;        /* banyaknya elemen efektif */
-    } TabStr;
-
-    TabStr *game = (TabStr *)malloc((i - 1) * sizeof(TabStr));
-    game->Neff = i - 1;
+    TabStr (*game);
+    game->Neff = i;
 
     for (int j = 0; j < game->Neff; j++)
     {
