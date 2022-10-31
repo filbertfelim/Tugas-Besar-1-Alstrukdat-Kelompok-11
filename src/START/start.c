@@ -14,7 +14,6 @@ void STARTGAME()
 {
     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
     START();
-    COPYGAME();
 
     int i = GetCC() - '0'; // konversi char ke int
 
