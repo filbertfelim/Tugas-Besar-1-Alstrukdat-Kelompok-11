@@ -15,7 +15,7 @@ typedef char ElType;
 
 typedef struct
 {
-    char TI[IdxMax - IdxMin + 1]; /* memori tempat penyimpan elemen (container) */
+    char *TI[IdxMax - IdxMin + 1]; /* memori tempat penyimpan elemen (container) */
     int Neff;                     /* banyaknya elemen efektif */
 } TabStr;
 
