@@ -51,7 +51,7 @@ IdxType GetLastIdx(TabStr T)
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen terakhir */
 /* *** Menghasilkan sebuah elemen *** */
-ElType GetElmt(TabStr T, IdxType i)
+ElType *GetElmt(TabStr T, IdxType i)
 {
     return (T.TI[i]);
 }
@@ -72,7 +72,7 @@ void SetTab(TabStr Tin, TabStr *Tout)
 /* I.S. Tin terdefinisi, sembarang */
 /* F.S. Tout berisi salinan Tin */
 /* Assignment THsl -> Tin */
-void SetEl(TabStr *T, IdxType i, ElType v)
+void SetEl(TabStr *T, IdxType i, ElType *v)
 {
     (*T).TI[i] = v;
     if (i == GetLastIdx(*T) + 1)
@@ -133,7 +133,7 @@ void TulisIsi(TabStr T)
         int i;
         for (i = GetFirstIdx(T); i <= GetLastIdx(T); i++)
         {
-            printf("%d:%d\n", i, GetElmt(T, i));
+            printf("%d:%s\n", i, GetElmt(T, i));
         }
     }
 }

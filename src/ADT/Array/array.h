@@ -16,7 +16,7 @@ typedef char ElType;
 typedef struct
 {
     char *TI[IdxMax - IdxMin + 1]; /* memori tempat penyimpan elemen (container) */
-    int Neff;                     /* banyaknya elemen efektif */
+    int Neff;                      /* banyaknya elemen efektif */
 } TabStr;
 
 /* Indeks yang digunakan [IdxMin..IdxMax] */
@@ -53,7 +53,7 @@ IdxType GetLastIdx(TabStr T);
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen terakhir */
 /* *** Menghasilkan sebuah elemen *** */
-ElType GetElmt(TabStr T, IdxType i);
+ElType *GetElmt(TabStr T, IdxType i);
 /* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
 /* Mengirimkan elemen tabel yang ke-i */
 
@@ -63,7 +63,7 @@ void SetTab(TabStr Tin, TabStr *Tout);
 /* I.S. Tin terdefinisi, sembarang */
 /* F.S. Tout berisi salinan Tin */
 /* Assignment THsl -> Tin */
-void SetEl(TabStr *T, IdxType i, ElType v);
+void SetEl(TabStr *T, IdxType i, ElType *v);
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Elemen T yang ke-i bernilai v */
 /* Mengeset nilai elemen tabel yang ke-i sehingga bernilai v */
