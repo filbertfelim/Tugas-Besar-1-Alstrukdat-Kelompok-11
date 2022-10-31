@@ -17,8 +17,19 @@ void STARTGAME()
     START();
     int i = GetCC() - '0'; // konversi char ke int
 
+<<<<<<< HEAD
+    typedef struct
+    {
+        char *TI[i - 1]; /* memori tempat penyimpan elemen (container) */
+        int Neff;        /* banyaknya elemen efektif */
+    } TabStr;
+
+    TabStr *game = (TabStr *)malloc((i - 1) * sizeof(TabStr));
+    game->Neff = i - 1;
+=======
     TabStr (*game);
     game->Neff = i;
+>>>>>>> 3b1bb256e01ae4a986d7f1ae6d90b56a9e3eb721
 
     for (int j = 0; j < game->Neff; j++)
     {
