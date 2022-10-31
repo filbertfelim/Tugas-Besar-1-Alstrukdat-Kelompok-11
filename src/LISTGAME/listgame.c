@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "listgame.h"
 
-void LISTGAME()
+void LISTGAME(TabStr *game)
 /*  Menampilakn daftar game yang tersedia */
 {
     printf("Berikut adalah daftar game yang tersedia\n");
