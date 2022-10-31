@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "mesin_kata.h"
+#include "../../START/start.h"
 
 // membaca file konfigurasi
 int main()

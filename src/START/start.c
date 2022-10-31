@@ -6,7 +6,7 @@
 static FILE *pita;
 static int retval;
 
-void STARTGAME()
+void STARTGAME(TabStr *T)
 /* I.S. Sembarang
    F.S. Menampilkan tampilan awal permainan
    Proses : Akuisisi file config.txt (config awal)
@@ -16,14 +16,13 @@ void STARTGAME()
     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
     START();
     int i = GetCC() - '0'; // konversi char ke int
-    TabStr (*game);
-    game->Neff = i;
+    T->Neff = i;
 
-    for (int j = 0; j < game->Neff; j++)
+    for (int j = 0; j < T->Neff; j++)
     {
         ADVGAME();
         COPYGAME();
-        game->TI[j] = currentWord.TabWord;
+        T->TI[j] = currentWord.TabWord;
     }
 }
 
