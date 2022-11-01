@@ -1,5 +1,5 @@
 void help () {
-    printf(" Daftar command:\n");
+    printf("Daftar command:\n");
     printf("\t 1. STAR       --- Menampilkan tampilan awal game. \n");
     printf("\t 2. LOAD       --- Menampilkan list game, histori, dan scoreboard game. \n");
     printf("\t 3. SAVE       --- Menyimpan state game pemain dalam suatu file. \n");
