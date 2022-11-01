@@ -20,6 +20,7 @@ int main()
     scanf("%s", command);
     while (!compare_strings(command, "START") && !compare_strings(command, "LOAD"))
     {
+        printf("Perintah yang bisa digunakan hanya START DAN LOAD\n");
         printf("ENTER COMMAND: ");
         scanf("%s", command);
     }
@@ -34,5 +35,10 @@ int main()
             printf("%s\n", game.TI[i]);
         }
     }
+    else
+    {
+        ; // command LOADGAME;
+    }
+
     return 0;
 }
