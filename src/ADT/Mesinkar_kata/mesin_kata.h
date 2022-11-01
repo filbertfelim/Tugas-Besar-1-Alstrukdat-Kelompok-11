@@ -46,4 +46,9 @@ void CopyWord();
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
+int strtoint(char *strg);
+/*
+   Mengubah string menjadi integer
+*/
+
 #endif

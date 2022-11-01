@@ -15,9 +15,9 @@ void STARTGAME(TabStr *T)
 {
     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
     START();
-    int i = GetCC() - '0'; // konversi char ke int
+    CopyWord();
+    int i = strtoint(currentWord.TabWord); // konversi char ke int
     (*T).Neff = i;
-    ADV();
     int idx;
     int j;
     for (j = 0; j < (*T).Neff; j++)
@@ -35,20 +35,3 @@ void STARTGAME(TabStr *T)
         (*T).TI[j] = gamestring;
     }
 }
-
-// void ADVGAME()
-// {
-//     retval = fscanf(pita, "%c", &currentChar);
-// }
-
-// void COPYGAME()
-// {
-//     int i = 0;
-//     while ((currentChar != MARK) && (i < NMax))
-//     {
-//         currentWord.TabWord[i] = currentChar;
-//         ADV();
-//         i++;
-//     }
-//     currentWord.Length = i;
-// }
