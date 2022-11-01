@@ -23,10 +23,10 @@ void START()
 void ADV()
 {
     retval = fscanf(pita, "%c", &currentChar);
-    EOP = (currentChar == MARK);
-    if (EOP)
+    if (retval < 0)
     {
         fclose(pita);
+        EOP = true;
     }
 }
 /* Pita dimajukan satu karakter.
