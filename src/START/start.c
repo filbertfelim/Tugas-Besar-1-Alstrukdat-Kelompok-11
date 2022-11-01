@@ -16,19 +16,23 @@ void STARTGAME(TabStr *T)
     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n");
     START();
     int i = GetCC() - '0'; // konversi char ke int
-    T->Neff = i;
+    (*T).Neff = i;
     ADV();
     int idx;
-    for (int j = 0; j < T->Neff; j++)
+    int j;
+    for (j = 0; j < (*T).Neff; j++)
     {
         ADV();
         CopyWord();
         idx = 0;
+        char *gamestring;
+        gamestring = (char *)malloc(currentWord.Length * sizeof(char));
         for (idx; idx < currentWord.Length; idx++)
         {
-            printf("%c", currentWord.TabWord[idx]);
+            *(gamestring + idx) = currentWord.TabWord[idx];
         }
-        // T->TI[j] = currentWord.TabWord;
+        *(gamestring + currentWord.Length) = '\0';
+        (*T).TI[j] = gamestring;
     }
 }
 
