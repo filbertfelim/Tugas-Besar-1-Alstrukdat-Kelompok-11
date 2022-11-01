@@ -56,7 +56,7 @@ void ADVWORD()
 void CopyWord()
 {
     int i = 0;
-    while ((currentChar != MARK) && (currentChar != BLANK) && (i < NMax))
+    while ((currentChar != MARK) && (i < NMax) && !EOP)
     {
         currentWord.TabWord[i] = currentChar;
         ADV();

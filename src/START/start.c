@@ -17,28 +17,34 @@ void STARTGAME(TabStr *T)
     START();
     int i = GetCC() - '0'; // konversi char ke int
     T->Neff = i;
-    ADVGAME();
+    ADV();
+    int idx;
     for (int j = 0; j < T->Neff; j++)
     {
-        ADVGAME();
-        COPYGAME();
-        T->TI[j] = currentWord.TabWord;
-    }
-}
-
-void ADVGAME()
-{
-    retval = fscanf(pita, "%c", &currentChar);
-}
-
-void COPYGAME()
-{
-    int i = 0;
-    while ((currentChar != MARK) && (i < NMax))
-    {
-        currentWord.TabWord[i] = currentChar;
         ADV();
-        i++;
+        CopyWord();
+        idx = 0;
+        for (idx; idx < currentWord.Length; idx++)
+        {
+            printf("%c", currentWord.TabWord[idx]);
+        }
+        // T->TI[j] = currentWord.TabWord;
     }
-    currentWord.Length = i;
 }
+
+// void ADVGAME()
+// {
+//     retval = fscanf(pita, "%c", &currentChar);
+// }
+
+// void COPYGAME()
+// {
+//     int i = 0;
+//     while ((currentChar != MARK) && (i < NMax))
+//     {
+//         currentWord.TabWord[i] = currentChar;
+//         ADV();
+//         i++;
+//     }
+//     currentWord.Length = i;
+// }
