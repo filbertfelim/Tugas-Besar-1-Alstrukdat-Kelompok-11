@@ -17,7 +17,7 @@ void STARTGAME(TabStr *T)
     START();
     int i = GetCC() - '0'; // konversi char ke int
     T->Neff = i;
-
+    ADVGAME();
     for (int j = 0; j < T->Neff; j++)
     {
         ADVGAME();
