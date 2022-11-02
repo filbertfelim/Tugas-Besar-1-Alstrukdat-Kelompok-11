@@ -17,12 +17,12 @@ int main()
     printf("Selamat datang\n");
     printf("ENTER COMMAND: ");
     char *command;
-    scanf("%s", command);
+    command = READINPUT();
     while (!compare_strings(command, "START") && !compare_strings(command, "LOAD"))
     {
         printf("Perintah yang bisa digunakan hanya START DAN LOAD\n");
         printf("ENTER COMMAND: ");
-        scanf("%s", command);
+        command = READINPUT();
     }
     if (compare_strings(command, "START"))
     {

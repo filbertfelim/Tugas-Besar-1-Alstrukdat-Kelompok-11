@@ -25,6 +25,10 @@ void IgnoreBlanks();
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
+char *READINPUT();
+/*
+   mengembalikan input dari terminal dalam bentuk string (array of char) */
+
 void STARTWORD();
 /* I.S. : currentChar sembarang
    F.S. : EndWord = true, dan currentChar = MARK;
