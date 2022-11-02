@@ -20,7 +20,7 @@ void START();
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
-void STARTINPUT();
+char *STARTINPUT();
 /*
    Mesin siap dioperasikan. Pita yang berisi input di terminal
    disiapkan untuk dibaca.

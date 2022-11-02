@@ -16,21 +16,6 @@ void IgnoreBlanks()
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-char *READINPUT()
-{
-    STARTINPUT();
-    CopyWord();
-    char *stringinput;
-    stringinput = (char *)malloc(sizeof(char) * 100);
-    int i;
-    for (i = 0; i < currentWord.Length; i++)
-    {
-        *(stringinput + i) = currentWord.TabWord[i];
-    }
-    *(stringinput + currentWord.Length) = '\0';
-    return stringinput;
-}
-
 void STARTWORD()
 {
     START();

@@ -1,4 +1,7 @@
-void help () {
+#include "help.h"
+
+void help()
+{
     printf("Daftar command:\n");
     printf("\t 1. START      --- Menampilkan tampilan awal game. \n");
     printf("\t 2. LOAD       --- Menampilkan list game, histori, dan scoreboard game. \n");
@@ -11,4 +14,3 @@ void help () {
     printf("\t 9. SKIPGAME   --- Melewatkan permainan sebanyak n. \n");
     printf("\t 10.QUIT       --- Keluar dari program game. \n");
 }
-
