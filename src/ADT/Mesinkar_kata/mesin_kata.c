@@ -1,5 +1,6 @@
 #include "mesin_kata.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 boolean EndWord;
 Word currentWord;
@@ -14,6 +15,21 @@ void IgnoreBlanks()
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : currentChar sembarang
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
+
+char *READINPUT()
+{
+    STARTINPUT();
+    CopyWord();
+    char *stringinput;
+    stringinput = (char *)malloc(sizeof(char) * 100);
+    int i;
+    for (i = 0; i < currentWord.Length; i++)
+    {
+        *(stringinput + i) = currentWord.TabWord[i];
+    }
+    *(stringinput + currentWord.Length) = '\0';
+    return stringinput;
+}
 
 void STARTWORD()
 {
