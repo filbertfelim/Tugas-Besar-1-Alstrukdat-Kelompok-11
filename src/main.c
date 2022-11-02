@@ -10,6 +10,7 @@
 // #include "./CREATEGAME/creategame.h"
 // #include "./LISTGAME/listgame.h"
 #include "./START/start.h"
+#include "./HELP/help.h"
 #include "boolean.h"
 
 int main()
@@ -17,28 +18,63 @@ int main()
     printf("Selamat datang\n");
     printf("ENTER COMMAND: ");
     char *command;
-    command = READINPUT();
+    command = STARTINPUT();
     while (!compare_strings(command, "START") && !compare_strings(command, "LOAD"))
     {
-        printf("Perintah yang bisa digunakan hanya START DAN LOAD\n");
+        printf("Perintah yang bisa digunakan hanya START DAN LOAD\n\n");
         printf("ENTER COMMAND: ");
-        command = READINPUT();
+        command = STARTINPUT();
     }
     if (compare_strings(command, "START"))
     {
         TabStr game;
         MakeEmpty(&game);
         STARTGAME(&game);
-        int i;
-        for (i = 0; i < game.Neff; i++)
-        {
-            printf("%s\n", game.TI[i]);
-        }
     }
     else
     {
-        ; // command LOADGAME;
+        printf("LOAD\n"); // command LOADGAME;
     }
-
+    printf("ENTER COMMAND: ");
+    command = STARTINPUT();
+    while (!compare_strings(command, "QUIT"))
+    {
+        if (compare_strings(command, "CREATE GAME"))
+        {
+            ;
+        }
+        else if (compare_strings(command, "LIST GAME"))
+        {
+            ;
+        }
+        else if (compare_strings(command, "DELETE GAME"))
+        {
+            ;
+        }
+        else if (compare_strings(command, "QUEUE GAME"))
+        {
+            ;
+        }
+        else if (compare_strings(command, "PLAY GAME"))
+        {
+            ;
+        }
+        else if (compare_strings(command, "SKIP GAME"))
+        {
+            ;
+        }
+        else if (compare_strings(command, "HELP"))
+        {
+            help();
+        }
+        else
+        {
+            printf("Command tidak dikenali, silahkan masukkan command yang valid.\n\n");
+        }
+        printf("ENTER COMMAND: ");
+        command = STARTINPUT();
+    }
+    printf("Anda keluar dari game BNMO.\n");
+    printf("Bye bye ...\n");
     return 0;
 }

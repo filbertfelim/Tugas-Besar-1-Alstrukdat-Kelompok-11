@@ -20,10 +20,11 @@ void START()
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
-void STARTINPUT()
+char *STARTINPUT()
 {
-    pita = stdin;
-    ADV();
+    char *stringinput;
+    fscanf(stdin, "%s", stringinput);
+    return stringinput;
 }
 
 void ADV()
