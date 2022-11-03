@@ -1,14 +1,13 @@
 #include "queuegame.h"
 
-void QueueGame(intQueue *GameQueue, TabStr *GameList){
+void QueueGame(strQueue *GameQueue, TabStr GameList){
     int nomorGame;
     //Menampilkan game dalam Queue
     printf("Berikut adalah daftar antrian game-mu: \n");
-    if(!isEmpty(*GameQueue)){
+    if(!isQueueEmpty(*GameQueue)){
         int i = 0;
-        for (i; i < length(*GameQueue); i++){
-            int gameNum = GameQueue->buffer[i];
-            printf("%d. %s\n", i+1, GetElmt(*GameList, gameNum));
+        for (i; i < lengthQueue(*GameQueue); i++){
+            printf("%d. %s\n", i+1, GameQueue->buffer[i]);
         }
     }
     else{
@@ -17,7 +16,7 @@ void QueueGame(intQueue *GameQueue, TabStr *GameList){
     printf("\n");
 
     //Menampilkan game yang tersedia
-    LISTGAME(GameList);
+    LISTGAME(&GameList);
     printf("\n");
 
     //Meminta Input game yang akan dimasukkan ke antrian
@@ -25,11 +24,11 @@ void QueueGame(intQueue *GameQueue, TabStr *GameList){
     nomorGame = strtoint(STARTINPUT());
 
     //Tambah Game ke antrian
-    while (nomorGame > NbElmt(*GameList)){
+    while (nomorGame > NbElmt(GameList)){
         printf("Nomor permainan tidak valid, silahkan masukkan nomor game pada list.\n");
         nomorGame = strtoint(STARTINPUT());
     }
-    enqueue(GameQueue, nomorGame-1);
+    STRenqueue(GameQueue, GameList.TI[nomorGame - 1]);
     printf("Game berhasil ditambahkan ke dalam daftar antrian.\n");
 
 }
