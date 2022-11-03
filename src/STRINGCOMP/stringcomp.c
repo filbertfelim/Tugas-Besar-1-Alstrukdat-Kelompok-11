@@ -12,7 +12,6 @@ int compare_strings(char a[], char b[])
             break;
         c++;
     }
-
     if (a[c] == '\0' && b[c] == '\0')
         return true;
     else

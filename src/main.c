@@ -7,8 +7,8 @@
 #include "./ADT/Mesinkar_kata/mesin_kar.h"
 #include "./ADT/Mesinkar_kata/mesin_kata.h"
 #include "STRINGCOMP/stringcomp.h"
-// #include "./CREATEGAME/creategame.h"
-// #include "./LISTGAME/listgame.h"
+#include "./CREATEGAME/creategame.h"
+#include "./LISTGAME/listgame.h"
 #include "./START/start.h"
 #include "./HELP/help.h"
 #include "boolean.h"
@@ -25,15 +25,16 @@ int main()
         printf("ENTER COMMAND: ");
         command = STARTINPUT();
     }
+    TabStr game;
     if (compare_strings(command, "START"))
     {
-        TabStr game;
         MakeEmpty(&game);
         STARTGAME(&game);
     }
     else
     {
-        printf("LOAD\n"); // command LOADGAME;
+        MakeEmpty(&game);
+        printf("LOAD\n"); // command LOADGAME
     }
     printf("ENTER COMMAND: ");
     command = STARTINPUT();
@@ -41,11 +42,11 @@ int main()
     {
         if (compare_strings(command, "CREATE GAME"))
         {
-            ;
+            CreateGame(&game);
         }
         else if (compare_strings(command, "LIST GAME"))
         {
-            ;
+            LISTGAME(&game);
         }
         else if (compare_strings(command, "DELETE GAME"))
         {
@@ -69,7 +70,7 @@ int main()
         }
         else
         {
-            printf("Command tidak dikenali, silahkan masukkan command yang valid.\n\n");
+            commandlain();
         }
         printf("ENTER COMMAND: ");
         command = STARTINPUT();
