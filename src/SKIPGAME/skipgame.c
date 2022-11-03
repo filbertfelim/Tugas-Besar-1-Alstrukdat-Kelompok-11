@@ -1,13 +1,12 @@
 #include "skipgame.h"
 
-void SkipGame(intQueue *GameQueue, int n, TabStr GameList){
+void SkipGame(strQueue *GameQueue, int n){
     //Menampilkan antrian Game
     printf("Berikut adalah daftar Game-mu: \n");
-    if(!isEmpty(*GameQueue)){
+    if(!isQueueEmpty(*GameQueue)){
         int i = 0;
-        for (i; i < length(*GameQueue); i++){
-            int gameNum = GameQueue->buffer[i];
-            printf("%d. %s\n", i+1, GetElmt(GameList, gameNum));
+        for (i; i < lengthQueue(*GameQueue); i++){
+            printf("%d. %s\n", i+1, GameQueue->buffer[i]);
         }
     }
     else{
@@ -16,16 +15,16 @@ void SkipGame(intQueue *GameQueue, int n, TabStr GameList){
     printf("\n");
 
     //Proses Skip dengan dequeue dan play game setelah dequeue
-    int tempDequeue;
+    char *tempDequeue;
     int i;
     for (i = 0; i < n; i++){
-        if(!isEmpty(*GameQueue)){
-            dequeue(GameQueue, &tempDequeue);
+        if(!isQueueEmpty(*GameQueue)){
+            STRdequeue(GameQueue, &tempDequeue);
         }
     }
 
-    if(!isEmpty(*GameQueue)){
-        Play(GameQueue, GameList);
+    if(!isQueueEmpty(*GameQueue)){
+        Play(GameQueue);
     }
     else{
         printf("Tidak ada permainan di dalam daftar Game-mu.\n");

@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include "int_queue.h"
+#include "strQueue.h"
 
 /* *** Kreator *** */
-void CreateQueue(intQueue *q)
+void CreateStrQueue(strQueue *q)
 {
     IDX_HEAD(*q) = IDX_UNDEF;
     IDX_TAIL(*q) = IDX_UNDEF;
@@ -14,19 +14,19 @@ void CreateQueue(intQueue *q)
 /* Proses : Melakukan alokasi, membuat sebuah q kosong */
 
 /* ********* Prototype ********* */
-boolean isEmpty(intQueue q)
+boolean isQueueEmpty(strQueue q)
 {
     return ((IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF));
 }
 /* Mengirim true jika q kosong: lihat definisi di atas */
-boolean isFull(intQueue q)
+boolean isQueueFull(strQueue q)
 {
     return (IDX_TAIL(q) - IDX_HEAD(q) == CAPACITY - 1);
 }
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
 
-int length(intQueue q)
+int lengthQueue(strQueue q)
 {
     if (isEmpty(q))
     {
@@ -51,7 +51,7 @@ int length(intQueue q)
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(intQueue *q, ElType val)
+void STRenqueue(strQueue *q, ElType val)
 {
     if (isEmpty(*q))
     {
@@ -82,7 +82,7 @@ void enqueue(intQueue *q, ElType val)
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void dequeue(intQueue *q, ElType *val)
+void STRdequeue(strQueue *q, ElType *val)
 {
     *val = HEAD(*q);
     if (length(*q) == 1)
@@ -101,7 +101,7 @@ void dequeue(intQueue *q, ElType *val)
         q mungkin kosong */
 
 /* *** Display Queue *** */
-void displayQueue(intQueue q)
+void strdisplayQueue(strQueue q)
 {
     if (isEmpty(q))
     {
@@ -115,22 +115,22 @@ void displayQueue(intQueue q)
             int i;
             for (i = IDX_HEAD(q); i < IDX_TAIL(q); i++)
             {
-                printf("%d,", q.buffer[i]);
+                printf("%s,", q.buffer[i]);
             }
-            printf("%d]\n", q.buffer[i]);
+            printf("%s]\n", q.buffer[i]);
         }
         else
         {
             int i;
             for (i = IDX_HEAD(q); i < CAPACITY; i++)
             {
-                printf("%d,", q.buffer[i]);
+                printf("%s,", q.buffer[i]);
             }
             for (i = 0; i < IDX_TAIL(q); i++)
             {
-                printf("%d,", q.buffer[i]);
+                printf("%s,", q.buffer[i]);
             }
-            printf("%d]\n", q.buffer[i]);
+            printf("%s]\n", q.buffer[i]);
         }
     }
 }

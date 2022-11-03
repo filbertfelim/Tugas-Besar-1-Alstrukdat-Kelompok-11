@@ -70,7 +70,7 @@ int main()
         }
         else
         {
-            printf("Command tidak dikenali, silahkan masukkan command yang valid.\n\n");
+            commandlain();
         }
         printf("ENTER COMMAND: ");
         command = STARTINPUT();
