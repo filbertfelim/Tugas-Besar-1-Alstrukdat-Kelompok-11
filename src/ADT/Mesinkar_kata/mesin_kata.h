@@ -48,7 +48,23 @@ void CopyWord();
 
 int strtoint(char *strg);
 /*
-   Mengubah string menjadi integer
+   Mengubah string menjadi integer dari TabWord dan mengembalikan nilai integernya
+*/
+int strtointinput(char *strg, int length);
+/*
+   Mengubah string menjadi integer dari input dan mengembalikan nilai integernya
+*/
+int str_len(char *strg);
+/*
+   mengembalikan panjang string
 */
 
+char *FirstWord(char *strg);
+/*
+   mengembalikan kata pertama untuk string
+*/
+char *SecondWord(char *strg);
+/*
+   mengembalikan kata kedua untuk string
+*/
 #endif

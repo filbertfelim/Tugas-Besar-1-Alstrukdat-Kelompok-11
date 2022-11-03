@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "strQueue.h"
+#include <stdlib.h>
 
 /* *** Kreator *** */
 void CreateStrQueue(strQueue *q)
@@ -28,11 +29,11 @@ boolean isQueueFull(strQueue q)
 
 int lengthQueue(strQueue q)
 {
-    if (isEmpty(q))
+    if (isQueueEmpty(q))
     {
         return 0;
     }
-    else if (isFull(q))
+    else if (isQueueFull(q))
     {
         return CAPACITY;
     }
@@ -51,29 +52,16 @@ int lengthQueue(strQueue q)
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void STRenqueue(strQueue *q, ElType val)
+void STRenqueue(strQueue *q, gamename val)
 {
-    if (isEmpty(*q))
+    if (isQueueEmpty(*q))
     {
         IDX_HEAD(*q) = 0;
         IDX_TAIL(*q) = 0;
     }
     else
     {
-        if (IDX_TAIL(*q) == CAPACITY - 1)
-        {
-            // int i;
-            // for (i = IDX_HEAD(*q); i <= IDX_TAIL(*q); i++)
-            // {
-            //     (*q).buffer[i - IDX_HEAD(*q)] = (*q).buffer[i];
-            // }
-            // IDX_TAIL(*q) -= IDX_HEAD(*q);
-            IDX_TAIL(*q) = 0;
-        }
-        else
-        {
-            IDX_TAIL(*q) = (IDX_TAIL(*q) + 1) % CAPACITY;
-        }
+        IDX_TAIL(*q) += 1;
     }
     TAIL(*q) = val;
 }
@@ -82,17 +70,17 @@ void STRenqueue(strQueue *q, ElType val)
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void STRdequeue(strQueue *q, ElType *val)
+void STRdequeue(strQueue *q, gamename val)
 {
-    *val = HEAD(*q);
-    if (length(*q) == 1)
+    val = (*q).buffer[0];
+    if (lengthQueue(*q) == 1)
     {
         IDX_HEAD(*q) = IDX_UNDEF;
         IDX_TAIL(*q) = IDX_UNDEF;
     }
     else
     {
-        IDX_HEAD(*q) = (IDX_HEAD(*q) + 1) % CAPACITY;
+        IDX_HEAD(*q) += 1;
     }
 }
 /* Proses: Menghapus val pada q dengan aturan FIFO */
@@ -103,7 +91,7 @@ void STRdequeue(strQueue *q, ElType *val)
 /* *** Display Queue *** */
 void strdisplayQueue(strQueue q)
 {
-    if (isEmpty(q))
+    if (isQueueEmpty(q))
     {
         printf("[]\n");
     }

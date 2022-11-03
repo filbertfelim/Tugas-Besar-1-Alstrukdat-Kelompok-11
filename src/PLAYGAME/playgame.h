@@ -2,12 +2,14 @@
 #define PLAYGAME_H
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "../ADT/Queue/strQueue.h"
-#include "mesin_kata.h"
-#include "array.h"
-#include "stringcomp.h"
-#include "rng.h"
-#include "dinnerdash.h"
+#include "../ADT/Mesinkar_kata/mesin_kata.h"
+#include "../ADT/Array/array.h"
+#include "../STRINGCOMP/stringcomp.h"
+// #include "../GAMERNG/rng.h"
+// #include "../DINNERDASHGAME/queuedinner.h"
+// #include "../DINNERDASHGAME/dinnerdash.h"
 
 void Play(strQueue *antrian);
 /*Memainkan Game pada urutan teratas*/

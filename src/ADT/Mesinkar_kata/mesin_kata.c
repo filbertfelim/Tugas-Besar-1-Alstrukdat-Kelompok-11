@@ -83,3 +83,73 @@ int strtoint(char *strg)
     }
     return res;
 }
+/*
+   Mengubah string menjadi integer dari TabWord dan mengembalikan nilai integernya
+*/
+
+int strtointinput(char *strg, int length)
+{
+    int a;
+    int res;
+    res = 0;
+    for (a = 0; a < length; a++)
+    {
+        res = res * 10 + (strg[a] - '0');
+    }
+    return res;
+}
+/*
+   Mengubah string menjadi integer dari input dan mengembalikan nilai integernya
+*/
+
+int str_len(char *strg)
+{
+    int i = 0;
+    while (strg[i] != '\0')
+    {
+        i++;
+    }
+    return i;
+}
+/*
+   mengembalikan panjang string
+*/
+
+char *FirstWord(char *strg)
+{
+    int i = 0;
+    char *firstword = (char *)malloc(50 * sizeof(char));
+    while (strg[i] != ' ')
+    {
+        *(firstword + i) = strg[i];
+        i++;
+    }
+    *(firstword + i) = '\0';
+
+    return firstword;
+}
+/*
+   mengembalikan kata pertama untuk string
+*/
+
+char *SecondWord(char *strg)
+{
+    int i = 0;
+    int idx = 0;
+    char *secondword = (char *)malloc(50 * sizeof(char));
+    while (strg[i] != ' ')
+    {
+        i++;
+    }
+    i++;
+    while (strg[i] != '\0')
+    {
+        *(secondword + idx) = strg[i];
+        idx++;
+        i++;
+    }
+    return secondword;
+}
+/*
+   mengembalikan kata kedua untuk string
+*/

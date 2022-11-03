@@ -5,15 +5,17 @@
 #define STRQUEUE_H
 
 #include "../../boolean.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 #define IDX_UNDEF -1
 #define CAPACITY 100
 
 /* Definisi elemen dan address */
-typedef char *ElType;
+typedef char *gamename;
 typedef struct
 {
-    ElType buffer[CAPACITY];
+    gamename buffer[CAPACITY];
     int idxHead;
     int idxTail;
 } strQueue;
@@ -44,12 +46,12 @@ int lengthQueue(strQueue q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void STRenqueue(strQueue *q, ElType val);
+void STRenqueue(strQueue *q, gamename val);
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void STRdequeue(strQueue *q, ElType *val);
+void STRdequeue(strQueue *q, gamename val);
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";

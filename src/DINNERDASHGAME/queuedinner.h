@@ -8,26 +8,27 @@
 #define HARGA 15000
 
 /* Definisi elemen dan address */
-typedef struct {
+typedef struct
+{
     int makanan;
     int durasimakanan;
     int ketahanan;
     int harga;
-} ElType;
+} ElTypes;
 
-typedef struct {
-	ElType buffer[CAPACITY]; 
-	int idxHead;
-	int idxTail;
+typedef struct
+{
+    ElTypes buffer[CAPACITY];
+    int idxHead;
+    int idxTail;
 } Queue;
-
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika q adalah Queue, maka akses elemen : */
 #define IDX_HEAD(q) (q).idxHead
 #define IDX_TAIL(q) (q).idxTail
-#define     HEAD(q) (q).buffer[(q).idxHead].makanan
-#define     TAIL(q) (q).buffer[(q).idxTail].makanan
+#define HEAD(q) (q).buffer[(q).idxHead].makanan
+#define TAIL(q) (q).buffer[(q).idxTail].makanan
 
 /* *** Kreator *** */
 void CreateQueue(Queue *q);
@@ -48,7 +49,7 @@ int length(Queue q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val);
+void enqueue(Queue *q, ElTypes val);
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
