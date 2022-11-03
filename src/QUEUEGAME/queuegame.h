@@ -3,10 +3,12 @@
 
 #include "../../boolean.h"
 #include "../ADT/Array/array.h"
-#include "../ADT/Queue/queue.h"
+#include "../ADT/Queue/int_queue.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "../LISTGAME/listgame.h"
+#include "mesin_kata.h"
 
-void QueueGame(Queue *GameQueue, TabStr GameList);
+void QueueGame(intQueue *GameQueue, TabStr *GameList);
 
 #endif

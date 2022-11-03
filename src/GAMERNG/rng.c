@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include "time.h"
-#include <stdlib.h>
+#include "rng.h"
 
 /*
 Di setiap giliran, pemain diberi kesempatan menebak angka X. Game akan memberi tahu apakah tebakan pemain dibandingkan terhadap X lebih besar atau lebih kecil.
