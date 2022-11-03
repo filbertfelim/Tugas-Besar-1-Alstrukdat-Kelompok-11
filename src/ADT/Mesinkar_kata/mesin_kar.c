@@ -1,4 +1,5 @@
 #include "mesin_kar.h"
+#include "../../STRINGCOMP/stringcomp.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -22,8 +23,21 @@ void START()
 
 char *STARTINPUT()
 {
+    pita = stdin;
     char *stringinput;
-    fscanf(stdin, "%s", stringinput);
+    int c;
+    int i = 0;
+    stringinput = (char *)malloc(101 * sizeof(char));
+    while (c = fgetc(pita))
+    {
+        if (c == EOF || c == '\n' || c == '\r')
+        {
+            break;
+        }
+        *(stringinput + i) = (char)c;
+        i++;
+    }
+    *(stringinput + i) = '\0';
     return stringinput;
 }
 

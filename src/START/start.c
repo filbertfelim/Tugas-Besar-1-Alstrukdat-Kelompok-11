@@ -24,10 +24,9 @@ void STARTGAME(TabStr *T)
     {
         ADV();
         CopyWord();
-        idx = 0;
         char *gamestring;
         gamestring = (char *)malloc(currentWord.Length * sizeof(char));
-        for (idx; idx < currentWord.Length; idx++)
+        for (idx = 0; idx < currentWord.Length; idx++)
         {
             *(gamestring + idx) = currentWord.TabWord[idx];
         }
