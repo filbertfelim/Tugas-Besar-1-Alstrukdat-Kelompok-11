@@ -1,13 +1,12 @@
 #ifndef SKIPGAME_H
 #define SKIPGAME_H
 
-#include "../../boolean.h"
+#include "../boolean.h"
 #include "../ADT/Queue/strQueue.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "array.h"
-#include "playgame.h"
-
+#include "../ADT/Array/array.h"
+#include "../PLAYGAME/playgame.h"
 
 void SkipGame(strQueue *GameQueue, int n);
 /*
