@@ -2,32 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define IDX_UNDEF -1
-#define CAPACITY 20
-#define HARGA 15000
-
-/* Definisi elemen dan address */
-typedef struct {
-    int makanan;
-    int durasimakanan;
-    int ketahanan;
-    int harga;
-} ElType;
-
-typedef struct {
-	ElType buffer[CAPACITY]; 
-	int idxHead;
-	int idxTail;
-} Queue;
-
-
-/* ********* AKSES (Selektor) ********* */
-/* Jika q adalah Queue, maka akses elemen : */
-#define IDX_HEAD(q) (q).idxHead
-#define IDX_TAIL(q) (q).idxTail
-#define     HEAD(q) (q).buffer[(q).idxHead].makanan
-#define     TAIL(q) (q).buffer[(q).idxTail].makanan
-
 /* *** Kreator *** */
 void CreateQueue(Queue *q)
 /* I.S. sembarang */
@@ -100,7 +74,7 @@ void displayQueueMakanan(Queue q)
     printf("----------------------------------------------------\n");
     int i;
     for (i = IDX_HEAD(q); i <= IDX_TAIL(q); i++) {
-        printf("%d\t | %d\t\t\t | %d\t\t | %d\n", q.buffer[i].makanan, q.buffer[i].durasimakanan, q.buffer[i].ketahanan, q.buffer[i].harga);
+        printf("M%d\t | %d\t\t\t | %d\t\t | %d\n", q.buffer[i].makanan, q.buffer[i].durasimakanan, q.buffer[i].ketahanan, q.buffer[i].harga);
     }
 }
 void displayQueueCook(Queue q)
@@ -111,7 +85,7 @@ void displayQueueCook(Queue q)
     if (!isEmpty(q)) {
         int i;
         for (i = IDX_HEAD(q); i <= IDX_TAIL(q); i++) {
-            printf("%d\t | %d\n", q.buffer[i].makanan, q.buffer[i].durasimakanan);
+            printf("M%d\t | %d\n", q.buffer[i].makanan, q.buffer[i].durasimakanan);
         }
     }
     else {
@@ -127,9 +101,8 @@ void displayQueueServe(Queue q)
         int i;
         for (i = IDX_HEAD(q); i <= IDX_TAIL(q); i++) {
             if (q.buffer[i].durasimakanan == 0) {
-                printf("%d\t | %d\n", q.buffer[i].makanan, q.buffer[i].durasimakanan);
+                printf("M%d\t | %d\n", q.buffer[i].makanan, q.buffer[i].durasimakanan);
             }
         }
     }
 }
-
