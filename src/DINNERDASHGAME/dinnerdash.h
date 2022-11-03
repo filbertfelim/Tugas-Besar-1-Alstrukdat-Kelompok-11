@@ -2,10 +2,10 @@
 #define DINNERDASH_H
 
 #include <stdio.h>
-#include <queuedinner.h>
 #include <stdlib.h>
-#include "../boolean.h"
 #include <time.h>
+#include "../DINERDASHGAME/queuedinner.h"
+#include "../boolean.h"
 
 void ADD(Queue *q); //menambah menu ke queue
 void COOK(Queue qM, Queue *q, int food); //membuat makanan
