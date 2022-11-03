@@ -5,6 +5,7 @@
 #define __MESIN_KAR_H_
 
 #include "../../boolean.h"
+#include "../../STRINGCOMP/stringcomp.h"
 
 #define MARK '\n'
 /* State Mesin */

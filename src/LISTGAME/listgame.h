@@ -5,6 +5,6 @@
 #ifndef LISTGAME_H
 #define LISTGAME_H
 
-void LISTGAME(TabStr *game);
+void LISTGAME(TabStr *T);
 
 #endif

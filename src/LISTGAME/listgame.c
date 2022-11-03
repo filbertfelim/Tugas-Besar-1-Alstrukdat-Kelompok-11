@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include "listgame.h"
 
-void LISTGAME(TabStr *game)
-/*  Menampilakn daftar game yang tersedia */
+void LISTGAME(TabStr *T)
+/*  Menampilkan daftar game yang tersedia */
 {
     printf("Berikut adalah daftar game yang tersedia\n");
-    int i = 0;
-    for (i; i < game->Neff; i++)
+    int i;
+    for (i = 0; i < T->Neff; i++)
     {
-        printf("%d. %s\n", i + 1, game->TI[i]);
+        printf("\t %d. %s\n", i + 1, T->TI[i]);
     }
+    printf("\n");
 }
