@@ -7,21 +7,21 @@
 void deskripsi(int saldo, Queue idmenu, Queue cook, Queue serve)
 {
     int i;
-    
+
     printf("SALDO: %d\n\n", saldo);
     displayQueueMakanan(idmenu);
     displayQueueCook(cook);
     displayQueueServe(serve);
 }
 
-int main()
+void dinnerdash()
 {
     /* KAMUS */
     Queue menu, cook, serve;
     int saldo, count, id, i, cust;
     char *command;
-    char ck[]= "COOK";
-    char sv[]= "SERVE";
+    char ck[] = "COOK";
+    char sv[] = "SERVE";
     x val;
     boolean found;
     /* ALGORITMA */
@@ -79,12 +79,12 @@ int main()
         }
         if (length(cook) == count)
         {
-            IDX_HEAD(cook) = IDX_UNDEF;
-            IDX_TAIL(cook) = IDX_UNDEF;
+            IDX_HEAD_DINNER(cook) = IDX_UNDEF;
+            IDX_TAIL_DINNER(cook) = IDX_UNDEF;
         }
         else
         {
-            IDX_TAIL(cook) = (IDX_TAIL(cook) - count) % CAPACITY;
+            IDX_TAIL_DINNER(cook) = (IDX_TAIL_DINNER(cook) - count) % CAPACITY_DINNER;
         }
 
         if (compare_strings(ck, command))
@@ -105,7 +105,7 @@ int main()
             }
             printf("==========================================================\n\n");
         }
-        else if ((compare_strings(sv,command)))
+        else if ((compare_strings(sv, command)))
         {
             if (id == (menu.buffer[i]).makanan)
             {
@@ -128,12 +128,12 @@ int main()
                 }
                 if (length(serve) == 1)
                 {
-                    IDX_HEAD(serve) = IDX_UNDEF;
-                    IDX_TAIL(serve) = IDX_UNDEF;
+                    IDX_HEAD_DINNER(serve) = IDX_UNDEF;
+                    IDX_TAIL_DINNER(serve) = IDX_UNDEF;
                 }
                 else
                 {
-                    IDX_TAIL(serve) = (IDX_TAIL(serve) - 1) % CAPACITY;
+                    IDX_TAIL_DINNER(serve) = (IDX_TAIL_DINNER(serve) - 1) % CAPACITY_DINNER;
                 }
 
                 val.makanan = cust;
@@ -153,6 +153,4 @@ int main()
     }
     printf("Permainan selesai! Kamu berhasil memperoleh Saldo sebanyak %d\n", saldo);
     printf("==========================================================\n\n");
-
-    return 0;
 }

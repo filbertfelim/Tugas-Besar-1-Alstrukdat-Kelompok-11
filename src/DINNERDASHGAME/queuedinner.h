@@ -4,7 +4,7 @@
 #include "../boolean.h"
 
 #define IDX_UNDEF -1
-#define CAPACITY 20
+#define CAPACITY_DINNER 20
 #define HARGA 15000
 
 /* Definisi elemen dan address */
@@ -18,17 +18,17 @@ typedef struct
 
 typedef struct
 {
-    x buffer[CAPACITY];
+    x buffer[CAPACITY_DINNER];
     int idxHead;
     int idxTail;
 } Queue;
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika q adalah Queue, maka akses elemen : */
-#define IDX_HEAD(q) (q).idxHead
-#define IDX_TAIL(q) (q).idxTail
-#define HEAD(q) (q).buffer[(q).idxHead].makanan
-#define TAIL(q) (q).buffer[(q).idxTail].makanan
+#define IDX_HEAD_DINNER(q) (q).idxHead
+#define IDX_TAIL_DINNER(q) (q).idxTail
+#define HEAD_DINNER(q) (q).buffer[(q).idxHead].makanan
+#define TAIL_DINNER(q) (q).buffer[(q).idxTail].makanan
 
 /* *** Kreator *** */
 void CreateQueue(Queue *q);
@@ -66,6 +66,5 @@ void displayQueueMakanan(Queue q);
 void displayQueueCook(Queue q);
 
 void displayQueueServe(Queue q);
-
 
 #endif

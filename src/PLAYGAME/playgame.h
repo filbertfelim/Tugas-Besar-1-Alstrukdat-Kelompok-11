@@ -7,9 +7,9 @@
 #include "../ADT/Mesinkar_kata/mesin_kata.h"
 #include "../ADT/Array/array.h"
 #include "../STRINGCOMP/stringcomp.h"
-// #include "../GAMERNG/rng.h"
-// #include "../DINNERDASHGAME/queuedinner.h"
-// #include "../DINNERDASHGAME/dinnerdash.h"
+#include "../GAMERNG/rng.h"
+#include "../DINNERDASHGAME/queuedinner.h"
+#include "../DINNERDASHGAME/dinnerdash.h"
 
 void Play(strQueue *antrian);
 /*Memainkan Game pada urutan teratas*/
