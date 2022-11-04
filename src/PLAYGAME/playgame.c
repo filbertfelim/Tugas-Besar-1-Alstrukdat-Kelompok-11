@@ -7,12 +7,12 @@ void Play(strQueue *antrian)
     if (compare_strings(toPlay, "RNG"))
     {
         printf("Loading RNG....\n");
-        // rng();
+        rng();
     }
-    else if (compare_strings(toPlay, "Diner Dash"))
+    else if (compare_strings(toPlay, "Diner DASH"))
     {
         printf("Loading Diner Dash....\n");
-        // runDinnerDash();
+        dinnerdash();
     }
     else
     {

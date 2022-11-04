@@ -4,10 +4,11 @@
 #include <stdio.h>
 #include "time.h"
 #include <stdlib.h>
+#include "../ADT/Mesinkar_kata/mesin_kata.h"
 
-int rng();
+void rng();
 /*
-Memainkan game RNG dan mengembalikan nilai skor akhir
+Memainkan game RNG
 */
 
 #endif
