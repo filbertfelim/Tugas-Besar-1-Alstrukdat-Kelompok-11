@@ -15,7 +15,7 @@ void DESC(int saldo, Queue idmenu, Queue cook, Queue serve)
     displayQueueServe(serve);
 }
 
-void dinnerdash()
+int main()
 {
     /* KAMUS */
     Queue menu, cook, serve;
@@ -48,8 +48,9 @@ void dinnerdash()
     while ((length(menu) <= 7) && (length(serve) < 15))
     {
         printf("MASUKKAN COMMAND: ");
-        /*scanf("%s M%d", command, &id);*/
-        command = STARTINPUT();
+        scanf("%s M%d", command, &id);
+        /*command = STARTINPUT();*/
+        
         printf("\n\n");
         for (i = 0; i < length(cook); i++)
         {
@@ -86,7 +87,7 @@ void dinnerdash()
         }
         else
         {
-            IDX_TAIL(cook) = (IDX_TAIL(cook) - count) % CAPACITY_DINNER;
+            IDX_TAIL(cook) = (IDX_TAIL(cook) - count) % CAPACITY;
         }
 
         if (compare_strings(ck, command))
@@ -135,7 +136,7 @@ void dinnerdash()
                 }
                 else
                 {
-                    IDX_TAIL(serve) = (IDX_TAIL(serve) - 1) % CAPACITY_DINNER;
+                    IDX_TAIL(serve) = (IDX_TAIL(serve) - 1) % CAPACITY;
                 }
 
                 val.makanan = cust;
@@ -159,4 +160,6 @@ void dinnerdash()
     }
     printf("Permainan selesai! Kamu berhasil memperoleh Saldo sebanyak %d\n", saldo);
     printf("==========================================================\n\n");
+
+    return 0;
 }
