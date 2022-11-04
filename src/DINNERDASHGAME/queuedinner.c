@@ -36,7 +36,7 @@ int length(Queue q)
     }
 }
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val)
+void enqueue(Queue *q, x val)
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */

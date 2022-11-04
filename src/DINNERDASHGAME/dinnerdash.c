@@ -1,106 +1,158 @@
-#include "../DINNERDASHGAME/dinnerdash.h"
-#include "../ADT/Mesinkar_kata/mesin_kar.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "../DINNERDASHGAME/queuedinner.h"
+#include "../STRINGCOMP/stringcomp.h"
 
-void ADD(Queue *q)                       
-  // menambah menu ke queue//
-{
-  ElType val;
-    val.makanan = length(*q);
-    val.durasimakanan = rand()%5 + 1;
-    val.ketahanan = rand()%5 + 1;
-    val.harga = (rand() % 50000 + 10000);
-    enqueue(q, val); 
-}
-void COOK(Queue q1, Queue *q, int makan)    
-// membuat makanan//
-{
-    printf("%d", q1.buffer[makan].makanan);
-    enqueue(q, q1.buffer[makan]);
-}
-void SERVE(Queue *q, int makan)              
-// menyajikan makanan makanan//
-{
-    if (HEAD(*q) == makan) {
-        if ((*q).buffer[IDX_HEAD(*q)].durasimakanan == 0) {
-            dequeue(q);
-            printf("Berhasil mengantarkan M%d", makan);
-        } else {
-            printf("M%d belum selesai dimasak", makan);
-        }
-    } else {
-        printf("M%d belum bisa disajikan karena M%d belum selesai", makan, HEAD(*q));
-    }
-}
-void COOKTIME(Queue *q)                     
-// mengurangi waktu memasak//
+void deskripsi(int saldo, Queue idmenu, Queue cook, Queue serve)
 {
     int i;
-    for (i = IDX_HEAD(*q); i <= IDX_TAIL(*q); i++) {
-        if ((*q).buffer[i].durasimakanan > 0) {
-            (*q).buffer[i].durasimakanan--;
-        }
-        else {
-            (*q).buffer[i].durasimakanan != 0;
-            (*q).buffer[i].ketahanan--; 
-        }
-    }
-}
-boolean isEnd(Queue q, int counter)       
-// cek apakah sudah sampai akhir queue//
-{
-  return((length(q) == 7) || (counter == 15));
+    
+    printf("SALDO: %d\n\n", saldo);
+    displayQueueMakanan(idmenu);
+    displayQueueCook(cook);
+    displayQueueServe(serve);
 }
 
-void commandCek(char *cc)
-// cek command//
+int main()
 {
-  boolean cek1 = false;
-  if (compare_strings(cc, "ADD") == 0) {
-    cek1 = true;
-  } else if (compare_strings(cc, "serve") == 0) {
-    cek1 = true;
-  } else {
-    printf("Command tidak valid\n");
-  }
-}
-void runDinnerDash()                     
-// run game//
-{
-Queue qMenu, qCook;
-    CreateQueue(&qMenu);
-    CreateQueue(&qCook);
+    /* KAMUS */
+    Queue menu, cook, serve;
+    int saldo, i, count, id, i, cust;
+    char *command;
+    char ck[]= "COOK";
+    char sv[]= "SERVE";
+    x val;
+    boolean found;
+    /* ALGORITMA */
     srand(time(NULL));
-    int i = 0;
-    for (i; i < 3; i++)
+    CreateQueue(&menu);
+    CreateQueue(&cook);
+    CreateQueue(&serve);
+    cust = 0;
+    saldo = 0;
+    for (i = 0; i < 3; i++)
     {
-        ADD(&qMenu);
+        val.makanan = cust;
+        val.durasimakanan = (rand() % 5) + 1;
+        val.ketahanan = (rand() % 5) + 1;
+        val.harga = (rand() % 50000 + 10000);
+        enqueue(menu, val);
+        cust++;
     }
-    int count = 0;
-    int comm, makan;
-    char *inputCom;
-    char inputMakan[2];
-    char temp;
 
-    while (!isEnd(qCook, count)) {
-        comm = 999;
-        makan = 999;
-        displayQueueMakanan(qMenu);
-        displayQueueCook(qCook);
-        displayQueueServe(qCook);
-        COOKTIME(&qCook);
-        
+    printf("Selamat Datang di Diner Dash!\n\n");
+    deskripsi(saldo, menu, cook, serve);
+
+    while ((length(menu) <= 7) && (length(serve) < 15))
+    {
         printf("MASUKKAN COMMAND: ");
-        inputCom = STARTINPUT();
-        printf("%s ", inputCom);
-        
-        commandCek(inputCom);
-        printf("%d %d", comm, makan);
-        if (comm == 0) {
-            COOK(qMenu, &qCook, makan);
-            count++;
-        } else {
-            SERVE(&qCook, makan);
+        scanf("%s M%d", command, &id);
+        printf("\n\n");
+        for (i = 0; i < length(cook); i++)
+        {
+            if (i < 5)
+            {
+                ((cook.buffer[i]).durasi)--;
+                if ((cook.buffer[i]).durasi == 0)
+                {
+                    enqueue(&serve, cook.buffer[i]);
+                    printf("Makanan M%d telah selesai dimasak\n", (cook.buffer[i]).makanan);
+                }
+            }
+            else
+            {
+                break;
+            }
         }
-        ADD(&qMenu);
+        count = 0;
+        for (i = 0; i < length(cook); i++)
+        {
+            if ((cook.buffer[i]).durasi == 0)
+            {
+                count++;
+            }
+            if ((count != 0) && (i != length(cook) - 1))
+            {
+                cook.buffer[i - count + 1] = cook.buffer[i + 1];
+            }
+        }
+        if (length(cook) == count)
+        {
+            IDX_HEAD(cook) = IDX_UNDEF;
+            IDX_TAIL(cook) = IDX_UNDEF;
+        }
+        else
+        {
+            IDX_TAIL(cook) = (IDX_TAIL(cook) - count) % CAPACITY;
+        }
+
+        if (compare_strings(ck, command))
+        {
+            for (i = 0; i < length(menu); i++)
+            {
+                if (ref == (menu.buffer[i]).makanan)
+                {
+                    enqueue(&cook, menu.buffer[i]);
+                    printf("Berhasil memasak M%d\n", (menu.buffer[i]).makanan);
+                    val.makanan = cust;
+                    val.durasi = (rand() % 5) + 1;
+                    val.ketahanan = (rand() % 5) + 1;
+                    val.harga = (rand() % 40001) + 10000;
+                    enqueue(&menu, val);
+                    cust++;
+                }
+            }
+            printf("==========================================================\n\n");
+        }
+        else if ((compare_strings(sv,command)))
+        {
+            if (id == HEAD(menu).makanan)
+            {
+                dequeue(&menu, &val);
+                enqueue(&serve, val);
+                printf("Berhasil mengantar M%d\n", ref);
+                saldo += val.harga;
+
+                found = false;
+                for (i = 0; i < length(serve); i++)
+                {
+                    if (ref == (serve.buffer[i]).makanan)
+                    {
+                        found = true;
+                    }
+                    if (found && (i != length(serve) - 1))
+                    {
+                        serve.buffer[i] = serve.buffer[i + 1];
+                    }
+                }
+                if (length(serve) == 1)
+                {
+                    IDX_HEAD(serve) = IDX_UNDEF;
+                    IDX_TAIL(serve) = IDX_UNDEF;
+                }
+                else
+                {
+                    IDX_TAIL(serve) = (IDX_TAIL(serve) - 1) % CAPACITY;
+                }
+
+                val.makanan = cust;
+                val.durasi = (rand() % 5) + 1;
+                val.ketahanan = (rand() % 5) + 1;
+                val.harga = (rand() % 40001) + 10000;
+                enqueue(&menu, val);
+                cust++;
+            }
+            else
+            {
+                printf("M%d belum dapat disajikan karena M%d belum selesai\n", id, HEAD(menu).makanan);
+            }
+            printf("==========================================================\n\n");
+        }
+        deskripsi(saldo, menu, cook, serve);
     }
+    printf("Permainan selesai! Kamu berhasil memperoleh Saldo sebanyak %d\n", saldo);
+    printf("==========================================================\n\n");
+
+    return 0;
 }

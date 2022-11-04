@@ -14,11 +14,11 @@ typedef struct
     int durasimakanan;
     int ketahanan;
     int harga;
-} ElType;
+} x;
 
 typedef struct
 {
-    ElType buffer[CAPACITY];
+    x buffer[CAPACITY];
     int idxHead;
     int idxTail;
 } Queue;
@@ -49,7 +49,7 @@ int length(Queue q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val);
+void enqueue(Queue *q, x val);
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
