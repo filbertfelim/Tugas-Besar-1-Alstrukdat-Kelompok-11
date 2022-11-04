@@ -86,7 +86,7 @@ void dinnerdash()
         }
         else
         {
-            IDX_TAIL(cook) = (IDX_TAIL(cook) - count) % CAPACITY;
+            IDX_TAIL(cook) = (IDX_TAIL(cook) - count) % CAPACITY_DINNER;
         }
 
         if (compare_strings(ck, command))
@@ -135,7 +135,7 @@ void dinnerdash()
                 }
                 else
                 {
-                    IDX_TAIL(serve) = (IDX_TAIL(serve) - 1) % CAPACITY;
+                    IDX_TAIL(serve) = (IDX_TAIL(serve) - 1) % CAPACITY_DINNER;
                 }
 
                 val.makanan = cust;
