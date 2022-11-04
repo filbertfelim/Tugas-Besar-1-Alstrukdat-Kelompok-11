@@ -2,8 +2,8 @@
 
 void Play(strQueue *antrian)
 {
-    char *temp;
-    char *toPlay = antrian->buffer[0];
+    gamename temp;
+    char *toPlay = antrian->buffer[antrian->idxHead];
     if (compare_strings(toPlay, "RNG"))
     {
         printf("Loading RNG....\n");
@@ -27,9 +27,11 @@ void PlayGame(strQueue *antrian)
     if (!isQueueEmpty(*antrian))
     {
         int i;
-        for (i = 0; i < lengthQueue(*antrian); i++)
+        int listNum = 0;
+        for (i = antrian->idxHead; i < (antrian->idxHead + lengthQueue(*antrian)); i++)
         {
-            printf("%d. %s\n", i + 1, antrian->buffer[i]);
+            printf("%d. %s\n", listNum + 1, antrian->buffer[i]);
+            listNum++;
         }
     }
     else

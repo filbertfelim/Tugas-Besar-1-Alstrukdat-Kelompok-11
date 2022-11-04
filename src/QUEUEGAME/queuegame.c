@@ -8,9 +8,11 @@ void QueueGame(strQueue *GameQueue, TabStr GameList)
     if (!isQueueEmpty(*GameQueue))
     {
         int i;
-        for (i = 0; i < lengthQueue(*GameQueue); i++)
+        int listNum = 0;
+        for (i = GameQueue->idxHead; i <(GameQueue->idxHead + lengthQueue(*GameQueue)); i++)
         {
-            printf("\t %d. %s\n", i + 1, GameQueue->buffer[i]);
+            printf("\t %d. %s\n", listNum + 1, GameQueue->buffer[i]);
+            listNum++;
         }
     }
     else
