@@ -152,10 +152,10 @@ int main()
             }
             printf("==========================================================\n\n");
         }
-        else 
+        /*else 
         {
             printf("TIDAK VALID\n");
-        }
+        } */
         DESC(saldo, menu, cook, serve);
     }
     printf("Permainan selesai! Kamu berhasil memperoleh Saldo sebanyak %d\n", saldo);
