@@ -7,7 +7,7 @@
 #include "../DINNERDASHGAME/queuedinner.h"
 #include "../STRINGCOMP/stringcomp.h"
 
-void deskripsi(int saldo, Queue idmenu, Queue cook, Queue serve);
+void DESC(int saldo, Queue idmenu, Queue cook, Queue serve);
 
 void dinnerdash();
 
