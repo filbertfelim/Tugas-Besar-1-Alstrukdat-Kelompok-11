@@ -13,4 +13,9 @@ void help()
     printf("\t 8. PLAY GAME   --- Memainkan sebuah game. \n");
     printf("\t 9. SKIPGAME   --- Melewatkan permainan sebanyak n. \n");
     printf("\t 10.QUIT       --- Keluar dari program game. \n");
+    printf( 
+        " ╔═╗┌─┐┌┬┐┌─┐┌─┐┌─┐  ╔╦╗┌─┐┌┬┐┌┐ ┌─┐┌┐┌┌┬┐┬ ┬ "
+        " ╚═╗├┤ ││││ ││ ┬├─┤  ║║║├┤ │││├┴┐├─┤│││ │ │ │ "
+        " ╚═╝└─┘┴ ┴└─┘└─┘┴ ┴  ╩ ╩└─┘┴ ┴└─┘┴ ┴┘└┘ ┴ └─┘ "
+    );
 }
