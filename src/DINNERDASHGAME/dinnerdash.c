@@ -18,7 +18,7 @@ int main()
 {
     /* KAMUS */
     Queue menu, cook, serve;
-    int saldo, i, count, id, i, cust;
+    int saldo, count, id, i, cust;
     char *command;
     char ck[]= "COOK";
     char sv[]= "SERVE";
@@ -37,7 +37,7 @@ int main()
         val.durasimakanan = (rand() % 5) + 1;
         val.ketahanan = (rand() % 5) + 1;
         val.harga = (rand() % 50000 + 10000);
-        enqueue(menu, val);
+        enqueue(&menu, val);
         cust++;
     }
 
@@ -53,8 +53,8 @@ int main()
         {
             if (i < 5)
             {
-                ((cook.buffer[i]).durasi)--;
-                if ((cook.buffer[i]).durasi == 0)
+                ((cook.buffer[i]).durasimakanan)--;
+                if ((cook.buffer[i]).durasimakanan == 0)
                 {
                     enqueue(&serve, cook.buffer[i]);
                     printf("Makanan M%d telah selesai dimasak\n", (cook.buffer[i]).makanan);
@@ -68,7 +68,7 @@ int main()
         count = 0;
         for (i = 0; i < length(cook); i++)
         {
-            if ((cook.buffer[i]).durasi == 0)
+            if ((cook.buffer[i]).durasimakanan == 0)
             {
                 count++;
             }
@@ -91,14 +91,14 @@ int main()
         {
             for (i = 0; i < length(menu); i++)
             {
-                if (ref == (menu.buffer[i]).makanan)
+                if (id == (menu.buffer[i]).makanan)
                 {
                     enqueue(&cook, menu.buffer[i]);
                     printf("Berhasil memasak M%d\n", (menu.buffer[i]).makanan);
                     val.makanan = cust;
-                    val.durasi = (rand() % 5) + 1;
+                    val.durasimakanan = (rand() % 5) + 1;
                     val.ketahanan = (rand() % 5) + 1;
-                    val.harga = (rand() % 40001) + 10000;
+                    val.harga = (rand() % 50000 + 10000);
                     enqueue(&menu, val);
                     cust++;
                 }
@@ -107,17 +107,17 @@ int main()
         }
         else if ((compare_strings(sv,command)))
         {
-            if (id == HEAD(menu).makanan)
+            if (id == (menu.buffer[i]).makanan)
             {
-                dequeue(&menu, &val);
+                dequeue(&menu);
                 enqueue(&serve, val);
-                printf("Berhasil mengantar M%d\n", ref);
+                printf("Berhasil mengantar M%d\n", id);
                 saldo += val.harga;
 
                 found = false;
                 for (i = 0; i < length(serve); i++)
                 {
-                    if (ref == (serve.buffer[i]).makanan)
+                    if (id == (serve.buffer[i]).makanan)
                     {
                         found = true;
                     }
@@ -137,15 +137,15 @@ int main()
                 }
 
                 val.makanan = cust;
-                val.durasi = (rand() % 5) + 1;
+                val.durasimakanan = (rand() % 5) + 1;
                 val.ketahanan = (rand() % 5) + 1;
-                val.harga = (rand() % 40001) + 10000;
+                val.harga = (rand() % 50000 + 10000);
                 enqueue(&menu, val);
                 cust++;
             }
             else
             {
-                printf("M%d belum dapat disajikan karena M%d belum selesai\n", id, HEAD(menu).makanan);
+                printf("M%d belum dapat disajikan karena M%d belum selesai\n", id, (menu.buffer[i]).makanan);
             }
             printf("==========================================================\n\n");
         }
