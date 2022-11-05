@@ -21,6 +21,12 @@ void START()
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
+void STARTLOAD()
+{
+    pita = fopen("../data/savefile.txt", "r");
+    ADV();
+}
+
 char *STARTINPUT()
 {
     pita = stdin;
