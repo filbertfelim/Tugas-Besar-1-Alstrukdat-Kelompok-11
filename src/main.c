@@ -52,38 +52,45 @@ int main()
     char *scnd = SecondWord(command);
     while (!compare_strings(command, "QUIT"))
     {
-        if (compare_strings(command, "CREATE GAME"))
+        if (countblank(command) > 1)
         {
-            CreateGame(&game);
-        }
-        else if (compare_strings(command, "LIST GAME"))
-        {
-            LISTGAME(&game);
-        }
-        else if (compare_strings(command, "DELETE GAME"))
-        {
-            DeleteGame(&game);
-        }
-        else if (compare_strings(command, "QUEUE GAME"))
-        {
-
-            QueueGame(&gamequeue, game);
-        }
-        else if (compare_strings(command, "PLAY GAME"))
-        {
-            PlayGame(&gamequeue);
-        }
-        else if (compare_strings(first, "SKIPGAME"))
-        {
-            SkipGame(&gamequeue, strtointinput(scnd, str_len(scnd)));
-        }
-        else if (compare_strings(command, "HELP"))
-        {
-            help();
+            commandlain();
         }
         else
         {
-            commandlain();
+            if (compare_strings(command, "CREATE GAME"))
+            {
+                CreateGame(&game);
+            }
+            else if (compare_strings(command, "LIST GAME"))
+            {
+                LISTGAME(&game);
+            }
+            else if (compare_strings(command, "DELETE GAME"))
+            {
+                DeleteGame(&game);
+            }
+            else if (compare_strings(command, "QUEUE GAME"))
+            {
+
+                QueueGame(&gamequeue, game);
+            }
+            else if (compare_strings(command, "PLAY GAME"))
+            {
+                PlayGame(&gamequeue);
+            }
+            else if (compare_strings(first, "SKIPGAME"))
+            {
+                SkipGame(&gamequeue, strtointinput(scnd, str_len(scnd)));
+            }
+            else if (compare_strings(command, "HELP"))
+            {
+                help();
+            }
+            else
+            {
+                commandlain();
+            }
         }
         printf("ENTER COMMAND: ");
         command = STARTINPUT();
