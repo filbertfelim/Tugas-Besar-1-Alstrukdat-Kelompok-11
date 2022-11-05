@@ -117,7 +117,7 @@ void displayQueueServe(Queue q)
         {
             if (q.buffer[i].durasimakanan == 0)
             {
-                printf("M%d\t | %d\n", q.buffer[i].makanan, q.buffer[i].durasimakanan);
+                printf("M%d\t | %d\n", q.buffer[i].makanan, q.buffer[i].ketahanan);
             }
         }
     }
