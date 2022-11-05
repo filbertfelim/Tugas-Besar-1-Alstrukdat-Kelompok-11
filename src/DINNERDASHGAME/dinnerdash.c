@@ -8,7 +8,7 @@
 void DESC(int saldo, Queue idmenu, Queue cook, Queue serve)
 {
     int i;
-    
+
     printf("SALDO: %d\n\n", saldo);
     displayQueueMakanan(idmenu);
     displayQueueCook(cook);
@@ -21,8 +21,8 @@ void dinnerdash()
     Queue menu, cook, serve;
     int saldo, count, id, i, cust;
     char *command;
-    char ck[]= "COOK";
-    char sv[]= "SERVE";
+    char ck[] = "COOK";
+    char sv[] = "SERVE";
     x val;
     boolean found;
     /* ALGORITMA */
@@ -48,8 +48,7 @@ void dinnerdash()
     while ((length(menu) <= 7) && (length(serve) < 15))
     {
         printf("MASUKKAN COMMAND: ");
-        /*scanf("%s M%d", command, &id);*/
-        command = STARTINPUT();
+        scanf("%s M%d", command, &id);
         printf("\n\n");
         for (i = 0; i < length(cook); i++)
         {
@@ -81,12 +80,12 @@ void dinnerdash()
         }
         if (length(cook) == count)
         {
-            IDX_HEAD(cook) = IDX_UNDEF;
-            IDX_TAIL(cook) = IDX_UNDEF;
+            IDX_HEAD_DINNER(cook) = IDX_UNDEF;
+            IDX_TAIL_DINNER(cook) = IDX_UNDEF;
         }
         else
         {
-            IDX_TAIL(cook) = (IDX_TAIL(cook) - count) % CAPACITY_DINNER;
+            IDX_TAIL_DINNER(cook) = (IDX_TAIL_DINNER(cook) - count) % CAPACITY_DINNER;
         }
 
         if (compare_strings(ck, command))
@@ -107,7 +106,7 @@ void dinnerdash()
             }
             printf("==========================================================\n\n");
         }
-        else if ((compare_strings(sv,command)))
+        else if ((compare_strings(sv, command)))
         {
             if (id == ((menu).buffer[(menu).idxHead].makanan))
             {
@@ -130,12 +129,12 @@ void dinnerdash()
                 }
                 if (length(serve) == 1)
                 {
-                    IDX_HEAD(serve) = IDX_UNDEF;
-                    IDX_TAIL(serve) = IDX_UNDEF;
+                    IDX_HEAD_DINNER(serve) = IDX_UNDEF;
+                    IDX_TAIL_DINNER(serve) = IDX_UNDEF;
                 }
                 else
                 {
-                    IDX_TAIL(serve) = (IDX_TAIL(serve) - 1) % CAPACITY_DINNER;
+                    IDX_TAIL_DINNER(serve) = (IDX_TAIL_DINNER(serve) - 1) % CAPACITY_DINNER;
                 }
 
                 val.makanan = cust;
@@ -151,7 +150,7 @@ void dinnerdash()
             }
             printf("==========================================================\n\n");
         }
-        else 
+        else
         {
             printf("TIDAK VALID\n");
         }
