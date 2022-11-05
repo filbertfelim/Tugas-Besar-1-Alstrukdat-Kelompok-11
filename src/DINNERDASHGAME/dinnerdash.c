@@ -69,7 +69,22 @@ int main()
                 break;
             }
         }
-
+        for (i = 0; i < length(serve); i++)
+        {
+            if (i < 5)
+            {
+                ((serve.buffer[i]).ketahanan)--;
+                if ((serve.buffer[i]).ketahanan == 0)
+                {
+                    dequeue(&serve);
+                    printf("Makanan M%d telah hangus, Makanan harus dimasak ulang\n", (serve.buffer[i]).makanan);
+                }
+            }
+            else
+            {  
+                break;      
+            }
+        }
         count = 0;
         for (i = 0; i < length(cook); i++)
         {
@@ -119,28 +134,43 @@ int main()
                 enqueue(&serve, val);
                 printf("Berhasil mengantar M%d\n", id);
                 saldo += val.harga;
-
+                count = 0;
                 found = false;
 
                 for (i = 0; i < length(serve); i++)
                 {
+                    if (i < 5)
+                    {
+                        ((serve.buffer[i]).ketahanan)--;
+                        if ((serve.buffer[i]).ketahanan == 0)
+                        {
+                            dequeue(&serve);
+                            printf("Makanan M%d telah hangus, Makanan harus dimasak ulang\n", (serve.buffer[i]).makanan);
+                            found = true;
+                        }
+                        else
+                        {   
+                            found = false;
+                        }
+                    }
                     if (id == (serve.buffer[i]).makanan)
                     {
                         found = true;
+                        count++;
                     }
-                    if (found && (i != length(serve) - 1))
+                    if (found && (i != length(serve) - 1) && (count != 0))
                     {
-                        serve.buffer[i] = serve.buffer[i + 1];
+                        serve.buffer[i - count + 1] = serve.buffer[i + 1];
                     }
                 }
-                if (length(serve) == 1)
+                if (length(serve) == count)
                 {
                     IDX_HEAD(serve) = IDX_UNDEF;
                     IDX_TAIL(serve) = IDX_UNDEF;
                 }
                 else
                 {
-                    IDX_TAIL(serve) = (IDX_TAIL(serve) - 1) % CAPACITY_DINNER;
+                    IDX_TAIL(serve) = (IDX_TAIL(serve) - count) % CAPACITY_DINNER;
                 }
 
                 val.makanan = cust;

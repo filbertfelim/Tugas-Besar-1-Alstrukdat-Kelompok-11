@@ -108,7 +108,7 @@ void displayQueueCook(Queue q)
 void displayQueueServe(Queue q)
 {
     printf("\nDaftar Makanan yang siap disajikan\n");
-    printf("Makanan\t | Sisa Durasi Memasak\n");
+    printf("Makanan\t | Sisa Ketahanan Makanan\n");
     printf("--------------------------------\n");
     if (!isEmpty(q))
     {
