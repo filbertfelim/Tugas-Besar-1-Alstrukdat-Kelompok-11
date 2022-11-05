@@ -15,7 +15,7 @@ void DESC(int saldo, Queue idmenu, Queue cook, Queue serve)
     displayQueueServe(serve);
 }
 
-void dinnerdash()
+int main()
 {
     /* KAMUS */
     Queue menu, cook, serve;
@@ -150,12 +150,14 @@ void dinnerdash()
             }
             printf("==========================================================\n\n");
         }
-        else
+        /*else 
         {
             printf("TIDAK VALID\n");
-        }
+        } */
         DESC(saldo, menu, cook, serve);
     }
     printf("Permainan selesai! Kamu berhasil memperoleh Saldo sebanyak %d\n", saldo);
     printf("==========================================================\n\n");
+
+    return 0;
 }
