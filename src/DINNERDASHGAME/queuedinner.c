@@ -108,14 +108,17 @@ void displayQueueCook(Queue q)
 void displayQueueServe(Queue q)
 {
     printf("\nDaftar Makanan yang siap disajikan\n");
-    printf("Makanan\t | Sisa ketahanan makanan\n");
+    printf("Makanan\t | Sisa Ketahanan Makanan\n");
     printf("--------------------------------\n");
     if (!isEmpty(q))
     {
         int i;
         for (i = IDX_HEAD_DINNER(q); i <= IDX_TAIL_DINNER(q); i++)
         {
-            printf("M%d\t | %d\n", q.buffer[i].makanan, q.buffer[i].durasimakanan);
+            if (q.buffer[i].durasimakanan == 0)
+            {
+                printf("M%d\t | %d\n", q.buffer[i].makanan, q.buffer[i].ketahanan);
+            }
         }
     }
     else
