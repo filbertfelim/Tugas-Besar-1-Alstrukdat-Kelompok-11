@@ -66,7 +66,6 @@ int main()
         }
         else if (compare_strings(command, "QUEUE GAME"))
         {
-
             QueueGame(&gamequeue, game);
         }
         else if (compare_strings(command, "PLAY GAME"))
