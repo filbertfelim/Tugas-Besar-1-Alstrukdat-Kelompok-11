@@ -19,6 +19,7 @@
 #include "./COMMANDLAIN/commandlain.h"
 #include "./START/start.h"
 #include "./HELP/help.h"
+#include "./LOADSAVE/loadfile.h"
 #include "boolean.h"
 
 int main()
@@ -27,29 +28,50 @@ int main()
     printf("ENTER COMMAND: ");
     char *command;
     command = STARTINPUT();
-    while (!compare_strings(command, "START") && !compare_strings(command, "LOAD"))
-    {
-        printf("Perintah yang bisa digunakan hanya START DAN LOAD\n\n");
-        printf("ENTER COMMAND: ");
-        command = STARTINPUT();
-    }
+    char *first = FirstWord(command);
+    char *scnd = SecondWord(command);
+    boolean finish_load = false;
     TabStr game;
     strQueue gamequeue;
     CreateStrQueue(&gamequeue);
-    if (compare_strings(command, "START"))
+    while (!finish_load)
     {
-        MakeEmpty(&game);
-        STARTGAME(&game);
-    }
-    else
-    {
-        MakeEmpty(&game);
-        printf("LOAD\n"); // command LOADGAME
+        if (compare_strings(command, "START"))
+        {
+            MakeEmpty(&game);
+            STARTGAME(&game);
+            finish_load = true;
+        }
+        else if (compare_strings(first, "LOAD"))
+        {
+            if (compare_strings(scnd, "savefile.txt"))
+            {
+                MakeEmpty(&game);
+                loadFile(&game);
+                finish_load = true;
+            }
+            else
+            {
+                printf("Save file tidak berhasil dibaca. BNMO belum dijalankan\n\n");
+                printf("ENTER COMMAND: ");
+                command = STARTINPUT();
+                first = FirstWord(command);
+                scnd = SecondWord(command);
+            }
+        }
+        else
+        {
+            printf("Perintah yang bisa digunakan hanya START DAN LOAD\n\n");
+            printf("ENTER COMMAND: ");
+            command = STARTINPUT();
+            first = FirstWord(command);
+            scnd = SecondWord(command);
+        }
     }
     printf("ENTER COMMAND: ");
     command = STARTINPUT();
-    char *first = FirstWord(command);
-    char *scnd = SecondWord(command);
+    first = FirstWord(command);
+    scnd = SecondWord(command);
     while (!compare_strings(command, "QUIT"))
     {
         if (countblank(command) > 1)
@@ -61,6 +83,22 @@ int main()
             if (compare_strings(command, "CREATE GAME"))
             {
                 CreateGame(&game);
+            }
+            else if (compare_strings(first, "LOAD"))
+            {
+                if (compare_strings(scnd, "savefile.txt"))
+                {
+                    MakeEmpty(&game);
+                    loadFile(&game);
+                }
+                else
+                {
+                    printf("Save file tidak berhasil dibaca. BNMO belum dijalankan\n\n");
+                }
+            }
+            else if (compare_strings(first, "SAVE"))
+            {
+                // SAVE(&game);
             }
             else if (compare_strings(command, "LIST GAME"))
             {
