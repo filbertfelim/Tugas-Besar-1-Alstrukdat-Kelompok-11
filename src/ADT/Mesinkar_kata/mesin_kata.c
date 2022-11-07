@@ -170,3 +170,16 @@ int countblank(char *strg)
 /*
    menghitung banyak blank dalam suatu string
 */
+
+char *toactstring(char a[])
+{
+    int idx;
+    char *gamestring;
+    gamestring = (char *)malloc(100 * sizeof(char));
+    for (idx = 0; idx < str_len(a); idx++)
+    {
+        *(gamestring + idx) = a[idx];
+    }
+    *(gamestring + idx) = '\0';
+    return gamestring;
+}

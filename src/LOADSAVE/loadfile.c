@@ -9,8 +9,8 @@ static int retval;
 
 void loadFile(TabStr *T)
 {
+  MakeEmpty(T);
   STARTLOAD();
-  printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n\n");
   CopyWord();
   int i = strtoint(currentWord.TabWord); // konversi char ke int
   (*T).Neff = i;
@@ -29,4 +29,5 @@ void loadFile(TabStr *T)
     *(gamestring + currentWord.Length) = '\0';
     (*T).TI[j] = gamestring;
   }
+  printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n\n");
 }

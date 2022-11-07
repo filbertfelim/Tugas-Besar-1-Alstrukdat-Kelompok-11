@@ -4,7 +4,7 @@
 #include "../DINNERDASHGAME/queuedinner.h"
 #include "../STRINGCOMP/stringcomp.h"
 #include "../ADT/Mesinkar_kata/mesin_kar.h"
-#include "../DINNERDASHGAME/dinnerdash.h"
+#include "../DINNERDASHGAME/dinnerdash1.h"
 
 void DESC(int saldo, Queue idmenu, Queue cook, Queue serve)
 {

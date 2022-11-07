@@ -38,7 +38,6 @@ int main()
     {
         if (compare_strings(command, "START"))
         {
-            MakeEmpty(&game);
             STARTGAME(&game);
             finish_load = true;
         }
@@ -46,7 +45,6 @@ int main()
         {
             if (compare_strings(scnd, "savefile.txt"))
             {
-                MakeEmpty(&game);
                 loadFile(&game);
                 finish_load = true;
             }
@@ -84,18 +82,6 @@ int main()
             {
                 CreateGame(&game);
             }
-            else if (compare_strings(first, "LOAD"))
-            {
-                if (compare_strings(scnd, "savefile.txt"))
-                {
-                    MakeEmpty(&game);
-                    loadFile(&game);
-                }
-                else
-                {
-                    printf("Save file tidak berhasil dibaca. BNMO belum dijalankan\n\n");
-                }
-            }
             else if (compare_strings(first, "SAVE"))
             {
                 // SAVE(&game);
@@ -106,7 +92,7 @@ int main()
             }
             else if (compare_strings(command, "DELETE GAME"))
             {
-                DeleteGame(&game);
+                DeleteGame(&game, &gamequeue);
             }
             else if (compare_strings(command, "QUEUE GAME"))
             {
