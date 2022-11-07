@@ -4,11 +4,11 @@
 #include "../DINNERDASHGAME/queuedinner.h"
 #include "../STRINGCOMP/stringcomp.h"
 #include "../ADT/Mesinkar_kata/mesin_kar.h"
+#include "../DINNERDASHGAME/dinnerdash.h"
 
 void DESC(int saldo, Queue idmenu, Queue cook, Queue serve)
 {
     int i;
-
     printf("SALDO: %d\n\n", saldo);
     displayQueueMakanan(idmenu);
     displayQueueCook(cook);
@@ -36,9 +36,9 @@ void dinnerdash()
     for (i = 0; i < 3; i++)
     {
         val.makanan = cust;
-        val.durasimakanan = (rand() % 5) + 1;
-        val.ketahanan = (rand() % 5) + 1;
-        val.harga = (rand() % 50000 + 10000);
+        val.durasimakanan = (rand() % 4) + 1;
+        val.ketahanan = (rand() % 4) + 1;
+        val.harga = (rand() % 40001 + 10000);
         enqueue(&menu, val);
         cust++;
     }
