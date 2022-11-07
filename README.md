@@ -13,3 +13,5 @@ Langkah 3 : ( Menjalankan program )
 
 Jika ingin menghapus executable program :
 `make clean`
+
+Nama savefile yang dipakai : `savefile.txt`
