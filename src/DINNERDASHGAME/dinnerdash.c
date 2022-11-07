@@ -6,7 +6,8 @@
 #include "../ADT/Mesinkar_kata/mesin_kar.h"
 #include "../DINNERDASHGAME/dinnerdash.h"
 
-void 
+// masih kurang : input command nya masih belom bener (kalau input gavalid gadiitung satu putaran)
+// msh ada yg konslet pas dijalan tp so far udh bener 
 void DESC(int saldo, Queue idmenu, Queue cook, Queue serve)
 {
     int i;
