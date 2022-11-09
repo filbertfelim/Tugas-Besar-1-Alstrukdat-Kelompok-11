@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 #include "tictactoe.h"
 
 char board[3][3];
@@ -52,10 +49,16 @@ void playermove()
     do
     {
     printf("Masukan row(1-3): ");
-    scanf("%d", &x);
+    char *inputrow;
+    inputrow = STARTINPUT();
+    x = strtointinput(inputrow, str_len(inputrow)); 
+    // scanf("%d", &x);
     x--;
     printf("Masukan column(1-3): ");
-    scanf("%d", &y);
+    char *inputcolumn;
+    inputcolumn = STARTINPUT();
+    y = strtointinput(inputcolumn, str_len(inputcolumn)); 
+    // scanf("%d", &y);
     y--;
 
     if (board[x][y] != ' ')
