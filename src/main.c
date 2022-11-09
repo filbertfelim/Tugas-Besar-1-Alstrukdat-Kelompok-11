@@ -143,15 +143,20 @@ int main()
         first = FirstWord(command);
         scnd = SecondWord(command);
     }
-    printf("Apakah anda mau save? (y/n)\n");
+    printf("Apakah anda ingin melakukan save? (Y/N).\n");
+    printf("ENTER COMMAND: ");
     command = STARTINPUT();
-    if (compare_strings(command, "y"))
-
+    while (!compare_strings(command, "Y") && !compare_strings(command, "N"))
+    {
+        printf("Perintah yang bisa digunakan hanya Y DAN N\n\n");
+        printf("ENTER COMMAND: ");
+        command = STARTINPUT();
+    }
+    if (compare_strings(command, "Y"))
     {
         SAVE(game);
     }
-    else
-    {
+    else{
         printf("Save file tidak disimpan.\n\n");
     }
     quit();
