@@ -25,6 +25,7 @@
 #include "./COMMANDLAIN/commandlain.h"
 #include "./START/start.h"
 #include "./HELP/help.h"
+#include "./QUIT/quit.h"
 #include "./LOADSAVE/loadfile.h"
 #include "./LOADSAVE/savefile.h"
 
@@ -38,6 +39,8 @@ int main()
     printf("Selamat datang\n");
     printf("ENTER COMMAND: ");
     char *command;
+    char *filename;
+    filename = (char *)malloc(50 * sizeof(char));
     command = STARTINPUT();
     char *first = FirstWord(command);
     char *scnd = SecondWord(command);
@@ -47,6 +50,7 @@ int main()
     CreateStrQueue(&gamequeue);
     while (!finish_load)
     {
+
         if (compare_strings(command, "START"))
         {
             STARTGAME(&game);
@@ -54,14 +58,11 @@ int main()
         }
         else if (compare_strings(first, "LOAD"))
         {
-            if (compare_strings(scnd, "savefile.txt"))
+            filename = filetodir(scnd);
+            finish_load = loadFile(&game, filename);
+            if (!finish_load)
             {
-                loadFile(&game);
-                finish_load = true;
-            }
-            else
-            {
-                printf("Save file tidak berhasil dibaca. BNMO belum dijalankan\n\n");
+                printf("Load belum berhasil. Silakan input nama file lain.\n\n");
                 printf("ENTER COMMAND: ");
                 command = STARTINPUT();
                 first = FirstWord(command);
@@ -95,18 +96,7 @@ int main()
             }
             else if (compare_strings(first, "SAVE"))
             {
-                if (compare_strings(scnd, "savefile.txt"))
-                {
-                    SAVE(game);
-                }
-                else
-                {
-                    printf("Save file tidak berhasil disimpan. Mohon save ulang.\n\n");
-                    printf("ENTER COMMAND: ");
-                    command = STARTINPUT();
-                    first = FirstWord(command);
-                    scnd = SecondWord(command);
-                }
+                SAVE(game, scnd);
             }
             else if (compare_strings(command, "LIST GAME"))
             {
@@ -154,9 +144,12 @@ int main()
     }
     if (compare_strings(command, "Y"))
     {
-        SAVE(game);
+        printf("Masukkan nama filename :");
+        command = STARTINPUT();
+        SAVE(game, command);
     }
-    else{
+    else
+    {
         printf("Save file tidak disimpan.\n\n");
     }
     quit();

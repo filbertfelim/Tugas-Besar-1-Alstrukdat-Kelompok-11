@@ -8,7 +8,7 @@
 #include "../ADT/Array/array.h"
 #include "../STRINGCOMP/stringcomp.h"
 
-void loadFile(TabStr *T);
+boolean loadFile(TabStr *T, char *filename);
 /*
     membaca file savefile dan memasukkan game ke dalam array game
 */

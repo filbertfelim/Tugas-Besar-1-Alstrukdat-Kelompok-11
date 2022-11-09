@@ -21,10 +21,18 @@ void START()
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
-void STARTLOAD()
+boolean STARTLOAD(char *filename)
 {
-    pita = fopen("../data/savefile.txt", "r");
-    ADV();
+    pita = fopen(filename, "r");
+    if (pita != NULL)
+    {
+        ADV();
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 char *STARTINPUT()
@@ -50,10 +58,10 @@ char *STARTINPUT()
 void ADV()
 {
     retval = fscanf(pita, "%c", &currentChar);
-    if (retval < 0)
+    EOP = retval < 0;
+    if (EOP)
     {
         fclose(pita);
-        EOP = true;
     }
 }
 /* Pita dimajukan satu karakter.
@@ -73,3 +81,27 @@ boolean IsEOP()
     return (currentChar == MARK);
 }
 /* Mengirimkan true jika currentChar = MARK */
+
+char *filetodir(char *file)
+{
+    char dir[8] = "../data/";
+    char *filedir = (char *)malloc(100 * sizeof(char));
+    int i = 0;
+    while (i < 8)
+    {
+        filedir[i] = dir[i];
+        i++;
+    }
+    int idx = 0;
+    while (file[idx] != '\0')
+    {
+        filedir[i] = file[idx];
+        i++;
+        idx++;
+    }
+    filedir[i] = '\0';
+    return filedir;
+}
+/*
+   mengubah filename menjadi directory yang tepat untuk load dan save
+*/

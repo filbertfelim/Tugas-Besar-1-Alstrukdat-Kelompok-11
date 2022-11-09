@@ -20,7 +20,7 @@ void START();
    F.S. : currentChar adalah karakter pertama pada pita
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
-void STARTLOAD();
+boolean STARTLOAD(char *filename);
 
 char *STARTINPUT();
 /*
@@ -43,5 +43,8 @@ char GetCC();
 
 boolean IsEOP();
 /* Mengirimkan true jika currentChar = MARK */
-
+char *filetodir(char *file);
+/*
+   mengubah filename menjadi directory yang tepat untuk load dan save
+*/
 #endif
