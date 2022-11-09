@@ -8,6 +8,7 @@
 #include "../ADT/Array/array.h"
 #include "../STRINGCOMP/stringcomp.h"
 #include "../GAMERNG/rng.h"
+#include "../BONUS/tictactoe.h"
 #include "../DINNERDASHGAME/queuedinner.h"
 #include "../DINNERDASHGAME/dinnerdash.h"
 

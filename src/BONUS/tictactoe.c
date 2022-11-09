@@ -15,15 +15,14 @@ void PrintBoard()
     printf("\n---|---|---\n");
     printf(" %c | %c | %c ", board[2][0], board[2][1], board[2][2]);
     printf("\n");
-
 }
 
 int checkboard()
 {
     int check = 9;
-    for(int i = 0; i< 3; i++)
+    for (int i = 0; i < 3; i++)
     {
-        for(int j =0; j < 3;j++)
+        for (int j = 0; j < 3; j++)
         {
             if (board[i][j] != ' ')
             {
@@ -36,37 +35,36 @@ int checkboard()
 
 void resetboard()
 {
-    for(int i = 0; i < 3; i++)
+    for (int i = 0; i < 3; i++)
     {
-        for(int j = 0; j < 3; j++)
+        for (int j = 0; j < 3; j++)
         {
             board[i][j] = ' ';
         }
     }
-
 }
 
 void playermove()
 {
-    int x,y;
+    int x, y;
     do
     {
-    printf("Masukan row(1-3): ");
-    scanf("%d", &x);
-    x--;
-    printf("Masukan column(1-3): ");
-    scanf("%d", &y);
-    y--;
+        printf("Masukan row(1-3): ");
+        scanf("%d", &x);
+        x--;
+        printf("Masukan column(1-3): ");
+        scanf("%d", &y);
+        y--;
 
-    if (board[x][y] != ' ')
-    {
-        printf("Masukan Tidak Valid\n");
-    }
-    else
-    {
-        board[x][y] = PLAYER;
-        break;
-    }
+        if (board[x][y] != ' ')
+        {
+            printf("Masukan Tidak Valid\n");
+        }
+        else
+        {
+            board[x][y] = PLAYER;
+            break;
+        }
     } while (board[x][y] != ' ');
 }
 
@@ -74,9 +72,9 @@ void computermove()
 {
     // random angka
     srand(time(0));
-    int x,y;
+    int x, y;
 
-    if(checkboard() > 0)
+    if (checkboard() > 0)
     {
         do
         {
@@ -95,20 +93,20 @@ void computermove()
 char checkwin()
 {
     // check row
-    for(int i= 0; i < 3; i++)
+    for (int i = 0; i < 3; i++)
     {
         if (board[i][0] == board[i][1] && board[i][0] == board[i][2])
         {
             return board[i][0];
-        } 
+        }
     }
     // check column
-    for(int i= 0; i < 3; i++)
+    for (int i = 0; i < 3; i++)
     {
         if (board[0][i] == board[1][i] && board[0][i] == board[2][i])
         {
             return board[0][i];
-        } 
+        }
     }
     // check diagonal
     if (board[0][0] == board[1][1] && board[0][0] == board[2][2])
@@ -138,16 +136,16 @@ void printwin(char winner)
     }
 }
 
-int main()
+void tictactoe()
 {
     printf("SELAMAT DATANG DI PERMAINAN TICTACTOE\n");
- 
+
     char winner = ' ';
     char response;
     winner = ' ';
     response = ' ';
     resetboard();
-    while(winner == ' ' && checkboard() != 0)
+    while (winner == ' ' && checkboard() != 0)
     {
         PrintBoard();
         playermove();
@@ -161,10 +159,9 @@ int main()
         if (winner != ' ' || checkboard() == 0)
         {
             break;
-        }   
+        }
     }
     PrintBoard();
     printwin(winner);
     printf("Terima Kasih telah bermain TICTACTOE!\n");
-    return 0;
 }

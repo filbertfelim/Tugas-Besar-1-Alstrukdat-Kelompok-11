@@ -14,6 +14,11 @@ void Play(strQueue *antrian)
         printf("Loading Diner Dash....\n");
         dinnerdash();
     }
+    else if (compare_strings(toPlay, "TICTACTOE"))
+    {
+        printf("Loading TICTACTOE....\n");
+        tictactoe();
+    }
     else
     {
         printf("Game %s tidak dapat dimainkan. Silakan pilih game lain.\n", toPlay);

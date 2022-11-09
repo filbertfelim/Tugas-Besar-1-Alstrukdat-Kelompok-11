@@ -20,6 +20,8 @@
 #include "./START/start.h"
 #include "./HELP/help.h"
 #include "./LOADSAVE/loadfile.h"
+#include "./LOADSAVE/savefile.h"
+#include "./BONUS/tictactoe.h"
 #include "boolean.h"
 
 int main()
@@ -84,7 +86,18 @@ int main()
             }
             else if (compare_strings(first, "SAVE"))
             {
-                // SAVE(&game);
+                if (compare_strings(scnd, "savefile.txt"))
+                {
+                    SAVE(game);
+                }
+                else
+                {
+                    printf("Save file tidak berhasil disimpan. Mohon save ulang.\n\n");
+                    printf("ENTER COMMAND: ");
+                    command = STARTINPUT();
+                    first = FirstWord(command);
+                    scnd = SecondWord(command);
+                }
             }
             else if (compare_strings(command, "LIST GAME"))
             {
@@ -120,6 +133,17 @@ int main()
         command = STARTINPUT();
         first = FirstWord(command);
         scnd = SecondWord(command);
+    }
+    printf("Apakah anda mau save? (y/n)\n");
+    command = STARTINPUT();
+    if (compare_strings(command, "y"))
+
+    {
+        SAVE(game);
+    }
+    else
+    {
+        printf("Save file tidak disimpan.\n\n");
     }
     printf("Anda keluar dari game BNMO.\n");
     printf("Bye bye ...\n");
