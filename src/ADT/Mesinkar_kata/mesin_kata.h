@@ -67,4 +67,9 @@ char *SecondWord(char *strg);
 /*
    mengembalikan kata kedua untuk string
 */
+
+int countblank(char *strg);
+/*
+   menghitung banyak blank dalam suatu string
+*/
 #endif
