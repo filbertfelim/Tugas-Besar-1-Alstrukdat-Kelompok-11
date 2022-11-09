@@ -72,9 +72,8 @@ int countblank(char *strg);
 /*
    menghitung banyak blank dalam suatu string
 */
-
-char *toactstring(char a[]);
+int indexM(char *strg);
 /*
-   mengembalikan string dari suatu arraygame atau queuegame dengan akhiran \0
+   mengembalikan i dari makanan ke-i
 */
 #endif
