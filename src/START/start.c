@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "start.h"
-#include "../ADT/Array/array.h"
 
 static FILE *pita;
 static int retval;

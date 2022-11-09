@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include "tictactoe.h"
-#include "../ADT/Mesinkar_kata/mesin_kata.h"
-#include "../ADT/Mesinkar_kata/mesin_kar.h"
 
 char board[3][3];
 const char PLAYER = 'X';

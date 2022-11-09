@@ -1,8 +1,4 @@
 #include "deletegame.h"
-#include "../ADT/Mesinkar_kata/mesin_kata.h"
-#include "../STRINGCOMP/stringcomp.h"
-#include "../LISTGAME/listgame.h"
-#include "../ADT/Queue/strQueue.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -43,3 +39,6 @@ void DeleteGame(TabStr *T, strQueue *GameQueue)
         printf("\nGame berhasil dihapus\n\n");
     }
 }
+/*
+    Menghapus game berdasarkan inputan urutan game
+*/
