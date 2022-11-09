@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "../ADT/Mesinkar_kata/mesin_kata.h"
-
 #ifndef TICTACTOE_H
 #define TICTACTOE_H
 
