@@ -148,6 +148,7 @@ char *SecondWord(char *strg)
         idx++;
         i++;
     }
+    *(secondword + idx) = '\0';
     return secondword;
 }
 /*

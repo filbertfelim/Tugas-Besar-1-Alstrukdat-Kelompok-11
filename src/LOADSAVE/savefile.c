@@ -2,11 +2,13 @@
 #include <stdlib.h>
 #include "savefile.h"
 
-void SAVE(TabStr listgame)
+void SAVE(TabStr listgame, char *file)
 {
     FILE *txt;
-    txt = fopen("../data/savefile.txt", "w");
-    char *numgame;
+    char *filename = (char *)malloc(50 * sizeof(char));
+    filename = filetodir(file);
+    txt = fopen(filename, "w+");
+    char *numgame = (char *)malloc(5 * sizeof(char));
     int i;
     sprintf(numgame, "%d", listgame.Neff);
     fprintf(txt, "%s\n", numgame);
@@ -19,6 +21,8 @@ void SAVE(TabStr listgame)
 
     fclose(txt);
     printf("Save file berhasil disimpan.\n");
+    free(filename);
+    free(numgame);
 }
 /*
     menyimpan daftar game ke dalam file savefile.txt
