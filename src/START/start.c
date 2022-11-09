@@ -13,7 +13,7 @@ void STARTGAME(TabStr *T)
    START merupakan salah satu command yang dimasukkan pertama kali oleh pemain ke BNMO.
    Setelah menekan Enter, dibaca file konfigurasi default yang berisi list game yang dapat dimainkan.*/
 {
-    MakeEmpty(T);
+    printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n\n");
     START();
     CopyWord();
     int i = strtoint(currentWord.TabWord); // konversi char ke int
@@ -33,5 +33,4 @@ void STARTGAME(TabStr *T)
         *(gamestring + currentWord.Length) = '\0';
         (*T).TI[j] = gamestring;
     }
-    printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n\n");
 }

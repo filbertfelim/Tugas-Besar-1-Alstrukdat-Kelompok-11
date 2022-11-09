@@ -153,20 +153,3 @@ char *SecondWord(char *strg)
 /*
    mengembalikan kata kedua untuk string
 */
-
-int countblank(char *strg)
-{
-    int i, count;
-    count = 0;
-    for (i = 0; i < str_len(strg); i++)
-    {
-        if (strg[i] == ' ')
-        {
-            count++;
-        }
-    }
-    return count;
-}
-/*
-   menghitung banyak blank dalam suatu string
-*/

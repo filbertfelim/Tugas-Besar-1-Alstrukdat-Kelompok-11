@@ -121,8 +121,4 @@ void displayQueueServe(Queue q)
             }
         }
     }
-    else
-    {
-        printf("\t|\n");
-    }
 }

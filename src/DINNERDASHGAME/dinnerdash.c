@@ -4,31 +4,29 @@
 #include "../DINNERDASHGAME/queuedinner.h"
 #include "../STRINGCOMP/stringcomp.h"
 #include "../ADT/Mesinkar_kata/mesin_kar.h"
-#include "../DINNERDASHGAME/dinnerdash.h"
 
-// masih kurang : input command nya masih belom bener (kalau input gavalid gadiitung satu putaran)
-// msh ada yg konslet pas dijalan tp so far udh bener 
 void DESC(int saldo, Queue idmenu, Queue cook, Queue serve)
 {
     int i;
+    
     printf("SALDO: %d\n\n", saldo);
     displayQueueMakanan(idmenu);
     displayQueueCook(cook);
     displayQueueServe(serve);
 }
 
-void dinnerdash()
+int main()
 {
     /* KAMUS */
     Queue menu, cook, serve;
     int saldo, count, id, i, cust;
     char *command;
-    char ck[] = "COOK";
-    char sv[] = "SERVE";
+    char ck[]= "COOK";
+    char sv[]= "SERVE";
     x val;
     boolean found;
     /* ALGORITMA */
-
+    
     srand(time(NULL));
     CreateQueue(&menu);
     CreateQueue(&cook);
@@ -38,9 +36,9 @@ void dinnerdash()
     for (i = 0; i < 3; i++)
     {
         val.makanan = cust;
-        val.durasimakanan = (rand() %5) + 1;
+        val.durasimakanan = (rand() % 5) + 1;
         val.ketahanan = (rand() % 5) + 1;
-        val.harga = (rand() % 50000);
+        val.harga = (rand() % 50000 + 10000);
         enqueue(&menu, val);
         cust++;
     }
@@ -53,7 +51,7 @@ void dinnerdash()
         printf("MASUKKAN COMMAND: ");
         scanf("%s M%d", command, &id);
         /*command = STARTINPUT();*/
-
+        
         printf("\n\n");
         for (i = 0; i < length(cook); i++)
         {
@@ -71,7 +69,22 @@ void dinnerdash()
                 break;
             }
         }
-
+        for (i = 0; i < length(serve); i++)
+        {
+            if (i < 5)
+            {
+                ((serve.buffer[i]).ketahanan)--;
+                if ((serve.buffer[i]).ketahanan == 0)
+                {
+                    dequeue(&serve);
+                    printf("Makanan M%d telah hangus, Makanan harus dimasak ulang\n", (serve.buffer[i]).makanan);
+                }
+            }
+            else
+            {  
+                break;      
+            }
+        }
         count = 0;
         for (i = 0; i < length(cook); i++)
         {
@@ -86,12 +99,12 @@ void dinnerdash()
         }
         if (length(cook) == count)
         {
-            IDX_HEAD_DINNER(cook) = IDX_UNDEF;
-            IDX_TAIL_DINNER(cook) = IDX_UNDEF;
+            IDX_HEAD(cook) = IDX_UNDEF;
+            IDX_TAIL(cook) = IDX_UNDEF;
         }
         else
         {
-            IDX_TAIL_DINNER(cook) = (IDX_TAIL_DINNER(cook) - count) % CAPACITY_DINNER;
+            IDX_TAIL(cook) = (IDX_TAIL(cook) - count) % CAPACITY_DINNER;
         }
 
         if (compare_strings(ck, command))
@@ -105,14 +118,14 @@ void dinnerdash()
                     val.makanan = cust;
                     val.durasimakanan = (rand() % 5) + 1;
                     val.ketahanan = (rand() % 5) + 1;
-                    val.harga = (rand() % 50000);
+                    val.harga = (rand() % 50000 + 10000);
                     enqueue(&menu, val);
                     cust++;
                 }
             }
             printf("==========================================================\n\n");
         }
-        else if ((compare_strings(sv, command)))
+        else if ((compare_strings(sv,command)))
         {
 
             if (id == ((menu).buffer[(menu).idxHead].makanan))
@@ -136,7 +149,7 @@ void dinnerdash()
                             found = true;
                         }
                         else
-                        {
+                        {   
                             found = false;
                         }
                     }
@@ -152,18 +165,18 @@ void dinnerdash()
                 }
                 if (length(serve) == count)
                 {
-                    IDX_HEAD_DINNER(serve) = IDX_UNDEF;
-                    IDX_TAIL_DINNER(serve) = IDX_UNDEF;
+                    IDX_HEAD(serve) = IDX_UNDEF;
+                    IDX_TAIL(serve) = IDX_UNDEF;
                 }
                 else
                 {
-                    IDX_TAIL_DINNER(serve) = (IDX_TAIL_DINNER(serve) - count) % CAPACITY_DINNER;
+                    IDX_TAIL(serve) = (IDX_TAIL(serve) - count) % CAPACITY_DINNER;
                 }
 
                 val.makanan = cust;
                 val.durasimakanan = (rand() % 5) + 1;
                 val.ketahanan = (rand() % 5) + 1;
-                val.harga = (rand() % 50000);
+                val.harga = (rand() % 50000 + 10000);
                 enqueue(&menu, val);
                 cust++;
             }
@@ -173,12 +186,10 @@ void dinnerdash()
             }
             printf("==========================================================\n\n");
         }
-        /*else
-        {
-            printf("TIDAK VALID\n");
-        } */
         DESC(saldo, menu, cook, serve);
     }
     printf("Permainan selesai! Kamu berhasil memperoleh Saldo sebanyak %d\n", saldo);
     printf("==========================================================\n\n");
+
+    return 0;
 }

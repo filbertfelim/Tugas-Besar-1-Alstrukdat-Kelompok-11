@@ -2,11 +2,10 @@
 #include "../ADT/Mesinkar_kata/mesin_kata.h"
 #include "../STRINGCOMP/stringcomp.h"
 #include "../LISTGAME/listgame.h"
-#include "../ADT/Queue/strQueue.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-void DeleteGame(TabStr *T, strQueue *GameQueue)
+void DeleteGame(TabStr *T)
 {
     LISTGAME(T);
     printf("Masukkan nomor game yang akan dihapus: ");
@@ -14,20 +13,7 @@ void DeleteGame(TabStr *T, strQueue *GameQueue)
     idx_input = STARTINPUT();
     int idx;
     idx = strtointinput(idx_input, str_len(idx_input));
-    boolean inqueue;
-    inqueue = false;
-    int x;
-    x = (*GameQueue).idxHead;
-    char *gamename;
-    while ((x < (*GameQueue).idxHead + lengthQueue(*GameQueue)) && !inqueue)
-    {
-        if (compare_strings(T->TI[idx - 1], (*GameQueue).buffer[x]))
-        {
-            inqueue = true;
-        }
-        x++;
-    }
-    if (idx > T->Neff || idx <= 5 || inqueue)
+    if (idx > T->Neff || idx <= 5)
     {
 
         printf("\nGame gagal dihapus\n\n");
