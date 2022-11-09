@@ -3,7 +3,7 @@
 void help()
 {
     printf("Daftar command:\n");
-    printf("\t 1. SAVE file   --- Menyimpan state daftar game pemain di dalam file. \n");
+    printf("\t 1. SAVE FILE   --- Menyimpan state daftar game pemain di dalam file. \n");
     printf("\t 2. CREATE GAME --- Menambahkan game baru pada daftar game. \n");
     printf("\t 3. LIST GAME   --- Menampilkan daftar game yang disediakan oleh sistem. \n");
     printf("\t 4. DELETE GAME --- Menghapus sebuah game dari daftar. \n");
