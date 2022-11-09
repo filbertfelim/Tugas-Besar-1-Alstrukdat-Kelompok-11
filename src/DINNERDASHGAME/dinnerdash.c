@@ -6,6 +6,8 @@
 #include "../ADT/Mesinkar_kata/mesin_kar.h"
 #include "../DINNERDASHGAME/dinnerdash.h"
 
+// masih kurang : input command nya masih belom bener (kalau input gavalid gadiitung satu putaran)
+// msh ada yg konslet pas dijalan tp so far udh bener 
 void DESC(int saldo, Queue idmenu, Queue cook, Queue serve)
 {
     int i;
@@ -36,9 +38,9 @@ void dinnerdash()
     for (i = 0; i < 3; i++)
     {
         val.makanan = cust;
-        val.durasimakanan = (rand() % 4) + 1;
-        val.ketahanan = (rand() % 4) + 1;
-        val.harga = (rand() % 40001 + 10000);
+        val.durasimakanan = (rand() %5) + 1;
+        val.ketahanan = (rand() % 5) + 1;
+        val.harga = (rand() % 50000);
         enqueue(&menu, val);
         cust++;
     }
@@ -69,22 +71,7 @@ void dinnerdash()
                 break;
             }
         }
-        for (i = 0; i < length(serve); i++)
-        {
-            if (i < 5)
-            {
-                ((serve.buffer[i]).ketahanan)--;
-                if ((serve.buffer[i]).ketahanan == 0)
-                {
-                    dequeue(&serve);
-                    printf("Makanan M%d telah hangus, Makanan harus dimasak ulang\n", (serve.buffer[i]).makanan);
-                }
-            }
-            else
-            {
-                break;
-            }
-        }
+
         count = 0;
         for (i = 0; i < length(cook); i++)
         {
@@ -118,7 +105,7 @@ void dinnerdash()
                     val.makanan = cust;
                     val.durasimakanan = (rand() % 5) + 1;
                     val.ketahanan = (rand() % 5) + 1;
-                    val.harga = (rand() % 50000 + 10000);
+                    val.harga = (rand() % 50000);
                     enqueue(&menu, val);
                     cust++;
                 }
@@ -176,7 +163,7 @@ void dinnerdash()
                 val.makanan = cust;
                 val.durasimakanan = (rand() % 5) + 1;
                 val.ketahanan = (rand() % 5) + 1;
-                val.harga = (rand() % 50000 + 10000);
+                val.harga = (rand() % 50000);
                 enqueue(&menu, val);
                 cust++;
             }
