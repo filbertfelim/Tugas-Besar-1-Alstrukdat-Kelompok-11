@@ -13,4 +13,5 @@ void playermove();
 void computermove();
 char checkwin();
 void printwin(char winner);
+void tictactoe();
 #endif
