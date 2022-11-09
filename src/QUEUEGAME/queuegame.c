@@ -9,7 +9,7 @@ void QueueGame(strQueue *GameQueue, TabStr GameList)
     {
         int i;
         int listNum = 0;
-        for (i = GameQueue->idxHead; i <(GameQueue->idxHead + lengthQueue(*GameQueue)); i++)
+        for (i = GameQueue->idxHead; i < (GameQueue->idxHead + lengthQueue(*GameQueue)); i++)
         {
             printf("\t %d. %s\n", listNum + 1, GameQueue->buffer[i]);
             listNum++;
@@ -41,3 +41,6 @@ void QueueGame(strQueue *GameQueue, TabStr GameList)
     STRenqueue(GameQueue, GameList.TI[nomorGame - 1]);
     printf("Game berhasil ditambahkan ke dalam daftar antrian.\n");
 }
+/*
+    Memasukkan game sesuai inputan urutan game ke antrian game
+*/

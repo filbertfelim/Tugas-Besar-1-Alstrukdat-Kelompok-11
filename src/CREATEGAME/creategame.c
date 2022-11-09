@@ -1,6 +1,4 @@
 #include "creategame.h"
-#include "../ADT/Mesinkar_kata/mesin_kata.h"
-#include "../STRINGCOMP/stringcomp.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -40,3 +38,6 @@ void CreateGame(TabStr *T)
         }
     }
 }
+/*
+    Membuat suatu game dan memasukkannya ke dalam daftar game
+*/

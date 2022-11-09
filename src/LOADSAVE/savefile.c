@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../ADT/Array/array.h"
+#include "savefile.h"
 
 void SAVE(TabStr listgame)
 {
@@ -20,3 +20,6 @@ void SAVE(TabStr listgame)
     fclose(txt);
     printf("Save file berhasil disimpan.\n");
 }
+/*
+    menyimpan daftar game ke dalam file savefile.txt
+*/

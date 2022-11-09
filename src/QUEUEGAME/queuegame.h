@@ -10,5 +10,8 @@
 #include "../ADT/Mesinkar_kata/mesin_kata.h"
 
 void QueueGame(strQueue *GameQueue, TabStr GameList);
+/*
+    Memasukkan game sesuai inputan urutan game ke antrian game
+*/
 
 #endif
