@@ -1,6 +1,6 @@
-#include "stringcomp.h"
 #include <stdio.h>
 #include "../boolean.h"
+#include "stringcomp.h"
 
 int compare_strings(char a[], char b[])
 {
@@ -17,3 +17,6 @@ int compare_strings(char a[], char b[])
     else
         return false;
 }
+/*
+    Mengembalikan true jika kedua string bernilai sama
+*/

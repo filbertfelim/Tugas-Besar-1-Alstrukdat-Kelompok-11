@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "loadfile.h"
-#include "../ADT/Array/array.h"
-#include "../STRINGCOMP/stringcomp.h"
 
 static FILE *pita;
 static int retval;
@@ -31,3 +29,6 @@ void loadFile(TabStr *T)
   }
   printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n\n");
 }
+/*
+    membaca file savefile dan memasukkan game ke dalam array game
+*/

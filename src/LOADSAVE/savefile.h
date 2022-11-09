@@ -6,4 +6,7 @@
 #include "../ADT/Array/array.h"
 
 void SAVE(TabStr listgame);
+/*
+    menyimpan daftar game ke dalam file savefile.txt
+*/
 #endif

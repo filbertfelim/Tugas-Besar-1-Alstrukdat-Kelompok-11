@@ -2,7 +2,6 @@
 #include "listgame.h"
 
 void LISTGAME(TabStr *T)
-/*  Menampilkan daftar game yang tersedia */
 {
     printf("Berikut adalah daftar game yang tersedia\n");
     int i;
@@ -12,3 +11,6 @@ void LISTGAME(TabStr *T)
     }
     printf("\n");
 }
+/*
+    Menampilkan daftar game yang tersedia
+*/

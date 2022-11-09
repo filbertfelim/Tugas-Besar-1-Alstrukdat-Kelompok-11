@@ -10,5 +10,8 @@
 #define DELETEGAME_H
 
 void DeleteGame(TabStr *T, strQueue *GameQueue);
+/*
+    Menghapus game berdasarkan inputan urutan game
+*/
 
 #endif

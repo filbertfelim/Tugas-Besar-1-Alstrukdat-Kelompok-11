@@ -8,7 +8,7 @@ void SkipGame(strQueue *GameQueue, int n)
     {
         int i;
         int listNum = 0;
-        for (i = GameQueue->idxHead; i <(GameQueue->idxHead + lengthQueue(*GameQueue)); i++)
+        for (i = GameQueue->idxHead; i < (GameQueue->idxHead + lengthQueue(*GameQueue)); i++)
         {
             printf("%d. %s\n", listNum + 1, GameQueue->buffer[i]);
             listNum++;
@@ -40,3 +40,6 @@ void SkipGame(strQueue *GameQueue, int n)
         printf("Tidak ada permainan di dalam daftar Game-mu.\n");
     }
 }
+/*
+Melewatkan game sebanyak n kali, lalu memainkan game
+*/

@@ -25,6 +25,7 @@ void Play(strQueue *antrian)
     }
     STRdequeue(antrian, temp);
 }
+/*Memainkan Game pada urutan teratas*/
 
 void PlayGame(strQueue *antrian)
 {
@@ -54,3 +55,4 @@ void PlayGame(strQueue *antrian)
         printf("Tidak ada permainan di dalam daftar Game-mu.\n");
     }
 }
+/*Menampilkan game dalam antrian kemudian memainkan game pada urutan teratas*/
