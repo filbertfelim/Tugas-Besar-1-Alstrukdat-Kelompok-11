@@ -3,6 +3,7 @@
 void Play(strQueue *antrian)
 {
     gamename temp;
+    int skor;
     char *toPlay = antrian->buffer[antrian->idxHead];
     if (compare_strings(toPlay, "RNG"))
     {
@@ -19,9 +20,15 @@ void Play(strQueue *antrian)
         printf("Loading TICTACTOE....\n");
         tictactoe();
     }
-    else
+    else if (compare_strings(toPlay, "DINOSAUR IN EARTH") || compare_strings(toPlay, "RISEWOMAN") || compare_strings(toPlay, "EIFFEL TOWER"))
     {
         printf("Game %s tidak dapat dimainkan. Silakan pilih game lain.\n", toPlay);
+    }
+    else
+    {
+        srand(time(NULL));
+        int skor = rand() % 100 + 1;
+        printf("Skor : %d\n", skor);
     }
     STRdequeue(antrian, temp);
 }
