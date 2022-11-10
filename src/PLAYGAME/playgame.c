@@ -13,7 +13,7 @@ void Play(strQueue *antrian)
     else if (compare_strings(toPlay, "Diner DASH"))
     {
         printf("Loading Diner Dash....\n");
-        dinnerdash();
+        dinerdash();
     }
     else if (compare_strings(toPlay, "TICTACTOE"))
     {

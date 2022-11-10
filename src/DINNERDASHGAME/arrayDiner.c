@@ -69,6 +69,14 @@ void SetNeffArray(arrayDiner *T, IdxType N){
 /* F.S. Nilai indeks efektif T bernilai N */
 /* Mengeset nilai indeks elemen efektif sehingga bernilai N */
 
+void DeleteEl(arrayDiner *T, int idx){
+    int i;
+    for (i = idx; i <= NbElmtArray(*T); i++){
+        (*T).TI[i] = (*T).TI[i+1];
+    }
+    ((*T).Neff)--;
+}
+
 /* ********** Test Indeks yang valid ********** */
 boolean IsArrayIdxValid(arrayDiner T, IdxType i){
     return ((i >= IdxMin) && (i <= IdxMax));
@@ -94,6 +102,21 @@ boolean IsArrayFull(arrayDiner T){
     return (NbElmtArray(T) == MaxNbElArray(T));
 }
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
+
+/* ********** SEARCH ********** */
+boolean IsInArray(arrayDiner T, int ID){
+    int i = GetFirstDinerIdx(T);
+    boolean found = false;
+    while (i <= GetLastDinerIdx(T) && !found){
+        if (T.TI[i].makanan == ID){
+            found = true;
+        }
+        else{
+            i++;
+        }
+    }
+    return found;
+}
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
 void TulisIsiArray(arrayDiner T){

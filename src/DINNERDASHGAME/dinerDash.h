@@ -4,23 +4,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "../DINNERDASHGAME/queueDiner.h"
-#include "../DINNERDASHGAME/arrayDiner.h"
+#include "queueDiner.h"
+#include "arrayDiner.h"
 #include "../STRINGCOMP/stringcomp.h"
-#include "mesin_kata.h"
-#include "mesin_kar.h"
+#include "../ADT/Mesinkar_kata/mesin_kata.h"
 
 void PrintGame(int Saldo, Queue OrderList, arrayDiner Cook, arrayDiner Serve);
 
 void Cook(Queue OrderList, arrayDiner *Cook, int IDMakanan);
 
-void Serve(Queue *OrderList, arrayDiner *Serve, int IDMakanan, int *jumlahTerlayani);
+void Serve(Queue *OrderList, arrayDiner *Serve, int IDMakanan, int *jumlahTerlayani, int *Saldo);
 
 void TambahOrder(Queue *OrderList, int *customerID);
 
-void NextPutaran(Queue *OrderList, arrayDiner *Cook, arrayDiner *Serve);
+void NextPutaran(Queue *OrderList, arrayDiner *Cook, arrayDiner *Serve, int *IDCustomer);
 
-void Skip(Queue *OrderList, arrayDiner *Cook, arrayDiner *Serve);
+void Skip(Queue *OrderList, arrayDiner *Cook, arrayDiner *Serve, int *IDCustomer);
+
+int FoodID(char *Second);
+/* Menghasilkan hasil ID jika ID Valid, -999 jika ID Tidak Valid*/
 
 void dinerdash();
 

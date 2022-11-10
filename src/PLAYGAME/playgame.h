@@ -9,8 +9,7 @@
 #include "../STRINGCOMP/stringcomp.h"
 #include "../GAMERNG/rng.h"
 #include "../BONUS/tictactoe.h"
-#include "../DINNERDASHGAME/queuedinner.h"
-#include "../DINNERDASHGAME/dinnerdash.h"
+#include "../DINNERDASHGAME/dinerDash.h"
 
 void Play(strQueue *antrian);
 /*Memainkan Game pada urutan teratas*/
