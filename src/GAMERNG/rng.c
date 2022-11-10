@@ -21,8 +21,7 @@ void rng()
     str_tebakan = STARTINPUT();
     tebakan = strtointinput(str_tebakan, str_len(str_tebakan)); // memasukkan tebakan
     srand(time(NULL));                                          // mengacak angka
-
-    int random = rand() % 100 + 1; // membuat angka random di rentanng 1 - 100
+    int random = rand() % 100 + 1;                              // membuat angka random di rentanng 1 - 100
 
     while (tebakan != random && tebakan <= max) // jika tebakan tidak sama dengan random dan tebakan masih dibawah maksimal)
     {
@@ -45,6 +44,6 @@ void rng()
     {
         printf("Ya, X adalah %d\n", random);
     }
-    // skor = max - tebakan; // menghitung skor
-    // printf("Skor Anda adalah:  %d\n", skor);
+    skor = max - tebakan; // menghitung skor
+    printf("Skor Anda adalah:  %d\n", skor);
 }

@@ -2,7 +2,7 @@
 
 void quit()
 {
-    printf("Terima kasih telah bermain BNMO \n Anda telah keluar dari game.");
+    printf("Terima kasih telah bermain BNMO \n Anda telah keluar dari game.\n");
     printf(
         "   __       ___     __       ___ \n "
         " |__) \\ / |__     |__) \\ / |__  \n "
