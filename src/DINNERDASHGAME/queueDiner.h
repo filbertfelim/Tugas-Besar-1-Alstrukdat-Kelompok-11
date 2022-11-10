@@ -45,6 +45,8 @@ boolean isFull(Queue q);
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
 
+boolean IsQueueMember(Queue OrderList, int IDMakanan);
+
 int length(Queue q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
@@ -60,6 +62,6 @@ void dequeue(Queue *q);
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
         q mungkin kosong */
 
-ElTypeQueueDiner GetQueueElmt(Queue q, int idx);
+
 
 #endif

@@ -119,12 +119,13 @@ char *FirstWord(char *strg)
 {
     int i = 0;
     char *firstword = (char *)malloc(50 * sizeof(char));
-    while (strg[i] != ' ')
+    while (strg[i] != ' ' && strg[i] != '\0')
     {
         *(firstword + i) = strg[i];
         i++;
     }
     *(firstword + i) = '\0';
+    
 
     return firstword;
 }
@@ -137,14 +138,13 @@ char *SecondWord(char *strg)
     int i = 0;
     int idx = 0;
     char *secondword = (char *)malloc(50 * sizeof(char));
-    while (strg[i] != ' ')
+    while (strg[i] != ' ' && strg[i] != '\0')
     {
         i++;
     }
-    i++;
     while (strg[i] != '\0')
     {
-        *(secondword + idx) = strg[i];
+        *(secondword + idx) = strg[i+1];
         idx++;
         i++;
     }

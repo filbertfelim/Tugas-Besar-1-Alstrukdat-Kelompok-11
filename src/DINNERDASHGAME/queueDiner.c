@@ -27,6 +27,21 @@ boolean isFull(Queue q)
 {
     return (IDX_TAIL_DINNER(q) - IDX_HEAD_DINNER(q) == CAPACITY_DINNER - 1);
 }
+
+boolean IsQueueMember(Queue OrderList, int IDMakanan){
+    int i = 0;
+    boolean found = false;
+    int loc = OrderList.idxHead;
+    while (i < length(OrderList) && !found){
+        if (OrderList.buffer[loc].makanan == IDMakanan){
+            found = true;
+        }
+        i++;
+        loc++;
+    }
+    return found;
+}
+
 int length(Queue q)
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 {
@@ -79,8 +94,4 @@ void dequeue(Queue *q)
     {
         IDX_HEAD_DINNER(*q) = (IDX_HEAD_DINNER(*q) + 1) % CAPACITY_DINNER;
     }
-}
-
-ElTypeQueueDiner GetQueueElmt(Queue q, int idx){
-    return q.buffer[idx];
 }
