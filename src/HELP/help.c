@@ -9,8 +9,8 @@ void help()
     printf("\t 4. DELETE GAME --- Menghapus sebuah game dari daftar. \n");
     printf("\t 5. QUEUE GAME  --- Mendaftarkan game kedalam list antrian game. \n");
     printf("\t 6. PLAY GAME   --- Memainkan sebuah game di antrian pertama. \n");
-    printf("\t 7. SKIPGAME n  --- Melewatkan antrian game sebanyak n. \n");
-    printf("\t 8.QUIT         --- Keluar dari program game. \n");
+    printf("\t 7. SKIP GAME n  --- Melewatkan antrian game sebanyak n. \n");
+    printf("\t 8. QUIT         --- Keluar dari program game. \n");
     printf(
         " ______                          _____           _           _       \n"
         " |   __|___ _____ ___ ___ ___   |     |___ _____| |_ ___ ___| |_ _ _ \n"
