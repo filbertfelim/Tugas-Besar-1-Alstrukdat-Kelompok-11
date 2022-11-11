@@ -129,7 +129,14 @@ int main()
                     char *third = SecondWord(scnd);
                     if (third[0] != '\0')
                     {
-                        SkipGame(&gamequeue, strtointinput(third, str_len(third)));
+                        if ((((third[0]) - '0') > 0) && (((third[0]) - '0') < 10))
+                        {
+                            SkipGame(&gamequeue, strtointinput(third, str_len(third)));
+                        }
+                        else
+                        {
+                            printf("Jumlah skip tidak valid!\n");
+                        }
                     }
                     else
                     {
