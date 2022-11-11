@@ -6,7 +6,7 @@
 /* *** Kreator *** */
 void CreateQueue(Queue *q)
 /* I.S. sembarang */
-/* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
+/* F.S. Sebuah q kosong terbentuk dengan kondisi: */
 /* - Index head bernilai IDX_UNDEF */
 /* - Index tail bernilai IDX_UNDEF */
 /* Proses : Melakukan alokasi, membuat sebuah q kosong */
