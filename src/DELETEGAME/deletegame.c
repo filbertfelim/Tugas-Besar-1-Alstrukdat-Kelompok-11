@@ -23,7 +23,7 @@ void DeleteGame(TabStr *T, strQueue *GameQueue)
         }
         x++;
     }
-    if (idx > T->Neff || idx <= 5 || inqueue)
+    if (idx > T->Neff || idx <= 6 || inqueue)
     {
 
         printf("\nGame gagal dihapus\n\n");
