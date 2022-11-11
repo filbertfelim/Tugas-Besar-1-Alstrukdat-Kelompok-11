@@ -11,7 +11,8 @@
 #include "./ADT/Queue/strQueue.h"
 #include "./ADT/Mesinkar_kata/mesin_kar.h"
 #include "./ADT/Mesinkar_kata/mesin_kata.h"
-#include "./DINNERDASHGAME/queuedinner.h"
+#include "./DINNERDASHGAME/queueDiner.h"
+#include "./DINNERDASHGAME/arrayDiner.h"
 #include "boolean.h"
 
 // FUNGSI
@@ -31,7 +32,7 @@
 
 // FUNGSI GAME
 #include "./BONUS/tictactoe.h"
-#include "./DINNERDASHGAME/dinnerdash.h"
+#include "./DINNERDASHGAME/dinerDash.h"
 #include "./GAMERNG/rng.h"
 
 int main()
@@ -123,7 +124,8 @@ int main()
             }
             else if (compare_strings(first, "SKIP"))
             {
-                if (compare_strings(FirstWord(scnd), "GAME")){
+                if (compare_strings(FirstWord(scnd), "GAME"))
+                {
                     char *third = SecondWord(scnd);
                     if (third[0] != '\0')
                     {
@@ -134,7 +136,8 @@ int main()
                         printf("Jumlah skip tidak valid!\n");
                     }
                 }
-                else{
+                else
+                {
                     commandlain();
                 }
             }

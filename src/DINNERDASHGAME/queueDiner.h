@@ -1,5 +1,5 @@
-#ifndef QUEUEDINNER_H
-#define QUEUEDINNER_H
+#ifndef QUEUEDINER_H
+#define QUEUEDINER_H
 
 #include "../boolean.h"
 
@@ -33,19 +33,20 @@ typedef struct
 /* *** Kreator *** */
 void CreateQueue(Queue *q);
 /* I.S. sembarang */
-/* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
+/* F.S. Sebuah q kosong terbentuk dengan kondisi: */
 /* - Index head bernilai IDX_UNDEF */
 /* - Index tail bernilai IDX_UNDEF */
 /* Proses : Melakukan alokasi, membuat sebuah q kosong */
 
 /* ********* Prototype ********* */
 boolean isEmpty(Queue q);
-/* Mengirim true jika q kosong: lihat definisi di atas */
+/* Mengirim true jika q kosong */
 boolean isFull(Queue q);
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
 
 boolean IsQueueMember(Queue OrderList, int IDMakanan);
+/* Mengirim true jika Makanan dengan IDMakanan berada dalam antrian*/
 
 int length(Queue q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
