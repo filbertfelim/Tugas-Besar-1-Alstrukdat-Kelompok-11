@@ -90,7 +90,7 @@ int main()
     scnd = SecondWord(command);
     while (!compare_strings(command, "QUIT"))
     {
-        if (countblank(command) > 1)
+        if (countblank(command) > 1 && !(compare_strings(first, "SKIP")))
         {
             commandlain();
         }
@@ -121,9 +121,22 @@ int main()
             {
                 PlayGame(&gamequeue);
             }
-            else if (compare_strings(first, "SKIPGAME"))
+            else if (compare_strings(first, "SKIP"))
             {
-                SkipGame(&gamequeue, strtointinput(scnd, str_len(scnd)));
+                if (compare_strings(FirstWord(scnd), "GAME")){
+                    char *third = SecondWord(scnd);
+                    if (third[0] != '\0')
+                    {
+                        SkipGame(&gamequeue, strtointinput(third, str_len(third)));
+                    }
+                    else
+                    {
+                        printf("Jumlah skip tidak valid!\n");
+                    }
+                }
+                else{
+                    commandlain();
+                }
             }
             else if (compare_strings(command, "HELP"))
             {
