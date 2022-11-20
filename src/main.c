@@ -8,6 +8,8 @@
 
 // ADT
 #include "./ADT/Array/array.h"
+#include "./ADT/Map/map.h"
+#include "./ADT/Stack/stack.h"
 #include "./ADT/Queue/strQueue.h"
 #include "./ADT/Mesinkar_kata/mesin_kar.h"
 #include "./ADT/Mesinkar_kata/mesin_kata.h"
@@ -52,8 +54,22 @@ int main()
     char *first = FirstWord(command);
     char *scnd = SecondWord(command);
     boolean finish_load = false;
+
+    // Inisialisasi data yang diperlukan
     TabStr game;
+    TabStr historygame;
     strQueue gamequeue;
+    Map SB_RNG;
+    Map SB_DD;
+    Map SB_HGMN;
+    Map SB_TOH;
+    Map SB_SOM;
+    CreateEmptyMap(&SB_RNG);
+    CreateEmptyMap(&SB_DD);
+    CreateEmptyMap(&SB_HGMN);
+    CreateEmptyMap(&SB_TOH);
+    CreateEmptyMap(&SB_SOM);
+    MakeEmpty(&historygame);
     CreateStrQueue(&gamequeue);
     while (!finish_load)
     {
@@ -66,7 +82,7 @@ int main()
         else if (compare_strings(first, "LOAD"))
         {
             filename = filetodir(scnd);
-            finish_load = loadFile(&game, filename);
+            finish_load = loadFile(&game, &historygame, &SB_RNG, &SB_DD, &SB_HGMN, &SB_TOH, &SB_SOM, filename);
             if (!finish_load)
             {
                 printf("Load belum berhasil. Silakan input nama file lain.\n\n");
@@ -84,6 +100,11 @@ int main()
             first = FirstWord(command);
             scnd = SecondWord(command);
         }
+    }
+    int i;
+    for (i = 0; i < SB_RNG.Count; i++)
+    {
+        printf("%d\n", SB_RNG.Elements[i].Value);
     }
     printf("ENTER COMMAND: ");
     command = STARTINPUT();
@@ -151,6 +172,46 @@ int main()
             else if (compare_strings(command, "HELP"))
             {
                 help();
+            }
+            else if (compare_strings(command, "SCOREBOARD"))
+            {
+                ; // command SCOREBOARD
+            }
+            else if (compare_strings(command, "RESET SCOREBOARD"))
+            {
+                ; // command reset scoreboard
+            }
+            else if (compare_strings(first, "HISTORY"))
+            {
+                int idx = 0;
+                boolean valid = true;
+                if (scnd[0] != '\0')
+                {
+                    while (valid && idx < str_len(scnd))
+                    {
+                        if ((((scnd[idx]) - '0') < 0) || (((scnd[idx]) - '0') >= 10))
+                        {
+                            valid = false;
+                        }
+                        idx++;
+                    }
+                    if (!valid)
+                    {
+                        printf("Jumlah history tidak valid!\n");
+                    }
+                    else
+                    {
+                        ; // command print list history
+                    }
+                }
+                else
+                {
+                    commandlain();
+                }
+            }
+            else if (compare_strings(command, "RESET HISTORY"))
+            {
+                ; // command RESET HISTORY
             }
             else
             {
