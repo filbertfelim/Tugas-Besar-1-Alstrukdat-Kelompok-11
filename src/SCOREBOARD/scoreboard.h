@@ -6,11 +6,16 @@
 #include "../ADT/Mesinkar_kata/mesin_kata.h"
 #include "../ADT/Map/map.h"
 #include "../ADT/Array/array.h"
+#include "../ADT/Array/arrayMap.h"
 #include "../STRINGCOMP/stringcomp.h"
 
-void scoreboard(Map SB_RNG, Map SB_DD, Map SB_HGMN, Map SB_TOH, Map SB_SOM, TabStr listgame);
+void scoreboard(TabMap arr_sb, TabStr listgame);
 /*
-    Menampilkan scoreboard dari 5 game konfigurasi
+    Menampilkan scoreboard dari semua game di list game
 */
 
+void resetscoreboard(TabStr listgame, TabMap *arr_sb);
+/*
+    mereset scoreboard dari game yang dipilih
+*/
 #endif

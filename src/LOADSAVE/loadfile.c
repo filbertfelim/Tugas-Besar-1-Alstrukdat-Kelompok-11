@@ -5,9 +5,8 @@
 static FILE *pita;
 static int retval;
 
-boolean loadFile(TabStr *listgame, TabStr *histgame, Map *SB_RNG, Map *SB_DD, Map *SB_HGMN, Map *SB_TOH, Map *SB_SOM, char *filename)
+boolean loadFile(TabStr *listgame, TabStr *histgame, TabMap *listsb, char *filename)
 {
-  MakeEmpty(listgame);
   boolean ada = STARTLOAD(filename);
   if (ada)
   {
@@ -50,110 +49,33 @@ boolean loadFile(TabStr *listgame, TabStr *histgame, Map *SB_RNG, Map *SB_DD, Ma
       (*histgame).TI[j] = gamestring;
     }
 
-    // Membaca SB_RNG
-    ADV();
-    CopyWord();
-    i = strtoint(currentWord.TabWord); // konversi char ke int
-    (*SB_RNG).Count = i;
-    for (j = 0; j < (*SB_RNG).Count; j++)
+    // Membaca semua scoreboard dari list game
+    Map SB;
+    int banyaksb;
+    for (banyaksb = 0; banyaksb < (*listgame).Neff; banyaksb++)
     {
+      CreateEmptyMap(&SB);
       ADV();
       CopyWord();
-      char *gamestring;
-      gamestring = (char *)malloc(currentWord.Length * sizeof(char));
-      for (idx = 0; idx < currentWord.Length; idx++)
+      i = strtoint(currentWord.TabWord); // konversi char ke int
+      SB.Count = i;
+      for (j = 0; j < SB.Count; j++)
       {
-        *(gamestring + idx) = currentWord.TabWord[idx];
+        ADV();
+        CopyWord();
+        char *gamestring;
+        gamestring = (char *)malloc(currentWord.Length * sizeof(char));
+        for (idx = 0; idx < currentWord.Length; idx++)
+        {
+          *(gamestring + idx) = currentWord.TabWord[idx];
+        }
+        *(gamestring + currentWord.Length) = '\0';
+        SB.Elements[j].Key = FirstWord(gamestring);
+        SB.Elements[j].Value = strtointinput(SecondWord(gamestring), str_len(SecondWord(gamestring)));
       }
-      *(gamestring + currentWord.Length) = '\0';
-      (*SB_RNG).Elements[j].Key = FirstWord(gamestring);
-      (*SB_RNG).Elements[j].Value = strtointinput(SecondWord(gamestring), str_len(SecondWord(gamestring)));
+      SortMapValueDesc(&SB);
+      SetElArrayMap(listsb, banyaksb, SB);
     }
-
-    // Membaca SB_DD
-    ADV();
-    CopyWord();
-    i = strtoint(currentWord.TabWord); // konversi char ke int
-    (*SB_DD).Count = i;
-    for (j = 0; j < (*SB_DD).Count; j++)
-    {
-      ADV();
-      CopyWord();
-      char *gamestring;
-      gamestring = (char *)malloc(currentWord.Length * sizeof(char));
-      for (idx = 0; idx < currentWord.Length; idx++)
-      {
-        *(gamestring + idx) = currentWord.TabWord[idx];
-      }
-      *(gamestring + currentWord.Length) = '\0';
-      (*SB_DD).Elements[j].Key = FirstWord(gamestring);
-      (*SB_DD).Elements[j].Value = strtointinput(SecondWord(gamestring), str_len(SecondWord(gamestring)));
-    }
-
-    // Membaca SB_HGMN
-    ADV();
-    CopyWord();
-    i = strtoint(currentWord.TabWord); // konversi char ke int
-    (*SB_HGMN).Count = i;
-    for (j = 0; j < (*SB_HGMN).Count; j++)
-    {
-      ADV();
-      CopyWord();
-      char *gamestring;
-      gamestring = (char *)malloc(currentWord.Length * sizeof(char));
-      for (idx = 0; idx < currentWord.Length; idx++)
-      {
-        *(gamestring + idx) = currentWord.TabWord[idx];
-      }
-      *(gamestring + currentWord.Length) = '\0';
-      (*SB_HGMN).Elements[j].Key = FirstWord(gamestring);
-      (*SB_HGMN).Elements[j].Value = strtointinput(SecondWord(gamestring), str_len(SecondWord(gamestring)));
-    }
-
-    // Membaca SB_TOH
-    ADV();
-    CopyWord();
-    i = strtoint(currentWord.TabWord); // konversi char ke int
-    (*SB_TOH).Count = i;
-    for (j = 0; j < (*SB_TOH).Count; j++)
-    {
-      ADV();
-      CopyWord();
-      char *gamestring;
-      gamestring = (char *)malloc(currentWord.Length * sizeof(char));
-      for (idx = 0; idx < currentWord.Length; idx++)
-      {
-        *(gamestring + idx) = currentWord.TabWord[idx];
-      }
-      *(gamestring + currentWord.Length) = '\0';
-      (*SB_TOH).Elements[j].Key = FirstWord(gamestring);
-      (*SB_TOH).Elements[j].Value = strtointinput(SecondWord(gamestring), str_len(SecondWord(gamestring)));
-    }
-
-    // Membaca SB_SOM
-    ADV();
-    CopyWord();
-    i = strtoint(currentWord.TabWord); // konversi char ke int
-    (*SB_SOM).Count = i;
-    for (j = 0; j < (*SB_SOM).Count; j++)
-    {
-      ADV();
-      CopyWord();
-      char *gamestring;
-      gamestring = (char *)malloc(currentWord.Length * sizeof(char));
-      for (idx = 0; idx < currentWord.Length; idx++)
-      {
-        *(gamestring + idx) = currentWord.TabWord[idx];
-      }
-      *(gamestring + currentWord.Length) = '\0';
-      (*SB_SOM).Elements[j].Key = FirstWord(gamestring);
-      (*SB_SOM).Elements[j].Value = strtointinput(SecondWord(gamestring), str_len(SecondWord(gamestring)));
-    }
-    SortMapValueDesc(SB_RNG);
-    SortMapValueDesc(SB_DD);
-    SortMapValueDesc(SB_HGMN);
-    SortMapValueDesc(SB_TOH);
-    SortMapValueDesc(SB_SOM);
     printf("Save file berhasil dibaca. BNMO berhasil dijalankan.\n\n");
     return true;
   }
