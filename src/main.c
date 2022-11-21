@@ -122,7 +122,7 @@ int main()
             }
             else if (compare_strings(command, "DELETE GAME"))
             {
-                DeleteGame(&game, &gamequeue);
+                DeleteGame(&game, &gamequeue, &arr_sb);
             }
             else if (compare_strings(command, "QUEUE GAME"))
             {

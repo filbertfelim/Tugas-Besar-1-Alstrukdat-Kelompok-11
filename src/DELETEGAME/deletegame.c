@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void DeleteGame(TabStr *T, strQueue *GameQueue)
+void DeleteGame(TabStr *T, strQueue *GameQueue, TabMap *arr_sb)
 {
     LISTGAME(T);
     printf("Masukkan nomor game yang akan dihapus: ");
@@ -36,6 +36,7 @@ void DeleteGame(TabStr *T, strQueue *GameQueue)
             (*T).TI[i] = (*T).TI[i + 1];
         }
         (*T).Neff -= 1;
+        DeleteAt(arr_sb, idx - 1);
         printf("\nGame berhasil dihapus\n\n");
     }
 }

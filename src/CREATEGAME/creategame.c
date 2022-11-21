@@ -31,9 +31,8 @@ void CreateGame(TabStr *T, TabMap *arr_sb)
             (*T).TI[(*T).Neff] = namagame;
             (*T).Neff++;
             Map sb;
-            MakeEmptyArrayMap(&sb);
+            CreateEmptyMap(&sb);
             SetElArrayMap(arr_sb, (*arr_sb).NeffArrayMap, sb);
-            (*arr_sb).NeffArrayMap++;
             printf("Game berhasil ditambahkan.\n\n");
         }
         else
