@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void CreateGame(TabStr *T)
+void CreateGame(TabStr *T, TabMap *arr_sb)
 {
     printf("Masukkan nama game yang akan ditambahkan: ");
     char *namagame;
@@ -30,6 +30,10 @@ void CreateGame(TabStr *T)
         {
             (*T).TI[(*T).Neff] = namagame;
             (*T).Neff++;
+            Map sb;
+            MakeEmptyArrayMap(&sb);
+            SetElArrayMap(arr_sb, (*arr_sb).NeffArrayMap, sb);
+            (*arr_sb).NeffArrayMap++;
             printf("Game berhasil ditambahkan.\n\n");
         }
         else

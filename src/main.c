@@ -8,6 +8,7 @@
 
 // ADT
 #include "./ADT/Array/array.h"
+#include "./ADT/Array/arrayMap.h"
 #include "./ADT/Map/map.h"
 #include "./ADT/Stack/stack.h"
 #include "./ADT/Queue/strQueue.h"
@@ -25,6 +26,7 @@
 #include "./QUEUEGAME/queuegame.h"
 #include "./PLAYGAME/playgame.h"
 #include "./SKIPGAME/skipgame.h"
+#include "./SCOREBOARD/scoreboard.h"
 #include "./COMMANDLAIN/commandlain.h"
 #include "./START/start.h"
 #include "./HELP/help.h"
@@ -59,16 +61,9 @@ int main()
     TabStr game;
     TabStr historygame;
     strQueue gamequeue;
-    Map SB_RNG;
-    Map SB_DD;
-    Map SB_HGMN;
-    Map SB_TOH;
-    Map SB_SOM;
-    CreateEmptyMap(&SB_RNG);
-    CreateEmptyMap(&SB_DD);
-    CreateEmptyMap(&SB_HGMN);
-    CreateEmptyMap(&SB_TOH);
-    CreateEmptyMap(&SB_SOM);
+    TabMap arr_sb;
+    MakeEmpty(&game);
+    MakeEmptyArrayMap(&arr_sb);
     MakeEmpty(&historygame);
     CreateStrQueue(&gamequeue);
     while (!finish_load)
@@ -82,7 +77,7 @@ int main()
         else if (compare_strings(first, "LOAD"))
         {
             filename = filetodir(scnd);
-            finish_load = loadFile(&game, &historygame, &SB_RNG, &SB_DD, &SB_HGMN, &SB_TOH, &SB_SOM, filename);
+            finish_load = loadFile(&game, &historygame, &arr_sb, filename);
             if (!finish_load)
             {
                 printf("Load belum berhasil. Silakan input nama file lain.\n\n");
@@ -101,11 +96,6 @@ int main()
             scnd = SecondWord(command);
         }
     }
-    int i;
-    for (i = 0; i < SB_RNG.Count; i++)
-    {
-        printf("%d\n", SB_RNG.Elements[i].Value);
-    }
     printf("ENTER COMMAND: ");
     command = STARTINPUT();
     first = FirstWord(command);
@@ -120,7 +110,7 @@ int main()
         {
             if (compare_strings(command, "CREATE GAME"))
             {
-                CreateGame(&game);
+                CreateGame(&game, &arr_sb);
             }
             else if (compare_strings(first, "SAVE"))
             {
@@ -175,11 +165,11 @@ int main()
             }
             else if (compare_strings(command, "SCOREBOARD"))
             {
-                ; // command SCOREBOARD
+                scoreboard(arr_sb, game);
             }
             else if (compare_strings(command, "RESET SCOREBOARD"))
             {
-                ; // command reset scoreboard
+                resetscoreboard(game, &arr_sb);
             }
             else if (compare_strings(first, "HISTORY"))
             {
