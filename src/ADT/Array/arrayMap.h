@@ -91,4 +91,27 @@ boolean IsEmptyArrayMap(TabMap T);
 boolean IsFullArrayMap(TabMap T);
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
 
+void InsertFirst(TabMap *T, ElTypeArrayMap v);
+/* I.S. T terdefinisi, mungkin kosong. */
+/* F.S. v menjadi elemen pertama T. */
+
+void InsertAt(TabMap *T, ElTypeArrayMap v, IdxTypeArrayMap i);
+/* I.S. T terdefinisi, tidak kosong, i merupakan indeks lojik yang valid di T. */
+/* F.S. v disisipkan dalam T pada indeks ke-i (bukan menimpa elemen di i). */
+
+void InsertLast(TabMap *T, ElTypeArrayMap v);
+/* I.S. T terdefinisi, mungkin kosong. */
+/* F.S. v menjadi elemen terakhir T. */
+
+void DeleteFirst(TabMap *T);
+/* I.S. T terdefinisi, tidak kosong. */
+/* F.S. elemen pertama T dihapus dari T. */
+
+void DeleteAt(TabMap *T, IdxTypeArrayMap i);
+/* I.S. T terdefinisi, tidak kosong, i merupakan indeks lojik yang valid di L. */
+/* F.S. Elemen T pada indeks ke-i dihapus dari T. */
+
+void DeleteLast(TabMap *T);
+/* I.S. T terdefinisi, tidak kosong. */
+/* F.S. elemen terakhir T dihapus dari T. */
 #endif

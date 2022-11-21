@@ -120,3 +120,68 @@ boolean IsFullArrayMap(TabMap T)
     return (NbElmtArrayMap(T) == MaxNbElArrayMap(T));
 }
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
+
+void InsertFirst(TabMap *T, ElTypeArrayMap v)
+{
+    int i;
+    for (i = NbElmtArrayMap(*T); i > 0; i--)
+    {
+        (*T).TIMap[i] = (*T).TIMap[i - 1];
+    }
+    (*T).TIMap[0] = v;
+    (*T).NeffArrayMap++;
+}
+/* I.S. L terdefinisi, mungkin kosong. */
+/* F.S. v menjadi elemen pertama L. */
+
+void InsertAt(TabMap *T, ElTypeArrayMap v, IdxTypeArrayMap i)
+{
+    int j;
+    for (j = NbElmtArrayMap(*T); j > i; j--)
+    {
+        (*T).TIMap[j] = (*T).TIMap[j - 1];
+    }
+    (*T).TIMap[i] = v;
+    (*T).NeffArrayMap++;
+}
+/* I.S. L terdefinisi, tidak kosong, i merupakan indeks lojik yang valid di L. */
+/* F.S. v disisipkan dalam L pada indeks ke-i (bukan menimpa elemen di i). */
+
+void InsertLast(TabMap *T, ElTypeArrayMap v)
+{
+    (*T).TIMap[NbElmtArrayMap(*T)] = v;
+    (*T).NeffArrayMap++;
+}
+/* I.S. L terdefinisi, mungkin kosong. */
+/* F.S. v menjadi elemen terakhir L. */
+
+void DeleteFirst(TabMap *T)
+{
+    int i;
+    for (i = 0; i < NbElmtArrayMap(*T); i++)
+    {
+        (*T).TIMap[i] = (*T).TIMap[i + 1];
+    }
+    (*T).NeffArrayMap--;
+}
+/* I.S. L terdefinisi, tidak kosong. */
+/* F.S. F diset dengan elemen pertama L, elemen pertama L dihapus dari L. */
+
+void DeleteAt(TabMap *T, IdxTypeArrayMap i)
+{
+    int j;
+    for (j = i; j < NbElmtArrayMap(*T); j++)
+    {
+        (*T).TIMap[j] = (*T).TIMap[j + 1];
+    }
+    (*T).NeffArrayMap--;
+}
+/* I.S. L terdefinisi, tidak kosong, i merupakan indeks lojik yang valid di L. */
+/* F.S. Elemen L pada indeks ke-i dihapus dari L. */
+
+void DeleteLast(TabMap *T)
+{
+    (*T).NeffArrayMap--;
+}
+/* I.S. L terdefinisi, tidak kosong. */
+/* F.S. F diset dengan elemen terakhir L, elemen terakhir L dihapus dari L. */

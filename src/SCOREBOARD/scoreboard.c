@@ -8,7 +8,6 @@ void scoreboard(TabMap arr_sb, TabStr listgame)
     int namelen_max, namelen;
     int scorelen_max, scorelen;
     char *str_score = (char *)malloc(10 * sizeof(char));
-
     for (idxgame = 0; idxgame < arr_sb.NeffArrayMap; idxgame++)
     {
         if (arr_sb.TIMap[idxgame].Count == 0)
