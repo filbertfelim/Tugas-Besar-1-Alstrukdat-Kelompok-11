@@ -139,10 +139,10 @@ void printwin(char winner)
     }
 }
 
-void tictactoe()
+void tictactoe(int *skor)
 {
     printf("SELAMAT DATANG DI PERMAINAN TICTACTOE\n");
-
+    int score;
     char winner = ' ';
     char response;
     winner = ' ';
@@ -166,5 +166,19 @@ void tictactoe()
     }
     PrintBoard();
     printwin(winner);
+    if (winner == PLAYER)
+    {
+        score = 100;
+    }
+    else if (winner == COMPUTER)
+    {
+        score = 20;
+    }
+    else
+    {
+        score = 50;
+    }
+    printf("Skor : %d\n", score);
+    *skor = score;
     printf("Terima Kasih telah bermain TICTACTOE!\n");
 }

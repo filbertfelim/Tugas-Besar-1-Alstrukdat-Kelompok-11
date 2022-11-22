@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "../ADT/Mesinkar_kata/mesin_kata.h"
 
-void rng();
+void rng(int *score);
 /*
 Memainkan game RNG
 */

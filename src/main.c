@@ -131,7 +131,7 @@ int main()
             }
             else if (compare_strings(command, "PLAY GAME"))
             {
-                PlayGame(&gamequeue);
+                PlayGame(&gamequeue, game, &arr_sb);
             }
             else if (compare_strings(first, "SKIP"))
             {
@@ -142,7 +142,7 @@ int main()
                     {
                         if ((((third[0]) - '0') > 0) && (((third[0]) - '0') < 10))
                         {
-                            SkipGame(&gamequeue, strtointinput(third, str_len(third)));
+                            SkipGame(&gamequeue, game, &arr_sb, strtointinput(third, str_len(third)));
                         }
                         else
                         {

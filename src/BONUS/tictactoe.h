@@ -10,5 +10,5 @@ void playermove();
 void computermove();
 char checkwin();
 void printwin(char winner);
-void tictactoe();
+void tictactoe(int *skor);
 #endif

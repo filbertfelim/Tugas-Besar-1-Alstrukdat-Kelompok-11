@@ -221,7 +221,7 @@ int FoodID(char *Second)
     return ID;
 }
 
-void dinerdash()
+void dinerdash(int *skor)
 {
     /* KAMUS */
     Queue OrderList;
@@ -333,4 +333,5 @@ void dinerdash()
     // Game Over
     printf("Permainan selesai! Kamu berhasil memperoleh Saldo sebanyak %d!\n", saldo);
     printf("===================================================================\n\n");
+    *skor = saldo;
 }
