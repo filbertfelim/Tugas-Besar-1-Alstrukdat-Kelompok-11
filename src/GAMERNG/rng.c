@@ -7,7 +7,7 @@ Skor untuk game ini tergantung dengan seberapa cepat pemain menebak X. Formula s
 Batasan X dan maksimal giliran dibebaskan.
 */
 
-void rng()
+void rng(int *score)
 // I.S. Setiap permainan dimulai dengan program sudah menentukan sebuah angka acak X.
 // F.S. Program selesai apabila pemain berhasil menebak angka x dengan benar. Skor bergantung pada jumlah tebakan pemain
 // Semakin banyak jumlah tebakan maka skor yang didapat akan semakin kecil
@@ -46,4 +46,5 @@ void rng()
     }
     skor = max - tebakan; // menghitung skor
     printf("Skor Anda adalah:  %d\n", skor);
+    *score = skor;
 }

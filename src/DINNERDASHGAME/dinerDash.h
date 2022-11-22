@@ -24,7 +24,6 @@ void Skip(Queue *OrderList, arrayDiner *Cook, arrayDiner *Serve, int *IDCustomer
 int FoodID(char *Second);
 /* Menghasilkan hasil ID jika ID Valid, -999 jika ID Tidak Valid*/
 
-void dinerdash();
-
+void dinerdash(int *skor);
 
 #endif

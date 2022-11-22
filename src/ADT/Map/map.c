@@ -99,7 +99,7 @@ boolean IsMember(Map M, keytype k)
     found = false;
     while (i < M.Count && !found)
     {
-        if (M.Elements[i].Key == k)
+        if (compare_strings(M.Elements[i].Key,k))
         {
             found = true;
         }
