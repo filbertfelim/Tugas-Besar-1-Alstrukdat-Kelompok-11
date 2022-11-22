@@ -114,7 +114,7 @@ int main()
             }
             else if (compare_strings(first, "SAVE"))
             {
-                SAVE(game, scnd);
+                SAVE(game, historygame, arr_sb, scnd);
             }
             else if (compare_strings(command, "LIST GAME"))
             {
@@ -226,7 +226,7 @@ int main()
     {
         printf("Masukkan nama filename :");
         command = STARTINPUT();
-        SAVE(game, command);
+        SAVE(game, historygame, arr_sb, command);
     }
     else
     {
