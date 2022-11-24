@@ -1,6 +1,7 @@
 #include "playgame.h"
+#include "../ADT/Stack/stack.h"
 
-void Play(strQueue *antrian, TabStr listgame, TabMap *arr_sb)
+void Play(strQueue *antrian, TabStr listgame, TabMap *arr_sb, Stack *S)
 {
     gamename temp;
     int skor;
@@ -44,10 +45,12 @@ void Play(strQueue *antrian, TabStr listgame, TabMap *arr_sb)
     SortMapValueDesc(&(*arr_sb).TIMap[idxgame]);
     printf("Skor berhasil disimpan ke dalam scoreboard.\n\n");
     STRdequeue(antrian, temp);
+    Push(S, temp);
+    
 }
 /*Memainkan Game pada urutan teratas*/
 
-void PlayGame(strQueue *antrian, TabStr listgame, TabMap *arr_sb)
+void PlayGame(strQueue *antrian, TabStr listgame, TabMap *arr_sb, Stack *S)
 {
     printf("Berikut adalah daftar Game-mu: \n");
     if (!isQueueEmpty(*antrian))
@@ -68,7 +71,7 @@ void PlayGame(strQueue *antrian, TabStr listgame, TabMap *arr_sb)
 
     if (!isQueueEmpty(*antrian))
     {
-        Play(antrian, listgame, arr_sb);
+        Play(antrian, listgame, arr_sb, S);
     }
     else
     {
