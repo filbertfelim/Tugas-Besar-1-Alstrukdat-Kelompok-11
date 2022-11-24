@@ -191,7 +191,7 @@ int main()
                     }
                     else
                     {
-                        ; // command print list history
+                        history();
                     }
                 }
                 else
@@ -201,7 +201,7 @@ int main()
             }
             else if (compare_strings(command, "RESET HISTORY"))
             {
-                ; // command RESET HISTORY
+                resethistory();
             }
             else
             {
