@@ -5,20 +5,20 @@
 void history(Stack *S, int n)
 {
     printf("Berikut adalah daftar game terakhir yang dimainkan: \n");
-    if(IsStackEmpty){
+    if(IsStackEmpty(*S)){
         printf("Belum ada game yang dimainkan\n");
     }
     else{
-        int i = 1
-        info value;
+        int i = 1;
+        stackinfotype val; 
         Stack newStack;
 
         CreateEmptyStack(&newStack);
         newStack = *S;
         while (i <= n && !IsStackEmpty(newStack))
         {
-            printf("%d. %s\n", InfoTop(newStack));
-            Pop(&newStack, &value);
+            printf("%d. %s\n", i, InfoTop(newStack));
+            Pop(&newStack, &val);
             i++;
         }
     }
