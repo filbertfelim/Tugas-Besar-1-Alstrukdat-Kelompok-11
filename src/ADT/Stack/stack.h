@@ -56,5 +56,6 @@ void Pop(Stack *S, stackinfotype *X);
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
-
+boolean compareStack(Stack S1, Stack S2);
+/* Mengirimkan true jika stack yang dibandingkan sama*/
 #endif

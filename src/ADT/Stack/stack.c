@@ -43,3 +43,29 @@ void Pop(Stack *S, stackinfotype *X)
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
+
+boolean compareStack(Stack S1, Stack S2)
+{
+    if (IsStackEmpty(S1) && IsStackEmpty(S2))
+    {
+        return true;
+    }
+    else if (IsStackEmpty(S1) || IsStackEmpty(S2))
+    {
+        return false;
+    }
+    else
+    {
+        stackinfotype X1, X2;
+        Pop(&S1, &X1);
+        Pop(&S2, &X2);
+        if (X1 != X2)
+        {
+            return false;
+        }
+        else
+        {
+            return compareStack(S1, S2);
+        }
+    }
+}
