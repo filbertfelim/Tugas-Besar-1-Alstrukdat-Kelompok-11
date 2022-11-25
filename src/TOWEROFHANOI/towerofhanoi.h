@@ -3,16 +3,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../ADT/Stack/stackhanoi.h"
+#include "../ADT/Stack/stack.h"
 #include "../ADT/Mesinkar_kata/mesin_kata.h"
+#include "../ADT/Mesinkar_kata/mesin_kar.h"
 
-void scoredisplay(int step, int *score)
-// 
-void checkmoves(char t1, char t2, Stack A, Stack B, Stack, C, boolean *check)
-
-boolean checkwin(Stack C)
-
-void displaytowerhanoi(Stack A, Stack B, Stack C)
-
+int optimalmoves();
+void blank(int x)
+void stars(int x)
+void displaytowerhanoi(int x, Stack A, Stack B, Stack C)
 void towerofhanoi()
 #endif
