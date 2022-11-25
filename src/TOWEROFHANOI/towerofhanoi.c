@@ -3,13 +3,13 @@
 int optimalmoves(int x)
 // menghitung jumlah langkah minimum yang dibutuhkan untuk menyelesaikan Tower of Hanoi dengan x disk
 {
-    if (i == 1)
+    if (x == 1)
     {
         return 1;
     }
     else
     {
-        return 2 * optimalmoves(i - 1) + 1;
+        return 2 * optimalmoves(x - 1) + 1;
     }
 }
 // optimalmoves/jumlah gerak * 10 * n/5
@@ -30,7 +30,7 @@ void stars(int x)
     }
 }
 
-void displaytowerhanoi(int x, Stack A, Stack B, Stack C)
+void displaytowerhanoi(int x, Stackhanoi A, Stackhanoi B, Stackhanoi C)
 {
     for (int i = 0; i < x; i++)
     {
@@ -47,36 +47,35 @@ void displaytowerhanoi(int x, Stack A, Stack B, Stack C)
         {
             blank(x - valA-1);
             printf("|");
-            if (x % 4 != 0)blank(x - valA);
-            else
-            blank(x - valA - 1);
+            if (x % 4 != 0) blank(x - valA);
+            else blank(x - (valA) - 1);
         }
         printf("\t");
         if (x % 4 == 0) printf("\t");
-        if (valB != 0)
+        if ((valB) != 0)
         {
-            blank(x - valB+1);
-            stars(valB * 2 - 1);
-            blank(x - valB);
+            blank(x - (valB)+1);
+            stars((valB) * 2 - 1);
+            blank(x - (valB));
         }
         else
         {
-            blank(x - valB);
+            blank(x - (valB));
             printf("|");
-            blank(x - valB);
+            blank(x - (valB));
         }
         printf("\t");
-        if (valC != 0)
+        if ((valC) != 0)
         {
-            blank(x - valC + 1);
-            stars(valC * 2 - 1);
-            blank(x - valC);
+            blank(x - (valC) + 1);
+            stars((valC) * 2 - 1);
+            blank(x - (valC));
         }
         else
         {
-            blank(x - valC);
+            blank(x - (valC));
             printf("|");
-            blank(x - valC);
+            blank(x - (valC));
         }
         printf("\n");
     }
@@ -96,26 +95,29 @@ void displaytowerhanoi(int x, Stack A, Stack B, Stack C)
 
 void towerofhanoi()
 {
-    Stack A, B, C, temp;
+    Stackhanoi A, B, C, temp;
     int temp1, temp2, val1, val2, val3;
     int score, n;
     int count = 0;
     CreateEmptyStack(&A);
     CreateEmptyStack(&B);
     CreateEmptyStack(&C);
-    
-    char *piringan;
+    CreateEmptyStack(&temp);
+    printf("SELAMAT DATANG DI TOWER OF HANOI\n");
     printf("Masukan jumlah disk: ");
+
+    char *piringan;
     piringan = STARTINPUT();
-    printf("\n");
     n = strtointinput(piringan, str_len(piringan));
+    
+    printf("\n");
+    printf("\n");
+
     for (int i = n; i > 0; i--)
     {
         Push(&A, i);
-        Push(&B, 0);
-        Push(&C, 0);
+        Push(&temp, i);
     }
-    temp = A;
     
     while(!compareStack(C, temp))
     {
@@ -123,17 +125,38 @@ void towerofhanoi()
         printf("TOWER ASAL: ");
         char *str_asal;
         str_asal = STARTINPUT();
-        temp1 = strtointinput(str_asal, str_len(str_asal));
+        if (str_asal[0] == 'A')
+        {
+            temp1 =  1;
+        }
+        else if (str_asal[0] == 'B')
+        {
+            temp1 =  2;
+        }
+        else if (str_asal[0] == 'C')
+        {
+            temp1 =  3;
+        }
         
         printf("TOWER TUJUAN: ");
         char * str_tujuan;
         str_tujuan = STARTINPUT();
+        if (str_tujuan[0] == 'A')
+        {
+            temp2 = 1;
+        }
+        else if (str_tujuan[0] == 'B')
+        {
+            temp2 = 2;
+        }
+        else if (str_tujuan[0] == 'C')
+        {
+            temp2 = 3;
+        }
         printf("\n\n");
-        temp2 = strtointinput(str_tujuan, str_len(str_tujuan));
-        
-        val1 = InfoTop(A);
-        val2 = InfoTop(B);
-        val3 = InfoTop(C);
+        int val1 = topless(A);
+        int val2 = topless(B);
+        int val3 = topless(C);
         if (temp1 == 1 && val1 != 0)
         {
             if (temp2 == 2)
@@ -143,6 +166,7 @@ void towerofhanoi()
                     Pop(&A, &temp1);
                     Push(&B, temp1);
                     count++;
+                    // printf("%d %d", InfoTop(A), InfoTop(B));
                 }
                 else printf("Tidak bisa dipindahkan\n");
             }
