@@ -16,14 +16,16 @@ void resethistory(StackHistory *SH)
             stackhistinfotype val;
             PopHistory(SH, &val);
         }
-        printf("\nHISTORY BERHASIL DI RESET\n");
+        printf("\nHISTORY BERHASIL DI-RESET.\n");
     }
     else if (compare_strings(command, "TIDAK"))
     {
-        printf("\nRESET HISTORY DIBATALKAN\n");
+        printf("\nRESET HISTORY DIBATALKAN. Berikut adalah daftar Game yang telah dimainkan:\n");
+        int n = countStackHistory(*SH);
+        PrintStackHistory(SH, n);
     }
     else
     {
-        printf("\nINPUT TIDAK VALID\n");
+        printf("\nINPUT TIDAK VALID. Silakan coba lagi masukkan input yang valid!\n");
     }
 }

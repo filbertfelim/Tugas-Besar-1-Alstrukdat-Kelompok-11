@@ -57,8 +57,13 @@ void PopHistory(StackHistory *SH, stackhistinfotype *X);
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
-void PrintStackHistory(StackHistory SH, int n);
+void PrintStackHistory(StackHistory *SH, int n);
 /* Menulis seluruh elemen Stack S ke layar */
 /* I.S. S mungkin kosong */
-/* F.S. Jika S tidak kosong, semua elemen Stack diprint */
+/* F.S. Jika S tidak kosong, maka akan print nilai Stack*/
+
+int countStackHistory(StackHistory SH);
+/* Mengembalikan banyaknya/jumlah alamat dalam StackHistory SH ke layar */
+/* I.S. SH mungkin kosong */
+/* F.S. Jika SH tidak kosong, semua elemen StackHistory diprint */
 #endif
