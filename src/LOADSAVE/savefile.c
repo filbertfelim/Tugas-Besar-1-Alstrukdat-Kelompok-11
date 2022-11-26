@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "savefile.h"
 
-void SAVE(TabStr listgame, TabStr histgame, TabMap arr_sb, char *file)
+void SAVE(TabStr listgame, StackHistory histgame, TabMap arr_sb, char *file)
 {
     FILE *txt;
     char *filename = (char *)malloc(50 * sizeof(char));
@@ -19,11 +19,11 @@ void SAVE(TabStr listgame, TabStr histgame, TabMap arr_sb, char *file)
         fprintf(txt, "%s\n", listgame.TI[i]);
     }
     // menulis daftar di history game
-    sprintf(numgame, "%d", histgame.Neff);
+    sprintf(numgame, "%d", histgame.TOPHISTORY + 1);
     fprintf(txt, "%s\n", numgame);
-    for (i = 0; i < NbElmt(histgame); i++)
+    for (i = 0; i <= histgame.TOPHISTORY; i++)
     {
-        fprintf(txt, "%s\n", histgame.TI[i]);
+        fprintf(txt, "%s\n", histgame.T[i]);
     }
 
     // menulis daftar scoreboard

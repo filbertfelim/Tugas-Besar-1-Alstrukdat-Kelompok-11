@@ -5,9 +5,10 @@
 #include <stdlib.h>
 #include "../ADT/Array/array.h"
 #include "../ADT/Array/arrayMap.h"
+#include "../ADT/Stack/stackhistory.h"
 #include "../ADT/Mesinkar_kata/mesin_kata.h"
 
-void SAVE(TabStr listgame, TabStr histgame, TabMap arr_sb, char *file);
+void SAVE(TabStr listgame, StackHistory histgame, TabMap arr_sb, char *file);
 /*
     menyimpan daftar game ke dalam file savefile.txt
 */

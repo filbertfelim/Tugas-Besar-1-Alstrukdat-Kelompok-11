@@ -7,9 +7,10 @@
 #include "../ADT/Queue/strQueue.h"
 #include "../ADT/Array/array.h"
 #include "../ADT/Array/arrayMap.h"
+#include "../ADT/Stack/stackhistory.h"
 #include "../PLAYGAME/playgame.h"
 
-void SkipGame(strQueue *GameQueue, TabStr listgame, TabMap *arr_sb, int n);
+void SkipGame(strQueue *GameQueue, TabStr listgame, TabMap *arr_sb, int n, StackHistory *stackhist);
 /*
 Melewatkan game sebanyak n kali, lalu memainkan game
 */

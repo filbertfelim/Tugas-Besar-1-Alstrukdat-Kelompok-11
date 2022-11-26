@@ -6,10 +6,11 @@
 #include "../ADT/Mesinkar_kata/mesin_kata.h"
 #include "../ADT/Array/array.h"
 #include "../ADT/Array/arrayMap.h"
+#include "../ADT/Stack/stackhistory.h"
 #include "../ADT/Map/map.h"
 #include "../STRINGCOMP/stringcomp.h"
 
-boolean loadFile(TabStr *listgame, TabStr *histgame, TabMap *listsb, char *filename);
+boolean loadFile(TabStr *listgame, TabMap *listsb, StackHistory *stackhist, char *filename);
 /*
     membaca file savefile dan memasukkan game ke dalam array game
 */

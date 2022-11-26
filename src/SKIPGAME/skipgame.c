@@ -1,6 +1,6 @@
 #include "skipgame.h"
 
-void SkipGame(strQueue *GameQueue, TabStr listgame, TabMap *arr_sb, int n)
+void SkipGame(strQueue *GameQueue, TabStr listgame, TabMap *arr_sb, int n, StackHistory *stackhist)
 {
     // Menampilkan antrian Game
     printf("Berikut adalah daftar Game-mu: \n");
@@ -33,7 +33,7 @@ void SkipGame(strQueue *GameQueue, TabStr listgame, TabMap *arr_sb, int n)
 
     if (!isQueueEmpty(*GameQueue))
     {
-        Play(GameQueue, listgame, arr_sb);
+        Play(GameQueue, listgame, arr_sb, stackhist);
     }
     else
     {

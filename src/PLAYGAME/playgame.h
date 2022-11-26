@@ -7,15 +7,18 @@
 #include "../ADT/Mesinkar_kata/mesin_kata.h"
 #include "../ADT/Array/array.h"
 #include "../ADT/Array/arrayMap.h"
+#include "../ADT/Stack/stack.h"
+#include "../ADT/Stack/stackhistory.h"
 #include "../STRINGCOMP/stringcomp.h"
 #include "../GAMERNG/rng.h"
 #include "../BONUS/tictactoe.h"
 #include "../DINNERDASHGAME/dinerDash.h"
+#include "../TOWEROFHANOI/towerofhanoi.h"
 
-void Play(strQueue *antrian, TabStr listgame, TabMap *arr_sb);
+void Play(strQueue *antrian, TabStr listgame, TabMap *arr_sb, StackHistory *stackhist);
 /*Memainkan Game pada urutan teratas*/
 
-void PlayGame(strQueue *antrian, TabStr listgame, TabMap *arr_sb);
+void PlayGame(strQueue *antrian, TabStr listgame, TabMap *arr_sb, StackHistory *stackhist);
 /*Menampilkan game dalam antrian kemudian memainkan game pada urutan teratas*/
 
 #endif

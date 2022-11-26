@@ -11,6 +11,8 @@
 #include "./ADT/Array/arrayMap.h"
 #include "./ADT/Map/map.h"
 #include "./ADT/Stack/stack.h"
+#include "./ADT/Stack/stackhistory.h"
+#include "./ADT/Stack/stacktower.h"
 #include "./ADT/Queue/strQueue.h"
 #include "./ADT/Mesinkar_kata/mesin_kar.h"
 #include "./ADT/Mesinkar_kata/mesin_kata.h"
@@ -27,6 +29,8 @@
 #include "./PLAYGAME/playgame.h"
 #include "./SKIPGAME/skipgame.h"
 #include "./SCOREBOARD/scoreboard.h"
+#include "./HISTORY/history.h"
+#include "./HISTORY/resethistory.h"
 #include "./COMMANDLAIN/commandlain.h"
 #include "./START/start.h"
 #include "./HELP/help.h"
@@ -38,6 +42,7 @@
 #include "./BONUS/tictactoe.h"
 #include "./DINNERDASHGAME/dinerDash.h"
 #include "./GAMERNG/rng.h"
+#include "./TOWEROFHANOI/towerofhanoi.h"
 
 int main()
 {
@@ -59,12 +64,12 @@ int main()
 
     // Inisialisasi data yang diperlukan
     TabStr game;
-    TabStr historygame;
+    StackHistory historygame;
     strQueue gamequeue;
     TabMap arr_sb;
     MakeEmpty(&game);
     MakeEmptyArrayMap(&arr_sb);
-    MakeEmpty(&historygame);
+    CreateEmptyStackHistory(&historygame);
     CreateStrQueue(&gamequeue);
     while (!finish_load)
     {
@@ -77,7 +82,7 @@ int main()
         else if (compare_strings(first, "LOAD"))
         {
             filename = filetodir(scnd);
-            finish_load = loadFile(&game, &historygame, &arr_sb, filename);
+            finish_load = loadFile(&game, &arr_sb, &historygame, filename);
             if (!finish_load)
             {
                 printf("Load belum berhasil. Silakan input nama file lain.\n\n");
@@ -131,7 +136,7 @@ int main()
             }
             else if (compare_strings(command, "PLAY GAME"))
             {
-                PlayGame(&gamequeue, game, &arr_sb);
+                PlayGame(&gamequeue, game, &arr_sb, &historygame);
             }
             else if (compare_strings(first, "SKIP"))
             {
@@ -142,7 +147,7 @@ int main()
                     {
                         if ((((third[0]) - '0') > 0) && (((third[0]) - '0') < 10))
                         {
-                            SkipGame(&gamequeue, game, &arr_sb, strtointinput(third, str_len(third)));
+                            SkipGame(&gamequeue, game, &arr_sb, strtointinput(third, str_len(third)), &historygame);
                         }
                         else
                         {
@@ -191,7 +196,7 @@ int main()
                     }
                     else
                     {
-                        history();
+                        history(&historygame, strtointinput(scnd, str_len(scnd)));
                     }
                 }
                 else
@@ -201,7 +206,7 @@ int main()
             }
             else if (compare_strings(command, "RESET HISTORY"))
             {
-                resethistory();
+                resethistory(&historygame);
             }
             else
             {
