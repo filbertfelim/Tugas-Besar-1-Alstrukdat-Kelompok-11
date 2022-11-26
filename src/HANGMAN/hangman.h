@@ -10,9 +10,11 @@
 #include "../ADT/Mesinkar_kata/mesin_kata.h"
 #include "../STRINGCOMP/stringcomp.h"
 
-void printBody(int mistakes, char* body);
-void hangman();
-void MenuStart(TabStr *listgame, char *filename, char *file);
-void printWord(TabStr *listgame, char *guess);
+boolean loadFile(TabStr *listgame, char *filename);
+void addWord(TabStr listgame, char *file);
+int random(TabStr T);
+void printWord(TabStr *listkata, char *guess); 
+void MenuStart(TabStr *listkata, char *filename);
+void hangman(TabStr *listkata, char *filename);
 
 #endif

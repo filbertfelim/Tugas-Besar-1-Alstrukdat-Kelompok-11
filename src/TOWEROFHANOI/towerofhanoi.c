@@ -1,5 +1,25 @@
 #include "towerofhanoi.h"
 
+boolean isnumber(char *str)
+{
+    int i = 0;
+    while (str[i] != '\0')
+    {
+        if (str[i] < '0' || str[i] > '9')
+        {
+            return false;
+        }
+        i++;
+    }
+    if (i == 0)
+    {
+        return false;
+    } else
+    {
+        return true;
+    }
+}
+
 int optimalmoves(int x)
 // menghitung jumlah langkah minimum yang dibutuhkan untuk menyelesaikan Tower of Hanoi dengan x disk
 {
@@ -106,12 +126,31 @@ void towerofhanoi(int *skor)
     CreateEmptyStackTower(&B);
     CreateEmptyStackTower(&C);
     CreateEmptyStackTower(&temp);
-    printf("SELAMAT DATANG DI TOWER OF HANOI\n");
+    printf(" ________   ______   __       __  ________  _______    ______   ________  __    __   ______   __    __   ______   ______\n");
+    printf("|       \\ /     \\ | \\  _  | \\|       \\|      \\  /     \\ |       \\| \\  | \\ /     \\ | \\  | \\ /     \\ |      \\\n");
+    printf("\\$$$$$$$$|  $$$$$$\\| $$ /\\ | $$| $$$$$$$$| $$$$$$$\\|  $$$$$$\\| $$$$$$$$| $$  | $$|  $$$$$$\\| $$\\ | $$|  $$$$$$\\\\$$$$$$\n");
+    printf(" | $$   | $$  | $$| $$/  $\\| $$| $$__    | $$__| $$| $$  | $$| $$__    | $$__| $$| $$__| $$| $$$\\| $$| $$  | $$  | $$\n");
+    printf(" | $$   | $$  | $$| $$  $$$\\ $$| $$  \\   | $$    $$| $$  | $$| $$  \\   | $$    $$| $$    $$| $$$$\\ $$| $$  | $$  | $$\n");
+    printf(" | $$   | $$  | $$| $$ $$\\$$\\$$| $$$$$   | $$$$$$$\\| $$  | $$| $$$$$   | $$$$$$$$| $$$$$$$$| $$\\$$ $$| $$  | $$  | $$\n");
+    printf(" | $$   | $$__/ $$| $$$$  \\$$$$| $$_____ | $$  | $$| $$__/ $$| $$      | $$  | $$| $$  | $$| $$ \\$$$$| $$__/ $$ _| $$_\n");
+    printf(" | $$    \\$$    $$| $$$    \\$$$| $$     \\| $$  | $$ \\$$    $$| $$      | $$  | $$| $$  | $$| $$  \\$$$ \\$$    $$|   $$\\\n");
+    printf("  \\$$     \\$$$$$$  \\$$      \\$$ \\$$$$$$$$ \\$$   \\$$   \\$$$$$$  \\$$       \\$$   \\$$ \\$$   \\$$ \\$$   \\$$  \\$$$$$$  \\$$$$$$\n");
+    // meminta masukkan jumlah disk
+    printf("\n\n");
+    printf("Selamat datang di Tower of Hanoi!\n");
     printf("Masukan jumlah disk: ");
-
     char *piringan;
     piringan = STARTINPUT();
     n = strtointinput(piringan, str_len(piringan));
+    // mengecek apakah masukkan valid
+    while (!isnumber(piringan))
+    {
+
+        printf("Masukan tidak valid, silahkan masukan kembali!!! \n");
+        printf("Masukan jumlah disk: ");
+        piringan = STARTINPUT();
+        n = strtointinput(piringan, str_len(piringan));
+    }
 
     printf("\n");
     printf("\n");
@@ -121,13 +160,14 @@ void towerofhanoi(int *skor)
         PushTower(&A, i);
         PushTower(&temp, i);
     }
-
+    // membandingkan stack
     while (!compareStack(C, temp))
     {
         displaytowerhanoi(n, A, B, C);
         printf("TOWER ASAL: ");
         char *str_asal;
         str_asal = STARTINPUT();
+        // mengecek apakah masukkan valid
         if (str_asal[0] == 'A')
         {
             temp1 = 1;
@@ -140,10 +180,15 @@ void towerofhanoi(int *skor)
         {
             temp1 = 3;
         }
-
+        else
+        {
+            printf("Input salah\n");
+            continue;
+        }
         printf("TOWER TUJUAN: ");
         char *str_tujuan;
         str_tujuan = STARTINPUT();
+        // mengecek apakah masukkan valid
         if (str_tujuan[0] == 'A')
         {
             temp2 = 1;
@@ -155,6 +200,11 @@ void towerofhanoi(int *skor)
         else if (str_tujuan[0] == 'C')
         {
             temp2 = 3;
+        }
+        else
+        {
+            printf("Input salah\n");
+            continue;
         }
         printf("\n\n");
         int val1 = topless(A);
@@ -170,6 +220,7 @@ void towerofhanoi(int *skor)
                     PushTower(&B, temp1);
                     count++;
                     // printf("%d %d", InfoTop(A), InfoTop(B));
+                    printf("Memindahkan piringan ke B...\n");
                 }
                 else
                     printf("Tidak bisa dipindahkan\n");
@@ -181,6 +232,7 @@ void towerofhanoi(int *skor)
                     PopTower(&A, &temp1);
                     PushTower(&C, temp1);
                     count++;
+                    printf("Memindahkan piringan ke C...\n");
                 }
                 else
                     printf("Tidak bisa dipindahkan\n");
@@ -197,6 +249,7 @@ void towerofhanoi(int *skor)
                     PopTower(&B, &temp1);
                     PushTower(&A, temp1);
                     count++;
+                    printf("Memindahkan piringan ke A...\n");
                 }
                 else
                     printf("Tidak bisa dipindahkan\n");
@@ -208,6 +261,7 @@ void towerofhanoi(int *skor)
                     PopTower(&B, &temp1);
                     PushTower(&C, temp1);
                     count++;
+                    printf("Memindahkan piringan ke C...\n");
                 }
                 else
                     printf("Tidak bisa dipindahkan\n");
@@ -224,6 +278,7 @@ void towerofhanoi(int *skor)
                     PopTower(&C, &temp1);
                     PushTower(&A, temp1);
                     count++;
+                    printf("Memindahkan piringan ke A...\n");
                 }
                 else
                     printf("Tidak bisa dipindahkan\n");
@@ -235,6 +290,7 @@ void towerofhanoi(int *skor)
                     PopTower(&C, &temp1);
                     PushTower(&B, temp1);
                     count++;
+                    printf("Memindahkan piringan ke B...\n");
                 }
                 else
                     printf("Tidak bisa dipindahkan\n");
@@ -248,6 +304,6 @@ void towerofhanoi(int *skor)
     displaytowerhanoi(n, A, B, C);
     score = ((optimalmoves(n) / count) * 10 * n / 5);
     printf("Score: %d\n", score);
-    printf("SELAMAT ANDA MENANG!\n");
+    printf("SELAMAT KAMU BERHASIL!\n");
     *skor = score;
 }
