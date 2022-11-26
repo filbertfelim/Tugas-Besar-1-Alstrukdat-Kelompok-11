@@ -5,7 +5,7 @@
 /* *** Konstruktor/Kreator *** */
 void CreateEmptyStackHistory(StackHistory *SH)
 {
-    Top(*SH) = Nil;
+    TopHistory(*SH) = Nil;
 }
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
@@ -15,31 +15,31 @@ void CreateEmptyStackHistory(StackHistory *SH)
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 boolean IsStackHistoryEmpty(StackHistory SH)
 {
-    return (Top(SH) == Nil);
+    return (TopHistory(SH) == Nil);
 }
 
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 boolean IsStackHistoryFull(StackHistory SH)
 {
-    return (Top(SH) == MaxEl - 1);
+    return (TopHistory(SH) == MaxEl - 1);
 }
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push(StackHistory *SH, stackhistinfotype X)
+void PushHistory(StackHistory *SH, stackhistinfotype X)
 {
-    Top(*SH) += 1;
-    InfoTop(*SH) = X;
+    TopHistory(*SH) += 1;
+    InfoTopHistory(*SH) = X;
 }
 /* Menambahkan X sebagai elemen Stack S. */
 /* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void Pop(StackHistory *SH, stackhistinfotype *X)
+void PopHistory(StackHistory *SH, stackhistinfotype *X)
 {
-    *X = InfoTop(*SH);
-    Top(*SH) -= 1;
+    *X = InfoTopHistory(*SH);
+    TopHistory(*SH) -= 1;
 }
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */

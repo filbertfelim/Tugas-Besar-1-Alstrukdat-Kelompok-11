@@ -18,8 +18,8 @@ typedef int address; /* indeks tabel */
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
 typedef struct
 {
-    stackinfotype T[MaxEl]; /* tabel penyimpan elemen */
-    address TOP;            /* alamat TOP: elemen puncak */
+    stackhistinfotype T[MaxEl]; /* tabel penyimpan elemen */
+    address TOPHISTORY;            /* alamat TOP: elemen puncak */
 } StackHistory;
 /* Definisi stack S kosong : S.TOP = Nil */
 /* Elemen yang dipakai menyimpan nilai Stack T[0]..T[MaxEl-1] */
@@ -28,8 +28,8 @@ typedef struct
 /* S.TOP adalah alamat elemen TOP */
 
 /* Definisi akses dengan Selektor : Set dan Get */
-#define Top(SH) (SH).TOP
-#define InfoTop(SH) (SH).T[(SH).TOP]
+#define TopHistory(SH) (SH).TOPHISTORY
+#define InfoTopHistory(SH) (SH).T[(SH).TOPHISTORY]
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
@@ -46,13 +46,13 @@ boolean IsStackHistoryFull(StackHistory SH);
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push(StackHistory *SH, stackhistinfotype X);
+void PushHistory(StackHistory *SH, stackhistinfotype X);
 /* Menambahkan X sebagai elemen Stack S. */
 /* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void Pop(StackHistory *SH, stackhistinfotype *X);
+void PopHistory(StackHistory *SH, stackhistinfotype *X);
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */

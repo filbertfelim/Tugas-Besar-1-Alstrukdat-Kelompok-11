@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "history.h"
-#include "../ADT/Stack/stack.h"
+#include "../ADT/Stack/stackhistory.h"
 
 int main (){
-    Stack S;
-    CreateEmptyStack(&S);
+    StackHistory SH;
+    CreateEmptyStackHistory(&SH);
     
-    stackinfotype str = "percobaan 1";
-    Push(&S, str);
+    stackhistinfotype str = "percobaan 1";
+    PushHistory(&SH, str);
 
-    stackinfotype str2 = "percobaan 2";
-    Push(&S, str2);
+    stackhistinfotype str2 = "percobaan 2";
+    PushHistory(&SH, str2);
 
     int n = 3;
-    history(&S, n);
+    history(&SH, n);
     return 0;
 }

@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include "resethistory.h"
-#include "../ADT/Stack/stack.h"
+#include "../ADT/Stack/stackhistory.h"
 #include "../STRINGCOMP/stringcomp.h"
 #include "../ADT/Mesinkar_kata/mesin_kar.h"
 
-void resethistory(Stack *S)
+void resethistory(StackHistory *SH)
 {
     printf("\nAPAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY?");
     char *command;
     command = STARTINPUT();
     if (compare_strings(command, "YA")){
-        while (!IsStackEmpty(*S)){
-            stackinfotype val;
-            Pop(S, &val);
+        while (!IsStackHistoryEmpty(*SH)){
+            stackhistinfotype val;
+            PopHistory(SH, &val);
         }
         printf("\nHISTORY BERHASIL DI RESET\n");
     }

@@ -2,23 +2,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void history(Stack *S, int n)
+void history(StackHistory *SH, int n)
 {
     printf("Berikut adalah daftar game terakhir yang dimainkan: \n");
-    if(IsStackEmpty(*S)){
+    if(IsStackHistoryEmpty(*SH)){
         printf("Belum ada game yang dimainkan\n");
     }
     else{
         int i = 1;
-        stackinfotype val; 
-        Stack newStack;
+        stackhistinfotype val; 
+        StackHistory newStack;
 
-        CreateEmptyStack(&newStack);
-        newStack = *S;
-        while (i <= n && !IsStackEmpty(newStack))
+        CreateEmptyStackHistory(&newStack);
+        newStack = *SH;
+        while (i <= n && !IsStackHistoryEmpty(newStack))
         {
-            printf("%d. %s\n", i, InfoTop(newStack));
-            Pop(&newStack, &val);
+            printf("%d. %s\n", i, InfoTopHistory(newStack));
+            PopHistory(&newStack, &val);
             i++;
         }
     }
