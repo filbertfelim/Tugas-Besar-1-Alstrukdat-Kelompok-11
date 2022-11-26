@@ -20,6 +20,11 @@ void Play(strQueue *antrian, TabStr listgame, TabMap *arr_sb)
         printf("Loading TICTACTOE....\n");
         tictactoe(&skor);
     }
+    // else if (compare_strings(toPlay, "TOWER OF HANOI"))
+    // {
+    //     printf("Loading TICTACTOE....\n");
+    //     towerofhanoi(&skor);
+    // }
     else
     {
         srand(time(NULL));

@@ -55,18 +55,18 @@ boolean IsStackEqual(Stack S1, Stack S2)
     if (S1.tower != S2.tower)
     {
         return false;
-    } 
-    else 
+    }
+    else
     {
         int i = 0;
         boolean found = false;
-        while (i< MaxElHanoi && !found)
+        while (i < MaxElHanoi && !found)
         {
-            if (S1.tower[i]!=S2.tower[i])
+            if (S1.tower[i] != S2.tower[i])
             {
                 found = true;
-            } 
-            else 
+            }
+            else
             {
                 i++;
             }

@@ -6,10 +6,10 @@ void scoredisplay(int step, int *score)
     if (step > 31)
     {
         step -= 31;
-        while (step>0)
+        while (step > 0)
         {
             step -= 3;
-            x --;
+            x--;
         }
     }
     if (x < 0)
@@ -117,16 +117,15 @@ void checkmoves(char t1, char t2, stack A, Stack B, Stack C, boolean *check)
                     }
                 }
             }
-            else 
+            else
             {
                 if (IsStackEmptyH(C))
                 {
                     printf("Tidak ada piringan di tower C\n");
-        
                 }
-                else 
+                else
                 {
-                    if(t2 == 'B')
+                    if (t2 == 'B')
                     {
                         if (IsStackEmptyH(B))
                         {
@@ -172,11 +171,11 @@ boolean checkwin(Stack C)
 {
     Stack temp;
     CreateEmptyH(&temp);
-    PushH(&temp,"*********" 5);
-    PushH(&temp," ******* " 4);
-    PushH(&temp,"  *****  " 3);
-    PushH(&temp,"   ***   " 2);
-    PushH(&temp,"    *    " 1);
+    PushH(&temp, "*********" 5);
+    PushH(&temp, " ******* " 4);
+    PushH(&temp, "  *****  " 3);
+    PushH(&temp, "   ***   " 2);
+    PushH(&temp, "    *    " 1);
 
     // compare stack C and temp
     boolean win = true;
@@ -208,7 +207,7 @@ void displaytowerhanoi(Stack A, Stack B, Stack C)
     printf("  C  \n");
 }
 
-void towerofhanoi()
+void towerofhanoi(int *skor)
 {
     int count = 0;
     int score = 0;
@@ -239,8 +238,7 @@ void towerofhanoi()
     boolean done = false;
     while (!finish)
     {
-        boolean valid = false
-        char T1, T2;
+        boolean valid = false char T1, T2;
         while (!valid)
         {
             printf("\n");
@@ -256,9 +254,8 @@ void towerofhanoi()
             printf("\n");
             // simpen towernya
 
-            //cek valid
-            checkmoves(T1, T2, A, B, C &valid);
-
+            // cek valid
+            checkmoves(T1, T2, A, B, C & valid);
         }
         count++;
         ElHanoi temp;
@@ -303,15 +300,9 @@ void towerofhanoi()
         }
     }
 
-    //score
+    // score
     scores(count, &score);
     printf("Kamu berhasil\n");
     printf("Score kamu: %d\n", score);
+    *skor = score;
 }
-
-int main()
-{
-    towerofhanoi();
-    return 0;
-}
-

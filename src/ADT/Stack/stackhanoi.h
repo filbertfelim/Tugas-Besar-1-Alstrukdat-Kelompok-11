@@ -53,7 +53,7 @@ void PushH(Stack *S, stackinfotype X, int el);
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void PopH(Stack *S, ElHanoi *X,);
+void PopH(Stack *S, ElHanoi *X);
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
