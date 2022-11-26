@@ -9,6 +9,7 @@
 #include "../ADT/Mesinkar_kata/mesin_kar.h"
 #include "../ADT/Mesinkar_kata/mesin_kata.h"
 #include "../STRINGCOMP/stringcomp.h"
+#include "../START/start.h"
 
 boolean loadFile(TabStr *listgame, char *filename);
 void addWord(TabStr listgame, char *file);

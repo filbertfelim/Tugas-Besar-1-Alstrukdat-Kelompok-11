@@ -84,15 +84,18 @@ void printWord(TabStr *listkata, char *guess)
 void MenuStart(TabStr *listkata, char *filename)
 /*Mengembalikan 1 untuk menambah list kata pada file.txt, dan mengembalikan 2 untuk memainkan game*/
 {
+    printf("Silahkan pilih menu dibawah ini:\n");
     printf("1. Menambah list kata pada file\n");
     printf("2. Memainkan game\n");
+    printf("Pilihan: ");
     int input;
     char *pilihan;
     pilihan = STARTINPUT();
     input = strtointinput(pilihan, str_len(pilihan));
+    printf("%d\n", input);
     if (input == 1)
     {
-        loadFile(listkata, "listkata.txt");
+        // loadFile(listkata, "listkata.txt");
         printf("Masukkan kata yang ingin ditambahkan: ");
         char *newword;
         newword = STARTINPUT();
@@ -102,7 +105,7 @@ void MenuStart(TabStr *listkata, char *filename)
     }
     else if (input == 2)
     {
-        loadFile(listkata, "listkata.txt");
+        // loadFile(listkata, "listkata.txt");
         hangman(listkata, "listkata.txt");
     }
     else
@@ -140,7 +143,7 @@ void MenuStart(TabStr *listkata, char *filename)
 
 void hangman(TabStr *listkata, char *filename)
 {
-    printf("SELAMAT DATANG DI GAME HANGMAN!");
+    printf("SELAMAT DATANG DI GAME HANGMAN!\n");
     MenuStart(listkata, "listkata.txt");
     int randomgame = random(*listkata);
     char *guess;
@@ -149,7 +152,7 @@ void hangman(TabStr *listkata, char *filename)
     {
         printWord(listkata, guess);
         printf("\n");
-        printf("Masukkan huruf: ");
+        printf("Masukkan tebakkan: ");
         char *input;
         input = STARTINPUT();
         int j;
