@@ -1,7 +1,6 @@
 #include "playgame.h"
-#include "../ADT/Stack/stack.h"
 
-void Play(strQueue *antrian, TabStr listgame, TabMap *arr_sb, Stack *S)
+void Play(strQueue *antrian, TabStr listgame, TabMap *arr_sb, StackHistory *stackhist)
 {
     gamename temp;
     int skor;
@@ -20,6 +19,11 @@ void Play(strQueue *antrian, TabStr listgame, TabMap *arr_sb, Stack *S)
     {
         printf("Loading TICTACTOE....\n");
         tictactoe(&skor);
+    }
+    else if (compare_strings(toPlay, "TOWER OF HANOI"))
+    {
+        printf("Loading TOWER OF HANOI....\n");
+        towerofhanoi(&skor);
     }
     else
     {
@@ -45,12 +49,11 @@ void Play(strQueue *antrian, TabStr listgame, TabMap *arr_sb, Stack *S)
     SortMapValueDesc(&(*arr_sb).TIMap[idxgame]);
     printf("Skor berhasil disimpan ke dalam scoreboard.\n\n");
     STRdequeue(antrian, temp);
-    Push(S, temp);
-    
+    PushHistory(stackhist, temp);
 }
 /*Memainkan Game pada urutan teratas*/
 
-void PlayGame(strQueue *antrian, TabStr listgame, TabMap *arr_sb, Stack *S)
+void PlayGame(strQueue *antrian, TabStr listgame, TabMap *arr_sb, StackHistory *stackhist)
 {
     printf("Berikut adalah daftar Game-mu: \n");
     if (!isQueueEmpty(*antrian))
@@ -71,7 +74,7 @@ void PlayGame(strQueue *antrian, TabStr listgame, TabMap *arr_sb, Stack *S)
 
     if (!isQueueEmpty(*antrian))
     {
-        Play(antrian, listgame, arr_sb, S);
+        Play(antrian, listgame, arr_sb, stackhist);
     }
     else
     {

@@ -11,5 +11,5 @@ int optimalmoves();
 void blank(int x);
 void stars(int x);
 void displaytowerhanoi(int x, Stackhanoi A, Stackhanoi B, Stackhanoi C);
-void towerofhanoi();
+void towerofhanoi(int *skor);
 #endif

@@ -5,7 +5,7 @@
 static FILE *pita;
 static int retval;
 
-boolean loadFile(TabStr *listgame, TabStr *histgame, TabMap *listsb, char *filename)
+boolean loadFile(TabStr *listgame, TabMap *listsb, StackHistory *stackhist, char *filename)
 {
   boolean ada = STARTLOAD(filename);
   if (ada)
@@ -34,7 +34,6 @@ boolean loadFile(TabStr *listgame, TabStr *histgame, TabMap *listsb, char *filen
     ADV();
     CopyWord();
     i = strtoint(currentWord.TabWord); // konversi char ke int
-    (*histgame).Neff = i;
     for (j = 0; j < i; j++)
     {
       ADV();
@@ -46,7 +45,7 @@ boolean loadFile(TabStr *listgame, TabStr *histgame, TabMap *listsb, char *filen
         *(gamestring + idx) = currentWord.TabWord[idx];
       }
       *(gamestring + currentWord.Length) = '\0';
-      (*histgame).TI[j] = gamestring;
+      PushHistory(stackhist, gamestring);
     }
 
     // Membaca semua scoreboard dari list game

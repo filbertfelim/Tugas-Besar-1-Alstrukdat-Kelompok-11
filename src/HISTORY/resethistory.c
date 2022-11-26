@@ -6,20 +6,24 @@
 
 void resethistory(StackHistory *SH)
 {
-    printf("\nAPAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY?");
+    printf("\nAPAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY?(YA/TIDAK) ");
     char *command;
     command = STARTINPUT();
-    if (compare_strings(command, "YA")){
-        while (!IsStackHistoryEmpty(*SH)){
+    if (compare_strings(command, "YA"))
+    {
+        while (!IsStackHistoryEmpty(*SH))
+        {
             stackhistinfotype val;
             PopHistory(SH, &val);
         }
         printf("\nHISTORY BERHASIL DI RESET\n");
     }
-    else if (compare_strings(command, "TIDAK")){
+    else if (compare_strings(command, "TIDAK"))
+    {
         printf("\nRESET HISTORY DIBATALKAN\n");
     }
-    else{
+    else
+    {
         printf("\nINPUT TIDAK VALID\n");
     }
 }

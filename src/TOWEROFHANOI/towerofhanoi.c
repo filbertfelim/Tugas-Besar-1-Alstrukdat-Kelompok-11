@@ -34,9 +34,9 @@ void displaytowerhanoi(int x, Stackhanoi A, Stackhanoi B, Stackhanoi C)
 {
     for (int i = 0; i < x; i++)
     {
-        int valA = A.T[x-i-1];
-        int valB = B.T[x-i-1];
-        int valC = C.T[x-i-1];
+        int valA = A.T[x - i - 1];
+        int valB = B.T[x - i - 1];
+        int valC = C.T[x - i - 1];
         if (valA != 0)
         {
             blank(x - valA);
@@ -45,17 +45,20 @@ void displaytowerhanoi(int x, Stackhanoi A, Stackhanoi B, Stackhanoi C)
         }
         else
         {
-            blank(x - valA-1);
+            blank(x - valA - 1);
             printf("|");
-            if (x % 4 != 0) blank(x - valA);
-            else blank(x - (valA) - 1);
+            if (x % 4 != 0)
+                blank(x - valA);
+            else
+                blank(x - (valA)-1);
         }
         printf("\t");
-        if (x % 4 == 0) printf("\t");
+        if (x % 4 == 0)
+            printf("\t");
         if ((valB) != 0)
         {
-            blank(x - (valB)+1);
-            stars((valB) * 2 - 1);
+            blank(x - (valB) + 1);
+            stars((valB)*2 - 1);
             blank(x - (valB));
         }
         else
@@ -68,7 +71,7 @@ void displaytowerhanoi(int x, Stackhanoi A, Stackhanoi B, Stackhanoi C)
         if ((valC) != 0)
         {
             blank(x - (valC) + 1);
-            stars((valC) * 2 - 1);
+            stars((valC)*2 - 1);
             blank(x - (valC));
         }
         else
@@ -79,7 +82,7 @@ void displaytowerhanoi(int x, Stackhanoi A, Stackhanoi B, Stackhanoi C)
         }
         printf("\n");
     }
-    blank(x-1);
+    blank(x - 1);
     printf("A");
     blank(x);
     printf("\t");
@@ -93,33 +96,33 @@ void displaytowerhanoi(int x, Stackhanoi A, Stackhanoi B, Stackhanoi C)
     printf("\n\n");
 }
 
-void towerofhanoi()
+void towerofhanoi(int *skor)
 {
     Stackhanoi A, B, C, temp;
     int temp1, temp2, val1, val2, val3;
     int score, n;
     int count = 0;
-    CreateEmptyStack(&A);
-    CreateEmptyStack(&B);
-    CreateEmptyStack(&C);
-    CreateEmptyStack(&temp);
+    CreateEmptyStackTower(&A);
+    CreateEmptyStackTower(&B);
+    CreateEmptyStackTower(&C);
+    CreateEmptyStackTower(&temp);
     printf("SELAMAT DATANG DI TOWER OF HANOI\n");
     printf("Masukan jumlah disk: ");
 
     char *piringan;
     piringan = STARTINPUT();
     n = strtointinput(piringan, str_len(piringan));
-    
+
     printf("\n");
     printf("\n");
 
     for (int i = n; i > 0; i--)
     {
-        Push(&A, i);
-        Push(&temp, i);
+        PushTower(&A, i);
+        PushTower(&temp, i);
     }
-    
-    while(!compareStack(C, temp))
+
+    while (!compareStack(C, temp))
     {
         displaytowerhanoi(n, A, B, C);
         printf("TOWER ASAL: ");
@@ -127,19 +130,19 @@ void towerofhanoi()
         str_asal = STARTINPUT();
         if (str_asal[0] == 'A')
         {
-            temp1 =  1;
+            temp1 = 1;
         }
         else if (str_asal[0] == 'B')
         {
-            temp1 =  2;
+            temp1 = 2;
         }
         else if (str_asal[0] == 'C')
         {
-            temp1 =  3;
+            temp1 = 3;
         }
-        
+
         printf("TOWER TUJUAN: ");
-        char * str_tujuan;
+        char *str_tujuan;
         str_tujuan = STARTINPUT();
         if (str_tujuan[0] == 'A')
         {
@@ -163,48 +166,54 @@ void towerofhanoi()
             {
                 if (val2 == 0 || val1 < val2)
                 {
-                    Pop(&A, &temp1);
-                    Push(&B, temp1);
+                    PopTower(&A, &temp1);
+                    PushTower(&B, temp1);
                     count++;
                     // printf("%d %d", InfoTop(A), InfoTop(B));
                 }
-                else printf("Tidak bisa dipindahkan\n");
+                else
+                    printf("Tidak bisa dipindahkan\n");
             }
             else if (temp2 == 3)
             {
                 if (val3 == 0 || val1 < val3)
                 {
-                    Pop(&A, &temp1);
-                    Push(&C, temp1);
+                    PopTower(&A, &temp1);
+                    PushTower(&C, temp1);
                     count++;
                 }
-                else printf("Tidak bisa dipindahkan\n");
+                else
+                    printf("Tidak bisa dipindahkan\n");
             }
-            else printf("Masukkan tidak valid\n");
+            else
+                printf("Masukkan tidak valid\n");
         }
-        else if (temp1 == 2&& val2 != 0)
+        else if (temp1 == 2 && val2 != 0)
         {
             if (temp2 == 1)
             {
                 if (val1 == 0 || val2 < val1)
                 {
-                    Pop(&B, &temp1);
-                    Push(&A, temp1);
+                    PopTower(&B, &temp1);
+                    PushTower(&A, temp1);
                     count++;
                 }
-                else printf("Tidak bisa dipindahkan\n");
+                else
+                    printf("Tidak bisa dipindahkan\n");
             }
             else if (temp2 == 3)
             {
                 if (val3 == 0 || val2 < val3)
                 {
-                    Pop(&B, &temp1);
-                    Push(&C, temp1);
+                    PopTower(&B, &temp1);
+                    PushTower(&C, temp1);
                     count++;
                 }
-                else printf("Tidak bisa dipindahkan\n");
+                else
+                    printf("Tidak bisa dipindahkan\n");
             }
-            else printf("Masukkan tidak valid\n");
+            else
+                printf("Masukkan tidak valid\n");
         }
         else if (temp1 == 3 && val3 != 0)
         {
@@ -212,34 +221,33 @@ void towerofhanoi()
             {
                 if (val1 == 0 || val3 < val1)
                 {
-                    Pop(&C, &temp1);
-                    Push(&A, temp1);
+                    PopTower(&C, &temp1);
+                    PushTower(&A, temp1);
                     count++;
                 }
-                else printf("Tidak bisa dipindahkan\n");
+                else
+                    printf("Tidak bisa dipindahkan\n");
             }
             else if (temp2 == 2)
             {
                 if (val2 == 0 || val3 < val2)
                 {
-                    Pop(&C, &temp1);
-                    Push(&B, temp1);
+                    PopTower(&C, &temp1);
+                    PushTower(&B, temp1);
                     count++;
                 }
-                else printf("Tidak bisa dipindahkan\n");
+                else
+                    printf("Tidak bisa dipindahkan\n");
             }
-            else printf("Masukkan tidak valid\n");
+            else
+                printf("Masukkan tidak valid\n");
         }
-        else printf("Masukkan tidak valid\n");
+        else
+            printf("Masukkan tidak valid\n");
     }
     displaytowerhanoi(n, A, B, C);
-    score = ((optimalmoves(n) / count) * 10 * n/5);
+    score = ((optimalmoves(n) / count) * 10 * n / 5);
     printf("Score: %d\n", score);
     printf("SELAMAT ANDA MENANG!\n");
-}
-
-int main()
-{
-    towerofhanoi();
-    return 0;
+    *skor = score;
 }

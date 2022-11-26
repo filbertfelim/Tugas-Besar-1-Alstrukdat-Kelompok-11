@@ -4,13 +4,15 @@
 
 void history(StackHistory *SH, int n)
 {
-    printf("Berikut adalah daftar game terakhir yang dimainkan: \n");
-    if(IsStackHistoryEmpty(*SH)){
+    printf("\nBerikut adalah daftar game terakhir yang dimainkan: \n");
+    if (IsStackHistoryEmpty(*SH))
+    {
         printf("Belum ada game yang dimainkan\n");
     }
-    else{
+    else
+    {
         int i = 1;
-        stackhistinfotype val; 
+        stackhistinfotype val;
         StackHistory newStack;
 
         CreateEmptyStackHistory(&newStack);
@@ -22,6 +24,7 @@ void history(StackHistory *SH, int n)
             i++;
         }
     }
+    printf("\n");
 }
 /*
     Menampilkan history game yang dimainkan sebanyak n game, jika n melebihi banyak history, maka akan menampilkan semuanya

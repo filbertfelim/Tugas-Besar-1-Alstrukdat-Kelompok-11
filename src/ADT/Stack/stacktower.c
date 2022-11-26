@@ -3,10 +3,10 @@
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
-void CreateEmptyStack(Stackhanoi *S)
+void CreateEmptyStackTower(Stackhanoi *S)
 {
     Top(*S) = Nil;
-    for(int i = 0; i < MaxEl; i++)
+    for (int i = 0; i < MaxEl; i++)
     {
         (*S).T[i] = 0;
     }
@@ -17,19 +17,19 @@ void CreateEmptyStack(Stackhanoi *S)
 /* Ciri stack kosong : TOP bernilai Nil */
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsStackEmpty(Stackhanoi S)
+boolean IsStackTowerEmpty(Stackhanoi S)
 {
     return (Top(S) == Nil);
 }
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsStackFull(Stackhanoi S)
+boolean IsStackTowerFull(Stackhanoi S)
 {
     return (Top(S) == MaxEl - 1);
 }
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push(Stackhanoi *S, stackinfotype X)
+void PushTower(Stackhanoi *S, stacktowerinfotype X)
 {
     Top(*S) += 1;
     InfoTop(*S) = X;
@@ -39,7 +39,7 @@ void Push(Stackhanoi *S, stackinfotype X)
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void Pop(Stackhanoi *S, stackinfotype *X)
+void PopTower(Stackhanoi *S, stacktowerinfotype *X)
 {
     *X = InfoTop(*S);
     InfoTop(*S) = 0;
@@ -51,19 +51,19 @@ void Pop(Stackhanoi *S, stackinfotype *X)
 
 boolean compareStack(Stackhanoi S1, Stackhanoi S2)
 {
-    if (IsStackEmpty(S1) && IsStackEmpty(S2))
+    if (IsStackTowerEmpty(S1) && IsStackTowerEmpty(S2))
     {
         return true;
     }
-    else if (IsStackEmpty(S1) || IsStackEmpty(S2))
+    else if (IsStackTowerEmpty(S1) || IsStackTowerEmpty(S2))
     {
         return false;
     }
     else
     {
-        stackinfotype X1, X2;
-        Pop(&S1, &X1);
-        Pop(&S2, &X2);
+        stacktowerinfotype X1, X2;
+        PopTower(&S1, &X1);
+        PopTower(&S2, &X2);
         if (X1 != X2)
         {
             return false;
@@ -75,10 +75,14 @@ boolean compareStack(Stackhanoi S1, Stackhanoi S2)
     }
 }
 
-int topless(Stackhanoi S) {
-    if (IsStackEmpty(S)) {
+int topless(Stackhanoi S)
+{
+    if (IsStackTowerEmpty(S))
+    {
         return 0;
-    } else {
+    }
+    else
+    {
         return InfoTop(S);
     }
 }
