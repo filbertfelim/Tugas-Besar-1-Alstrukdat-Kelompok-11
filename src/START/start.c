@@ -5,7 +5,7 @@
 static FILE *pita;
 static int retval;
 
-void STARTGAME(TabStr *T)
+void STARTGAME(TabStr *T, TabMap *arr_sb)
 /* I.S. Sembarang
    F.S. Menampilkan tampilan awal permainan
    Proses : Akuisisi file config.txt (config awal)
@@ -31,6 +31,14 @@ void STARTGAME(TabStr *T)
         }
         *(gamestring + currentWord.Length) = '\0';
         (*T).TI[j] = gamestring;
+    }
+
+    Map SB;
+    int banyaksb;
+    for (banyaksb = 0; banyaksb < (*T).Neff; banyaksb++)
+    {
+        CreateEmptyMap(&SB);
+        SetElArrayMap(arr_sb, banyaksb, SB);
     }
     printf("File konfigurasi sistem berhasil dibaca. BNMO berhasil dijalankan.\n\n");
 }

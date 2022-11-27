@@ -77,7 +77,7 @@ int main()
 
         if (compare_strings(command, "START"))
         {
-            STARTGAME(&game);
+            STARTGAME(&game, &arr_sb);
             finish_load = true;
         }
         else if (compare_strings(first, "LOAD"))
