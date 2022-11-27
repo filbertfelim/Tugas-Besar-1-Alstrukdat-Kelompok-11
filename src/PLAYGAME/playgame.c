@@ -54,7 +54,7 @@ void Play(strQueue *antrian, TabStr listgame, TabMap *arr_sb, StackHistory *stac
     SortMapValueDesc(&(*arr_sb).TIMap[idxgame]);
     printf("Skor berhasil disimpan ke dalam scoreboard.\n\n");
     STRdequeue(antrian, temp);
-    PushHistory(stackhist, temp);
+    PushHistory(stackhist, toPlay);
 }
 /*Memainkan Game pada urutan teratas*/
 
