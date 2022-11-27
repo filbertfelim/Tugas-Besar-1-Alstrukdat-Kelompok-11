@@ -45,14 +45,39 @@ void PopHistory(StackHistory *SH, stackhistinfotype *X)
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
-void PrintStackHistory(StackHistory SH, int n)
+void PrintStackHistory(StackHistory *SH, int n)
 {
-    int i;
-    for (i = 0; i < n; i++)
+    int i = 1;
+    stackhistinfotype val;
+    StackHistory newStack;
+    CreateEmptyStackHistory(&newStack);
+    newStack = *SH;
+    while (i <= n && !IsStackHistoryEmpty(newStack))
     {
-        printf("%d. %s\n", i + 1, SH.T[i]);
+        printf("%d. %s\n", i, InfoTopHistory(newStack));
+        PopHistory(&newStack, &val);
+        i++;
     }
 }
 /* Menulis seluruh elemen Stack S ke layar */
 /* I.S. S mungkin kosong */
 /* F.S. Jika S tidak kosong, semua elemen Stack diprint */
+
+int countStackHistory(StackHistory SH)
+{
+    stackhistinfotype val;
+    StackHistory newStack;
+    CreateEmptyStackHistory(&newStack);
+    newStack = SH;
+
+    int count = 0;
+    while (!IsStackHistoryEmpty(newStack))
+    {
+        PopHistory(&newStack, &val);
+        count++;
+    }
+    return count;
+}
+/* Mengembalikan banyaknya/jumlah alamat dalam StackHistory SH ke layar */
+/* I.S. SH mungkin kosong */
+/* F.S. Jika SH tidak kosong, semua elemen StackHistory diprint */

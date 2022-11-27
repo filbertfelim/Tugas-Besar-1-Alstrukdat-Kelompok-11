@@ -1,7 +1,7 @@
 #include "hangman.h"
 
 boolean loadFile(TabStr *listgame, char *filename)
-/* Membaca file.txt*/
+/* Membaca konfig file.txt yang ada dari listkata.txt*/
 {
   boolean ada = STARTLOAD(filename);
   if (ada)
@@ -25,7 +25,35 @@ boolean loadFile(TabStr *listgame, char *filename)
       *(gamestring + currentWord.Length) = '\0';
       (*listgame).TI[j] = gamestring;
     }
+    return true;
   }
+  else
+  {
+    return false;
+  }
+}
+
+void addWord(TabStr listgame, char *file)
+/*Menambahkan kata kedalam file.txt*/
+{
+    FILE *txt;
+    char *filename = (char *)malloc(50 * sizeof(char));
+    filename = filetodir(file);
+    txt = fopen(filename, "w+");
+    char *numgame = (char *)malloc(5 * sizeof(char));
+    int i;
+
+    // menulis daftar di list game
+    sprintf(numgame, "%d", listgame.Neff);
+    fprintf(txt, "%s\n", numgame);
+    for (i = 0; i < NbElmt(listgame); i++)
+    {
+        fprintf(txt, "%s\n", listgame.TI[i]);
+    }
+    fclose(txt);
+    printf("Save file berhasil disimpan.\n");
+    free(filename);
+    free(numgame);
 }
 
 int random(TabStr T)
@@ -34,6 +62,57 @@ int random(TabStr T)
     srand(time(NULL));
     int random = rand() % T.Neff;
     return random;
+}
+
+void printWord(TabStr *listkata, char *guess) 
+/* Mengambil kata dari listkata secara acak*/
+{
+	printf("\t");
+	for (int i = 0; i < listkata->Neff; ++i)
+	{
+        if (listkata->TI[i] == &guess[i])
+        {
+            printf("%c", listkata->TI[i]);
+        }
+        else
+        {
+            printf("_");
+        }
+	}
+}
+
+void MenuStart(TabStr *listkata, char *filename)
+/*Mengembalikan 1 untuk menambah list kata pada file.txt, dan mengembalikan 2 untuk memainkan game*/
+{
+    printf("Silahkan pilih menu dibawah ini:\n");
+    printf("1. Menambah list kata pada file\n");
+    printf("2. Memainkan game\n");
+    printf("Pilihan: ");
+    int input;
+    char *pilihan;
+    pilihan = STARTINPUT();
+    input = strtointinput(pilihan, str_len(pilihan));
+    printf("%d\n", input);
+    if (input == 1)
+    {
+        // loadFile(listkata, "listkata.txt");
+        printf("Masukkan kata yang ingin ditambahkan: ");
+        char *newword;
+        newword = STARTINPUT();
+        (*listkata).TI[(*listkata).Neff] = newword;
+        (*listkata).Neff++;
+        addWord(*listkata, "listkata.txt");
+    }
+    else if (input == 2)
+    {
+        // loadFile(listkata, "listkata.txt");
+        hangman(listkata, "listkata.txt");
+    }
+    else
+    {
+        printf("Input salah\n");
+        MenuStart(listkata, "listkata.txt");
+    }
 }
 
 /*void printBody(int mistakes, char* body)
@@ -62,97 +141,29 @@ int random(TabStr T)
 	       body[3], body[4], body[5], body[6], body[7], body[8], body[9]);
 } */
 
-void printWord(TabStr *listgame, char *guess) {
-	printf("\t");
-	for (int i = 0; i < listgame->Neff; ++i)
-	{
-        if (listgame->TI[i] == &guess[i])
-        {
-            printf("%c", listgame->TI[i]);
-        }
-        else
-        {
-            printf("_");
-        }
-	}
-}
-
-void MenuStart(TabStr *listgame, char *filename, char *file)
-/*Mengembalikan 1 untuk menambah list kata pada file.txt, dan mengembalikan 2 untuk memainkan game*/
+void hangman(TabStr *listkata, char *filename)
 {
-    printf("1. Menambah list kata pada file\n");
-    printf("2. Memainkan game\n");
-    int input;
-    char *pilihan;
-    pilihan = STARTINPUT();
-    input = strtointinput(pilihan, str_len(pilihan));
-    if (input == '1'){
-        printf("Masukkan kata yang ingin ditambahkan: ");
-        char *kata;
-        kata = STARTINPUT();
-        FILE *txt;
-        char *filename = (char *)malloc(50 * sizeof(char));
-        filename = filetodir(file);
-        txt = fopen(filename, "w+");
-        char *numgame = (char *)malloc(5 * sizeof(char));
-        int i;
-        // menulis daftar di list kata
-        sprintf(numgame, "%d", listgame->Neff);
-        fprintf(txt, "%s\n", numgame);
-        for (i = 0; i < NbElmt(*listgame); i++)
-        {
-            fprintf(txt, "%s\n", listgame->TI[i]);
-        }
-        fprintf(txt, "%s\n", kata);
-        fclose(txt);
-    }
-    else if (input == '2'){
-        hangman();
-    }
-}
-
-/*void isikata(TabStr *listgame, char *filename)
-Menuliskan kata ke dalam file.txt
-{
-    FILE *txt;
-    char *filename = (char *)malloc(50 * sizeof(char));
-    filename = filetodir(file);
-    txt = fopen(filename, "w+");
-    char *numgame = (char *)malloc(5 * sizeof(char));
-    int i;
-    // menulis daftar di list kata
-    sprintf(numgame, "%d", listgame->Neff);
-    fprintf(txt, "%s\n", numgame);
-    for (i = 0; i < NbElmt(*listgame); i++)
-    {
-        fprintf(txt, "%s\n", listgame->TI[i]);
-    }
-    fclose(txt);
-}*/
-
-void hangman(TabStr *listgame, char *filename, char *file)
-{
-    printf("SELAMAT DATANG DI GAME HANGMAN!");
-    MenuStart(listgame, filename, file);
-    int randomgame = random(*listgame);
+    printf("SELAMAT DATANG DI GAME HANGMAN!\n");
+    MenuStart(listkata, "listkata.txt");
+    int randomgame = random(*listkata);
     char *guess;
     int i, mistakes = 0;
     while (mistakes < 10)
     {
-        printWord(listgame, guess);
+        printWord(listkata, guess);
         printf("\n");
-        printf("Masukkan huruf: ");
+        printf("Masukkan tebakkan: ");
         char *input;
         input = STARTINPUT();
         int j;
-        for (j = 0; j < listgame->Neff; j++)
+        for (j = 0; j < listkata->Neff; j++)
         {
-            if (listgame->TI[randomgame][j] == input[0])
+            if (listkata->TI[randomgame][j] == input[0])
             {
                 guess[j] = input[0];
             }
         }
-        if (listgame->TI[randomgame] != guess)
+        if (listkata->TI[randomgame] != guess)
         {
             mistakes++;
         }
@@ -161,7 +172,7 @@ void hangman(TabStr *listgame, char *filename, char *file)
         {
             printf("GAME OVER!");
         }
-        else if (listgame->TI[randomgame] == guess)
+        else if (listkata->TI[randomgame] == guess)
         {
             printf("SELAMAT ANDA MENANG!");
         }
@@ -170,7 +181,7 @@ void hangman(TabStr *listgame, char *filename, char *file)
 
 int main()
 {
-    TabStr listgame; 
-    hangman(TabStr *listgame, "listkata.txt", char *file);
+    TabStr *listkata; 
+    hangman(listkata, "listkata.txt");
     return 0;
 }
