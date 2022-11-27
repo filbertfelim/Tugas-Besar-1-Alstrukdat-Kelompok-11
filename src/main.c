@@ -43,6 +43,7 @@
 #include "./DINNERDASHGAME/dinerDash.h"
 #include "./GAMERNG/rng.h"
 #include "./TOWEROFHANOI/towerofhanoi.h"
+#include "./HANGMAN/hangman.h"
 
 int main()
 {

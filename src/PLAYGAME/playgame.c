@@ -25,6 +25,11 @@ void Play(strQueue *antrian, TabStr listgame, TabMap *arr_sb, StackHistory *stac
         printf("Loading TOWER OF HANOI....\n");
         towerofhanoi(&skor);
     }
+    else if (compare_strings(toPlay, "HANGMAN"))
+    {
+        printf("Loading HANGMAN....\n");
+        hangman("listkata.txt", &skor);
+    }
     else
     {
         srand(time(NULL));

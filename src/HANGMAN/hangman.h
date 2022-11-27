@@ -11,11 +11,10 @@
 #include "../STRINGCOMP/stringcomp.h"
 #include "../START/start.h"
 
-boolean loadFile(TabStr *listgame, char *filename);
-void addWord(TabStr listgame, char *file);
-int random(TabStr T);
-void printWord(TabStr *listkata, char *guess); 
+boolean loadfilekata(TabStr *listkata, char *filename);
+void addWord(TabStr listkata, char *filename);
+int randomidx(TabStr T);
 void MenuStart(TabStr *listkata, char *filename);
-void hangman(TabStr *listkata, char *filename);
+void hangman(char *filename, int *skor);
 
 #endif

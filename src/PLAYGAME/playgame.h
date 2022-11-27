@@ -14,6 +14,7 @@
 #include "../BONUS/tictactoe.h"
 #include "../DINNERDASHGAME/dinerDash.h"
 #include "../TOWEROFHANOI/towerofhanoi.h"
+#include "../HANGMAN/hangman.h"
 
 void Play(strQueue *antrian, TabStr listgame, TabMap *arr_sb, StackHistory *stackhist);
 /*Memainkan Game pada urutan teratas*/
