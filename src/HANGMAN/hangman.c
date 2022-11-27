@@ -233,11 +233,3 @@ void hangman(char *filename, int *skor)
     printf("Terima kasih telah bermain HANGMAN!\n");
     *skor = score;
 }
-
-int main()
-{
-    int skor;
-    hangman("../../data/listkata.txt", &skor);
-    printf("Skor akhir : %d\n", skor);
-    return 0;
-}
