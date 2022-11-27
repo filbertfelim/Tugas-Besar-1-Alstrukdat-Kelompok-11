@@ -145,6 +145,16 @@ void hangman(char *filename, int *skor)
 {
     TabStr listkata;
     MakeEmpty(&listkata);
+    printf("=================================WELCOME TO=================================\n");
+    printf("'##::::'##::::'###::::'##::: ##::'######:::'##::::'##::::'###::::'##::: ##:\n");
+    printf(" ##:::: ##:::'## ##::: ###:: ##:'##... ##:: ###::'###:::'## ##::: ###:: ##:\n");
+    printf(" ##:::: ##::'##:. ##:: ####: ##: ##:::..::: ####'####::'##:. ##:: ####: ##:\n");
+    printf(" #########:'##:::. ##: ## ## ##: ##::'####: ## ### ##:'##:::. ##: ## ## ##:\n");
+    printf(" ##.... ##: #########: ##. ####: ##::: ##:: ##. #: ##: #########: ##. ####:\n");
+    printf(" ##:::: ##: ##.... ##: ##:. ###: ##::: ##:: ##:.:: ##: ##.... ##: ##:. ###:\n");
+    printf(" ##:::: ##: ##:::: ##: ##::. ##:. ######::: ##:::: ##: ##:::: ##: ##::. ##:\n");
+    printf(" ..:::::..::..:::::..::..::::..:::......::::..:::::..::..:::::..::..::::..::\n");
+
     printf("SELAMAT DATANG DI GAME HANGMAN!\n\n");
     char *fileload = filetodir(filename);
     MenuStart(&listkata, fileload);
@@ -153,7 +163,10 @@ void hangman(char *filename, int *skor)
     char *guess = (char *)malloc(30 * sizeof(char));
     char *tebakan = (char *)malloc(5 * sizeof(char));
     char *body = (char *)malloc(10 * sizeof(char));
-
+    for (int x = 0; x < 10; x++)
+    {
+        body[x] = ' ';
+    }
     boolean guessed, completed;
     int score = 0;
     int i;

@@ -126,6 +126,7 @@ void towerofhanoi(int *skor)
     CreateEmptyStackTower(&B);
     CreateEmptyStackTower(&C);
     CreateEmptyStackTower(&temp);
+    printf("====================================================WELCOME TO============================================================\n");
     printf(" ________   ______   __       __  ________  _______    ______   ________  __    __   ______   __    __   ______   ______\n");
     printf("|       \\ /     \\ | \\  _  | \\|       \\|      \\  /     \\ |       \\| \\  | \\ /     \\ | \\  | \\ /     \\ |      \\\n");
     printf("\\$$$$$$$$|  $$$$$$\\| $$ /\\ | $$| $$$$$$$$| $$$$$$$\\|  $$$$$$\\| $$$$$$$$| $$  | $$|  $$$$$$\\| $$\\ | $$|  $$$$$$\\\\$$$$$$\n");
@@ -180,9 +181,15 @@ void towerofhanoi(int *skor)
         {
             temp1 = 3;
         }
+        else if (str_asal[0] == 'Q')
+        {
+            printf("Anda keluar dari permainan\n");
+            skor[0] = 0;
+            return;
+        }
         else
         {
-            printf("Input salah\n");
+            printf("Masukan tidak valid, silahkan masukan kembali!!! \n");
             continue;
         }
         printf("TOWER TUJUAN: ");
@@ -201,9 +208,15 @@ void towerofhanoi(int *skor)
         {
             temp2 = 3;
         }
+        else if (str_asal[0] == 'Q')
+        {
+            printf("Anda keluar dari permainan\n");
+            skor[0] = 0;
+            return;
+        }
         else
         {
-            printf("Input salah\n");
+            printf("Masukan tidak valid, silahkan masukan kembali!!! \n");
             continue;
         }
         printf("\n\n");
