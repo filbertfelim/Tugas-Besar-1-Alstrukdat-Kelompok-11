@@ -6,15 +6,15 @@
 /****************** TEST LIST KOSONG ******************/
 boolean IsListEmpty(List L)
 {
-    return (Head(L) == Nil && Tail(L) == Nil);
+    return (Head(L) == ListNil && Tail(L) == ListNil);
 }
 /* Mengirim true jika list kosong. Lihat definisi di atas. */
 
 /****************** PEMBUATAN LIST KOSONG ******************/
 void CreateListEmpty(List *L)
 {
-    Head(*L) = Nil;
-    Tail(*L) = Nil;
+    Head(*L) = ListNil;
+    Tail(*L) = ListNil;
 }
 /* I.S. L sembarang  */
 /* F.S. Terbentuk list kosong. Lihat definisi di atas. */
@@ -24,24 +24,24 @@ addresslist Alokasi(listinfotype X)
 {
     ElmtList *P;
     P = (addresslist)malloc(sizeof(ElmtList));
-    if (P != Nil)
+    if (P != ListNil)
     {
         Info(P).posX = X.posX;
         Info(P).posY = X.posY;
-        Next(P) = Nil;
-        Prev(P) = Nil;
+        Next(P) = ListNil;
+        Prev(P) = ListNil;
     }
     else
     {
-        return Nil;
+        return ListNil;
     }
 
     return P;
 }
 /* Mengirimkan addresslist hasil alokasi sebuah elemen */
-/* Jika alokasi berhasil, maka addresslist tidak nil. */
-/* Misalnya: menghasilkan P, maka Info(P)=X, Next(P)=Nil, Prev(P)=Nil */
-/* Jika alokasi gagal, mengirimkan Nil. */
+/* Jika alokasi berhasil, maka addresslist tidak ListNil. */
+/* Misalnya: menghasilkan P, maka Info(P)=X, Next(P)=ListNil, Prev(P)=ListNil */
+/* Jika alokasi gagal, mengirimkan ListNil. */
 void Dealokasi(addresslist P)
 {
     free(P);
@@ -55,7 +55,7 @@ addresslist Search(List L, listinfotype X)
 {
     addresslist P = Head(L);
     boolean found = false;
-    while ((P != Nil) && !found)
+    while ((P != ListNil) && !found)
     {
         if (Info(P).posX == X.posX && Info(P).posY == X.posY)
         {
@@ -72,12 +72,12 @@ addresslist Search(List L, listinfotype X)
     }
     else
     {
-        return Nil;
+        return ListNil;
     }
 }
 /* Mencari apakah ada elemen list dengan Info(P)=X */
 /* Jika ada, mengirimkan addresslist elemen tersebut. */
-/* Jika tidak ada, mengirimkan Nil */
+/* Jika tidak ada, mengirimkan ListNil */
 
 int posInList(List L, listinfotype X)
 {
@@ -91,23 +91,23 @@ int posInList(List L, listinfotype X)
     return pos;
 }
 
-/****************** PRIMITIF BERDASARKAN NILAI ******************/
+/****************** PRIMITIF BERDASARKAN ListNilAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
 void InsVHead(List *L, listinfotype X)
 {
     addresslist P = Alokasi(X);
-    if (P != Nil)
+    if (P != ListNil)
     {
         InsertHead(L, P);
     }
 }
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
-/* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
+/* menambahkan elemen pertama dengan ListNilai X jika alokasi berhasil */
 void InsVTail(List *L, listinfotype X)
 {
     addresslist P = Alokasi(X);
-    if (P != Nil)
+    if (P != ListNil)
     {
         InsertTail(L, P);
     }
@@ -115,7 +115,7 @@ void InsVTail(List *L, listinfotype X)
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen list di akhir: elemen terakhir yang baru */
-/* bernilai X jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
+/* berListNilai X jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
 
 /*** PENGHAPUSAN ELEMEN ***/
 void DelVHead(List *L, listinfotype *X)
@@ -126,7 +126,7 @@ void DelVHead(List *L, listinfotype *X)
     Dealokasi(P);
 }
 /* I.S. List L tidak kosong  */
-/* F.S. Elemen pertama list dihapus: nilai info disimpan pada X */
+/* F.S. Elemen pertama list dihapus: ListNilai info disimpan pada X */
 /*      dan alamat elemen pertama di-dealokasi */
 void DelVTail(List *L, listinfotype *X)
 {
@@ -136,7 +136,7 @@ void DelVTail(List *L, listinfotype *X)
     Dealokasi(P);
 }
 /* I.S. list tidak kosong */
-/* F.S. Elemen terakhir list dihapus: nilai info disimpan pada X */
+/* F.S. Elemen terakhir list dihapus: ListNilai info disimpan pada X */
 /*      dan alamat elemen terakhir di-dealokasi */
 
 /****************** PRIMITIF BERDASARKAN ALAMAT ******************/
@@ -176,7 +176,7 @@ void InsertAfter(List *L, addresslist P, addresslist Prec)
     Next(P) = Next(Prec);
     Prev(P) = Prec;
     Next(Prec) = P;
-    if (Next(P) == Nil)
+    if (Next(P) == ListNil)
     {
         Tail(*L) = P;
     }
@@ -192,7 +192,7 @@ void InsertBefore(List *L, addresslist P, addresslist Succ)
     Prev(P) = Prev(Succ);
     Next(P) = Succ;
     Prev(Succ) = P;
-    if (Prev(P) == Nil)
+    if (Prev(P) == ListNil)
     {
         Head(*L) = P;
     }
@@ -209,13 +209,13 @@ void DelHead(List *L, addresslist *P)
 {
     (*P) = Head(*L);
     Head(*L) = Next(*P);
-    if (Next(*P) != Nil)
+    if (Next(*P) != ListNil)
     {
-        Prev(Head(*L)) = Nil;
+        Prev(Head(*L)) = ListNil;
     }
     else
     {
-        Tail(*L) = Nil;
+        Tail(*L) = ListNil;
     }
 }
 /* I.S. List tidak kosong */
@@ -226,13 +226,13 @@ void DelTail(List *L, addresslist *P)
 {
     (*P) = Tail(*L);
     Tail(*L) = Prev(*P);
-    if (Prev(*P) != Nil)
+    if (Prev(*P) != ListNil)
     {
-        Next(Tail(*L)) = Nil;
+        Next(Tail(*L)) = ListNil;
     }
     else
     {
-        Head(*L) = Nil;
+        Head(*L) = ListNil;
     }
 }
 /* I.S. List tidak kosong */
@@ -242,7 +242,7 @@ void DelTail(List *L, addresslist *P)
 void DelP(List *L, listinfotype X)
 {
     addresslist P = Search(*L, X);
-    if (P != Nil)
+    if (P != ListNil)
     {
         if (P == Head(*L))
         {
@@ -269,7 +269,7 @@ void DelAfter(List *L, addresslist *Pdel, addresslist Prec)
 {
     (*Pdel) = Next(Prec);
     Next(Prec) = Next(*Pdel);
-    if (Next(Prec) != Nil)
+    if (Next(Prec) != ListNil)
     {
         Prev(Next(Prec)) = Prec;
     }
@@ -285,7 +285,7 @@ void DelBefore(List *L, addresslist *Pdel, addresslist Succ)
 {
     (*Pdel) = Prev(Succ);
     Prev(Succ) = Prev(*Pdel);
-    if (Prev(*Pdel) != Nil)
+    if (Prev(*Pdel) != ListNil)
     {
         Next(Prev(*Pdel)) = Succ;
     }
@@ -309,9 +309,9 @@ void PrintForward(List L)
     {
         addresslist P = Head(L);
         printf("[");
-        while (P != Nil)
+        while (P != ListNil)
         {
-            if (Next(P) == Nil)
+            if (Next(P) == ListNil)
             {
                 printf("<%d,%d>", Info(P).posX, Info(P).posY);
             }
@@ -327,7 +327,7 @@ void PrintForward(List L)
 /* I.S. List mungkin kosong */
 /* F.S. Jika list tidak kosong, isi list dicetak dari elemen pertama */
 /* ke elemen terakhir secara horizontal ke kanan: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
+/* Contoh : jika ada tiga elemen berListNilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika list kosong : menulis [] */
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
 void PrintBackward(List L)
@@ -340,9 +340,9 @@ void PrintBackward(List L)
     {
         addresslist P = Tail(L);
         printf("[");
-        while (P != Nil)
+        while (P != ListNil)
         {
-            if (Prev(P) == Nil)
+            if (Prev(P) == ListNil)
             {
                 printf("<%d,%d>", Info(P).posX, Info(P).posY);
             }
@@ -358,6 +358,6 @@ void PrintBackward(List L)
 /* I.S. List mungkin kosong */
 /* F.S. Jika list tidak kosong, isi list dicetak dari elemen terakhir */
 /* ke elemen pertama secara horizontal ke kanan: [en,en-1,...,e2,e1] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [30,20,1] */
+/* Contoh : jika ada tiga elemen berListNilai 1, 20, 30 akan dicetak: [30,20,1] */
 /* Jika list kosong : menulis [] */
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */

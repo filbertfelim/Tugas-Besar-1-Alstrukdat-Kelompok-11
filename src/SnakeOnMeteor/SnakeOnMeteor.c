@@ -57,15 +57,15 @@ int isInputValid(List Snake, char Movement, List Meteor)
         }
     }
     // Meteor Flag = 1, Snake Flag = 2
-    if (Search(Meteor, checkPos) != Nil)
+    if (Search(Meteor, checkPos) != ListNil)
     {
         return 1;
     }
-    else if (Search(Snake, checkPos) != Nil)
+    else if (Search(Snake, checkPos) != ListNil)
     {
         return 2;
     }
-    else if (Search(Snake, checkPos) == Nil && Search(Meteor, checkPos) == Nil)
+    else if (Search(Snake, checkPos) == ListNil && Search(Meteor, checkPos) == ListNil)
     {
         return 0;
     }
@@ -110,7 +110,7 @@ void PrintGameSnake(List Snake, List Food, List Meteor, List Obstacles, int turn
         {
             printf("|");
         }
-        if (Search(Meteor, iterator) != Nil)
+        if (Search(Meteor, iterator) != ListNil)
         {
             red();
             printf("\tM\t");
@@ -126,7 +126,7 @@ void PrintGameSnake(List Snake, List Food, List Meteor, List Obstacles, int turn
                 printf("\n");
             }
         }
-        else if (Search(Obstacles, iterator) != Nil)
+        else if (Search(Obstacles, iterator) != ListNil)
         {
             cyan();
             printf("\tB\t");
@@ -142,7 +142,7 @@ void PrintGameSnake(List Snake, List Food, List Meteor, List Obstacles, int turn
                 printf("\n");
             }
         }
-        else if (Search(Snake, iterator) != Nil)
+        else if (Search(Snake, iterator) != ListNil)
         {
             if (Search(Snake, iterator) == Head(Snake))
             {
@@ -172,7 +172,7 @@ void PrintGameSnake(List Snake, List Food, List Meteor, List Obstacles, int turn
         }
         else
         {
-            if (Search(Food, iterator) != Nil)
+            if (Search(Food, iterator) != ListNil)
             {
                 yellow();
                 printf("\to\t");
@@ -211,7 +211,7 @@ void SpawnObstacle(List *Obstacle, List Snake, int numberOfObstacles)
     for (i = 0; i < numberOfObstacles; i++)
     {
         Point newObstaclePos = GenerateRandomPos();
-        while (Search(*Obstacle, newObstaclePos) != Nil || Search(Snake, newObstaclePos) != Nil)
+        while (Search(*Obstacle, newObstaclePos) != ListNil || Search(Snake, newObstaclePos) != ListNil)
         {
             newObstaclePos = GenerateRandomPos();
         }
@@ -222,9 +222,9 @@ void SpawnObstacle(List *Obstacle, List Snake, int numberOfObstacles)
 void IsObstacleHit(List Snake, List Obstacle, boolean *GameOver, int *loseFlag)
 {
     addresslist loc = Head(Obstacle);
-    while (loc != Nil && !(*GameOver))
+    while (loc != ListNil && !(*GameOver))
     {
-        if (Search(Snake, Info(loc)) != Nil)
+        if (Search(Snake, Info(loc)) != ListNil)
         {
             *GameOver = true;
             (*loseFlag) = 3;
@@ -242,7 +242,7 @@ void SpawnMakanan(List Snake, List *Food, List Meteor, List Obstacles)
     {
         Point foodPos = GenerateRandomPos();
         // Cek apakah ada bagian snake atau makanan di posisi yang dihasilkan
-        while (Search(Snake, foodPos) != Nil || Search(Obstacles, foodPos) != Nil || Search(*Food, foodPos) != Nil || Search(Meteor, foodPos) != Nil)
+        while (Search(Snake, foodPos) != ListNil || Search(Obstacles, foodPos) != ListNil || Search(*Food, foodPos) != ListNil || Search(Meteor, foodPos) != ListNil)
         {
             foodPos = GenerateRandomPos();
         }
@@ -357,7 +357,7 @@ void MoveSnake(char Input, List *Snake, int *turn)
 void HandlePosOverflow(List *Snake)
 {
     addresslist loc = Head(*Snake);
-    while (loc != Nil)
+    while (loc != ListNil)
     {
         if (Info(loc).posX < 0)
         {
@@ -383,7 +383,7 @@ void HandlePosOverflow(List *Snake)
 void AdjustBody(List *Snake)
 {
     addresslist loc = Tail(*Snake);
-    while (Prev(loc) != Nil)
+    while (Prev(loc) != ListNil)
     {
         Info(loc) = Info(Prev(loc));
         loc = Prev(loc);
@@ -395,7 +395,7 @@ void IsFoodHit(List *Snake, List *Food, boolean *GameOver, int *snakeLength, int
     boolean foodHit = false;
     Point headPos = Info(Head(*Snake));
     addresslist loc = Head(*Food);
-    while (loc != Nil && !foodHit)
+    while (loc != ListNil && !foodHit)
     {
         if (headPos.posX == Info(loc).posX && headPos.posY == Info(loc).posY)
         {
@@ -423,15 +423,15 @@ void IsFoodHit(List *Snake, List *Food, boolean *GameOver, int *snakeLength, int
         downCheck.posY++;
 
         // Cek Kiri Tail
-        if (leftCheck.posX >= 0 && Search(*Snake, leftCheck) != Nil)
+        if (leftCheck.posX >= 0 && Search(*Snake, leftCheck) != ListNil)
         {
             // Cek Atas Tail
-            if (upCheck.posY >= 0 && Search(*Snake, upCheck) != Nil)
+            if (upCheck.posY >= 0 && Search(*Snake, upCheck) != ListNil)
             {
                 // Cek Bawah Tail
-                if (downCheck.posY <= 4 && Search(*Snake, downCheck) != Nil)
+                if (downCheck.posY <= 4 && Search(*Snake, downCheck) != ListNil)
                 {
-                    if (rightCheck.posX <= 4 && Search(*Snake, rightCheck) != Nil)
+                    if (rightCheck.posX <= 4 && Search(*Snake, rightCheck) != ListNil)
                     {
                         (*GameOver) = true;
                         (*loseFlag) = 2;
@@ -475,9 +475,9 @@ void SpawnMeteor(List *Meteor)
 void IsMeteorHit(List *Snake, List Meteor, boolean *GameOver, boolean *hitbyMeteor, int *loseFlag)
 {
     addresslist loc = Head(Meteor);
-    if (loc != Nil)
+    if (loc != ListNil)
     {
-        if (Search(*Snake, Info(loc)) != Nil)
+        if (Search(*Snake, Info(loc)) != ListNil)
         {
             if (Info(loc).posX == Info(Head(*Snake)).posX && Info(loc).posY == Info(Head(*Snake)).posY)
             {
@@ -539,9 +539,9 @@ void GameUpdate(List *Snake, List *Food, List *Meteor, List Obstacles, boolean *
     {
         addresslist loc = Head(*Meteor);
         boolean found = false;
-        while (loc != Nil && !found)
+        while (loc != ListNil && !found)
         {
-            if (Search(*Meteor, Info(loc)) != Nil)
+            if (Search(*Meteor, Info(loc)) != ListNil)
             {
                 found = true;
             }
