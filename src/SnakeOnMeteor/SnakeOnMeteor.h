@@ -5,6 +5,7 @@
 #include "../ADT/Mesinkar_kata/mesin_kata.h"
 #include <time.h>
 #include <stdlib.h>
+#include "displayColor.h"
 
 Point GenerateRandomPos();
 
@@ -12,11 +13,15 @@ int isInputValid(List Snake, char Movement, List Meteor);
 
 void CreateSnake(List *Snake, Point StartingPoint);
 
-void PrintGameSnake(List Snake, List Food, List Meteor, int turn);
+void PrintGameSnake(List Snake, List Food, List Meteor, List Obstacles, int turn);
 
-void SpawnMakanan(List Snake, List *Food, List Meteor);
+void SpawnObstacle(List *Obstacle, List Snake, int numberOfObstacles);
 
-char ValidateMovementInput(char *Input, List Snake, List Meteor);
+void IsObstacleHit(List Snake, List Obstacle, boolean *GameOver, int *loseFlag);
+
+void SpawnMakanan(List Snake, List *Food, List Meteor, List Obstacles);
+
+char ValidateMovementInput(char *Input, List Snake, List Meteor, int turn);
 
 void MoveSnake(char Input, List *Snake, int *turn);
 
@@ -30,8 +35,8 @@ void SpawnMeteor(List *Meteor);
 
 void IsMeteorHit(List *Snake, List Meteor, boolean *GameOver, boolean *hitbyMeteor, int *loseFlag);
 
-void GameUpdate(List *Snake, List *Food, List *Meteor, boolean *isGameOver, int *turn, int *snakeLength, int *loseFlag);
+void GameUpdate(List *Snake, List *Food, List *Meteor, List Obstacles, boolean *isGameOver, int *turn, int *snakeLength, int *loseFlag);
 
-void SnakeOnMeteor(*score);
+void SnakeOnMeteor(int *score);
 
 #endif

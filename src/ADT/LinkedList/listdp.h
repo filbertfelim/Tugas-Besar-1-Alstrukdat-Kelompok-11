@@ -7,7 +7,7 @@
 #define SnakeListDP_H
 #include "../../boolean.h"
 
-#define Nil NULL
+#define ListNil NULL
 
 /* Definisi Type Data */
 typedef struct
@@ -31,7 +31,7 @@ typedef struct
 } List;
 
 /* Definisi list : */
-/* List kosong : Head(L) = Nil dan Tail(L) = Nil */
+/* List kosong : Head(L) = ListNil dan Tail(L) = ListNil */
 /* Setiap elemen dengan addresslist P dapat diacu Info(P), Next(P), Prev(P) */
 /* Elemen terakhir list: Tail(L) */
 
@@ -55,9 +55,9 @@ void CreateListEmpty(List *L);
 /****************** Manajemen Memori ******************/
 addresslist Alokasi(listinfotype X);
 /* Mengirimkan addresslist hasil alokasi sebuah elemen */
-/* Jika alokasi berhasil, maka addresslist tidak nil. */
-/* Misalnya: menghasilkan P, maka Info(P)=X, Next(P)=Nil, Prev(P)=Nil */
-/* Jika alokasi gagal, mengirimkan Nil. */
+/* Jika alokasi berhasil, maka addresslist tidak ListNil. */
+/* Misalnya: menghasilkan P, maka Info(P)=X, Next(P)=ListNil, Prev(P)=ListNil */
+/* Jika alokasi gagal, mengirimkan ListNil. */
 void Dealokasi(addresslist P);
 /* I.S. P terdefinisi */
 /* F.S. P dikembalikan ke sistem */
@@ -67,32 +67,32 @@ void Dealokasi(addresslist P);
 addresslist Search(List L, listinfotype X);
 /* Mencari apakah ada elemen list dengan Info(P)=X */
 /* Jika ada, mengirimkan addresslist elemen tersebut. */
-/* Jika tidak ada, mengirimkan Nil */
+/* Jika tidak ada, mengirimkan ListNil */
 
 int posInList(List L, listinfotype X);
 /* Mengembalikan posisi sebuah elemen X dalam list */
 /* Elemen X pasti ada di dalam List */
 
-/****************** PRIMITIF BERDASARKAN NILAI ******************/
+/****************** PRIMITIF BERDASARKAN ListNilAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
 void InsVHead(List *L, listinfotype X);
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
-/* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
+/* menambahkan elemen pertama dengan ListNilai X jika alokasi berhasil */
 void InsVTail(List *L, listinfotype X);
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen list di akhir: elemen terakhir yang baru */
-/* bernilai X jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
+/* berListNilai X jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
 
 /*** PENGHAPUSAN ELEMEN ***/
 void DelVHead(List *L, listinfotype *X);
 /* I.S. List L tidak kosong  */
-/* F.S. Elemen pertama list dihapus: nilai info disimpan pada X */
+/* F.S. Elemen pertama list dihapus: ListNilai info disimpan pada X */
 /*      dan alamat elemen pertama di-dealokasi */
 void DelVTail(List *L, listinfotype *X);
 /* I.S. list tidak kosong */
-/* F.S. Elemen terakhir list dihapus: nilai info disimpan pada X */
+/* F.S. Elemen terakhir list dihapus: ListNilai info disimpan pada X */
 /*      dan alamat elemen terakhir di-dealokasi */
 
 /****************** PRIMITIF BERDASARKAN ALAMAT ******************/
@@ -141,14 +141,14 @@ void PrintForward(List L);
 /* I.S. List mungkin kosong */
 /* F.S. Jika list tidak kosong, isi list dicetak dari elemen pertama */
 /* ke elemen terakhir secara horizontal ke kanan: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
+/* Contoh : jika ada tiga elemen berListNilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika list kosong : menulis [] */
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
 void PrintBackward(List L);
 /* I.S. List mungkin kosong */
 /* F.S. Jika list tidak kosong, isi list dicetak dari elemen terakhir */
 /* ke elemen pertama secara horizontal ke kanan: [en,en-1,...,e2,e1] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [30,20,1] */
+/* Contoh : jika ada tiga elemen berListNilai 1, 20, 30 akan dicetak: [30,20,1] */
 /* Jika list kosong : menulis [] */
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
 
