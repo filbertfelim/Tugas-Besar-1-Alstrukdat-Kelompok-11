@@ -563,7 +563,7 @@ void GameUpdate(List *Snake, List *Food, List *Meteor, List Obstacles, boolean *
     }
 }
 
-void SnakeOnMeteor()
+void SnakeOnMeteor(*score)
 {
     srand(time(NULL));
     char *movementInput;

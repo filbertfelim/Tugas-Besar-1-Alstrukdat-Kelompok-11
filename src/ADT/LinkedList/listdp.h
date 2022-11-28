@@ -5,8 +5,7 @@
 
 #ifndef SnakeListDP_H
 #define SnakeListDP_H
-
-#include "../boolean.h"
+#include "../../boolean.h"
 
 #define Nil NULL
 
