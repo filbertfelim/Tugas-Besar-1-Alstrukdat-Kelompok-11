@@ -182,13 +182,16 @@ void PrintGame(List Snake, List Food, List Meteor, int turn)
 
 void SpawnMakanan(List Snake, List *Food, List Meteor)
 {
-    Point foodPos = GenerateRandomPos();
-    // Cek apakah ada bagian snake atau makanan di posisi yang dihasilkan
-    while (Search(Snake, foodPos) != Nil || Search(*Food, foodPos) != Nil || Search(Meteor, foodPos) != Nil)
+    if (IsEmpty(*Food))
     {
-        foodPos = GenerateRandomPos();
+        Point foodPos = GenerateRandomPos();
+        // Cek apakah ada bagian snake atau makanan di posisi yang dihasilkan
+        while (Search(Snake, foodPos) != Nil || Search(*Food, foodPos) != Nil || Search(Meteor, foodPos) != Nil)
+        {
+            foodPos = GenerateRandomPos();
+        }
+        InsVTail(Food, foodPos);
     }
-    InsVTail(Food, foodPos);
 }
 
 char ValidateMovementInput(char *Input, List Snake, List Meteor)
@@ -460,7 +463,20 @@ void GameUpdate(List *Snake, List *Food, List *Meteor, boolean *isGameOver, int 
     PrintGame(*Snake, *Food, *Meteor, *turn);
     if (hitByMeteor && (*isGameOver == false))
     {
-        DelVTail(Snake, &tempPos);
+        address loc = Head(*Meteor);
+        boolean found = false;
+        while (loc != Nil && !found)
+        {
+            if (Search(*Meteor, Info(loc)) != Nil)
+            {
+                found = true;
+            }
+            else
+            {
+                loc = Next(loc);
+            }
+        }
+        DelP(Snake, Info(loc));
         (*snakeLength)--;
         printf("Anda terkena meteor!\n");
     }
@@ -514,6 +530,7 @@ void SnakeOnMeteor()
             else if (loseFlag == 1)
             {
                 printf("Kepala snake anda terkena meteor! Permainan berakhir!\n");
+                skor -= 2;
             }
             else if (loseFlag == 2)
             {
