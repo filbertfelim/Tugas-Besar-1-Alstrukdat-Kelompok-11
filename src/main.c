@@ -10,6 +10,7 @@
 #include "./ADT/Array/array.h"
 #include "./ADT/Array/arrayMap.h"
 #include "./ADT/Map/map.h"
+#include "./ADT/LinkedList/listdp.h"
 #include "./ADT/Stack/stack.h"
 #include "./ADT/Stack/stackhistory.h"
 #include "./ADT/Stack/stacktower.h"
@@ -44,6 +45,7 @@
 #include "./GAMERNG/rng.h"
 #include "./TOWEROFHANOI/towerofhanoi.h"
 #include "./HANGMAN/hangman.h"
+#include "./SnakeOnMeteor/SnakeOnMeteor.h"
 
 int main()
 {
