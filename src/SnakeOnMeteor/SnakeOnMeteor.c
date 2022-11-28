@@ -129,7 +129,7 @@ void PrintGameSnake(List Snake, List Food, List Meteor, List Obstacles, int turn
         else if (Search(Obstacles, iterator) != ListNil)
         {
             cyan();
-            printf("\tB\t");
+            printf("\tX\t");
             reset();
             printf("|");
             if (i % 5 == 4)
@@ -181,7 +181,7 @@ void PrintGameSnake(List Snake, List Food, List Meteor, List Obstacles, int turn
             }
             else
             {
-                printf("\tX\t|");
+                printf("\t \t|");
             }
 
             if (i % 5 == 4)
@@ -563,7 +563,7 @@ void GameUpdate(List *Snake, List *Food, List *Meteor, List Obstacles, boolean *
     }
 }
 
-void SnakeOnMeteor(*score)
+void SnakeOnMeteor(int *score)
 {
     srand(time(NULL));
     char *movementInput;
@@ -576,7 +576,7 @@ void SnakeOnMeteor(*score)
     int turn = 0;
     int skor = 0;
     int snakeLength = 3;
-    int loseFlag = 0; // 1 = Kepala terkena meteor, 2 = Tidak bisa spawn ekor
+    int loseFlag = 0; // 1 = Kepala terkena meteor, 2 = Tidak bisa spawn ekor, 3 = Nabrak Obstacle
     listinfotype tempPos;
 
     CreateListEmpty(&Food);
@@ -620,7 +620,7 @@ void SnakeOnMeteor(*score)
                 printf("Anda menabrak obstacle! Permainan berakhir\n");
             }
             printf("Skor Anda: %d", skor);
-            *score = skor;
+            (*score) = skor;
             break;
         }
     }

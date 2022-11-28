@@ -37,6 +37,6 @@ void IsMeteorHit(List *Snake, List Meteor, boolean *GameOver, boolean *hitbyMete
 
 void GameUpdate(List *Snake, List *Food, List *Meteor, List Obstacles, boolean *isGameOver, int *turn, int *snakeLength, int *loseFlag);
 
-void SnakeOnMeteor(*score);
+void SnakeOnMeteor(int *score);
 
 #endif
