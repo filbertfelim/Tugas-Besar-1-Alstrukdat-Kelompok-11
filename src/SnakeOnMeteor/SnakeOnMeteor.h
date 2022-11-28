@@ -1,7 +1,7 @@
 #ifndef Snake_On_Meteor_H
 #define Snake_On_Meteor_H
 
-#include "listdp.h"
+#include "../ADT/LinkedList/listdp.h"
 #include "../ADT/Mesinkar_kata/mesin_kata.h"
 #include <time.h>
 #include <stdlib.h>
@@ -12,7 +12,7 @@ int isInputValid(List Snake, char Movement, List Meteor);
 
 void CreateSnake(List *Snake, Point StartingPoint);
 
-void PrintGame(List Snake, List Food, List Meteor, int turn);
+void PrintGameSnake(List Snake, List Food, List Meteor, int turn);
 
 void SpawnMakanan(List Snake, List *Food, List Meteor);
 
@@ -32,6 +32,6 @@ void IsMeteorHit(List *Snake, List Meteor, boolean *GameOver, boolean *hitbyMete
 
 void GameUpdate(List *Snake, List *Food, List *Meteor, boolean *isGameOver, int *turn, int *snakeLength, int *loseFlag);
 
-void SnakeOnMeteor();
+void SnakeOnMeteor(*score);
 
 #endif
