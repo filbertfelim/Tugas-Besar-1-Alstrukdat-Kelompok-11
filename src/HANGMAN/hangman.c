@@ -157,6 +157,8 @@ void hangman(char *filename, int *skor)
 
     printf("SELAMAT DATANG DI GAME HANGMAN!\n\n");
     char *fileload = filetodir(filename);
+    TabStr guessed_alphabet;
+    MakeEmpty(&guessed_alphabet);
     MenuStart(&listkata, fileload);
     int randomwordidx = randomidx(listkata);
     char *word = (listkata).TI[randomwordidx];
@@ -181,7 +183,20 @@ void hangman(char *filename, int *skor)
         completed = true;
         guessed = false;
         printBody(chance, body);
-        printf("Kata: ");
+        printf("Tebakan sebelumnya : ");
+        if (guessed_alphabet.Neff == 0)
+        {
+            printf("-");
+        }
+        else
+        {
+            for (i = 0; i < guessed_alphabet.Neff - 1; i++)
+            {
+                printf("%c, ", guessed_alphabet.TI[i][0]);
+            }
+            printf("%c", guessed_alphabet.TI[i][0]);
+        }
+        printf("\nKata: ");
         for (i = 0; i < str_len(word); i++)
         {
             if (guess[i] == '0')
@@ -196,17 +211,41 @@ void hangman(char *filename, int *skor)
         printf("\nKesempatan : %d\n", chance);
         printf("Masukkan tebakan : ");
         tebakan = STARTINPUT();
-        for (i = 0; i < str_len(word); i++)
+        if (str_len(tebakan) > 1)
         {
-            if (word[i] == tebakan[0] || word[i] == (tebakan[0] - 32))
-            {
-                guess[i] = '1';
-                guessed = true;
-            }
+            printf("Input tidak valid");
         }
-        if (guessed == false)
+        else
         {
-            chance--;
+            boolean in_guessed = false;
+            for (i = 0; i < guessed_alphabet.Neff; i++)
+            {
+                if (guessed_alphabet.TI[i][0] == tebakan[0] || guessed_alphabet.TI[i][0] == tebakan[0] - 32 || guessed_alphabet.TI[i][0] == tebakan[0] + 32)
+                {
+                    in_guessed = true;
+                }
+            }
+            if (in_guessed)
+            {
+                printf("Input sudah pernah dipakai sebelumnya, silahkan menebak huruf lain!");
+            }
+            else
+            {
+                guessed_alphabet.TI[guessed_alphabet.Neff] = tebakan;
+                guessed_alphabet.Neff++;
+                for (i = 0; i < str_len(word); i++)
+                {
+                    if (word[i] == tebakan[0] || word[i] == (tebakan[0] - 32) || word[i] == (tebakan[0] + 32))
+                    {
+                        guess[i] = '1';
+                        guessed = true;
+                    }
+                }
+                if (guessed == false)
+                {
+                    chance--;
+                }
+            }
         }
         printf("\n");
         for (i = 0; i < str_len(word); i++)
@@ -220,6 +259,7 @@ void hangman(char *filename, int *skor)
         {
             printf("Anda berhasil menebak kata %s! Kamu mendapatkan %d poin.\n\n", word, str_len(word));
             score += str_len(word);
+            MakeEmpty(&guessed_alphabet);
             randomwordidx = randomidx(listkata);
             word = (listkata).TI[randomwordidx];
             for (i = 0; i < str_len(word); i++)
