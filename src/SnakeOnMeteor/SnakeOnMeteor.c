@@ -619,7 +619,7 @@ void SnakeOnMeteor(int *score)
             {
                 printf("Anda menabrak obstacle! Permainan berakhir\n");
             }
-            printf("Skor Anda: %d", skor);
+            printf("Skor Anda: %d\n", skor);
             (*score) = skor;
             break;
         }
