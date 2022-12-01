@@ -61,6 +61,8 @@ void MenuStart(TabStr *listkata, char *filename)
     printf("\nPilihan: ");
     int input;
     char *pilihan;
+    boolean input_valid;
+    boolean in_list;
     pilihan = STARTINPUT();
     input = strtointinput(pilihan, str_len(pilihan));
     if (input == 1)
@@ -74,11 +76,45 @@ void MenuStart(TabStr *listkata, char *filename)
         {
             printf("Masukkan kata yang ingin ditambahkan: ");
             char *newword;
+            input_valid = true;
             newword = STARTINPUT();
-            (*listkata).TI[(*listkata).Neff] = newword;
-            (*listkata).Neff++;
-            addWord(*listkata, filename);
-            printf("Kata %s berhasil ditambahkan ke dalam kamus.\n\n", newword);
+            int idx = 0;
+            while (input_valid && idx < str_len(newword))
+            {
+                if (!('A' <= newword[idx] && newword[idx] <= 'Z') && !('a' <= newword[idx] && newword[idx] <= 'z'))
+                {
+                    input_valid = false;
+                }
+                idx++;
+            }
+            if (!input_valid)
+            {
+                printf("Input tidak valid!\n\n");
+            }
+            else
+            {
+                in_list = true;
+                newword = touppercase(newword);
+                while (in_list && idx < (*listkata).Neff)
+                {
+                    if (compare_strings(newword, (*listkata).TI[idx]))
+                    {
+                        in_list = false;
+                    }
+                    idx++;
+                }
+                if (!in_list)
+                {
+                    printf("Kata %s sudah ada di dalam daftar kata!\n\n", newword);
+                }
+                else
+                {
+                    (*listkata).TI[(*listkata).Neff] = newword;
+                    (*listkata).Neff++;
+                    addWord(*listkata, filename);
+                    printf("Kata %s berhasil ditambahkan ke dalam kamus.\n\n", newword);
+                }
+            }
         }
         MenuStart(listkata, filename);
     }
@@ -211,6 +247,7 @@ void hangman(char *filename, int *skor)
         printf("\nKesempatan : %d\n", chance);
         printf("Masukkan tebakan : ");
         tebakan = STARTINPUT();
+        tebakan = touppercase(tebakan);
         if (str_len(tebakan) > 1)
         {
             printf("Input tidak valid");
