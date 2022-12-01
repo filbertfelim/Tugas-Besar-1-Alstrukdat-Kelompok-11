@@ -14,7 +14,8 @@ boolean isnumber(char *str)
     if (i == 0)
     {
         return false;
-    } else
+    }
+    else
     {
         return true;
     }
@@ -169,7 +170,12 @@ void towerofhanoi(int *skor)
         char *str_asal;
         str_asal = STARTINPUT();
         // mengecek apakah masukkan valid
-        if (str_asal[0] == 'A')
+        if (str_len(str_asal) > 1)
+        {
+            printf("Masukan tidak valid, silahkan masukan kembali!!! \n");
+            continue;
+        }
+        else if (str_asal[0] == 'A')
         {
             temp1 = 1;
         }
@@ -196,7 +202,12 @@ void towerofhanoi(int *skor)
         char *str_tujuan;
         str_tujuan = STARTINPUT();
         // mengecek apakah masukkan valid
-        if (str_tujuan[0] == 'A')
+        if (str_len(str_tujuan) > 1)
+        {
+            printf("Masukan tidak valid, silahkan masukan kembali!!! \n");
+            continue;
+        }
+        else if (str_tujuan[0] == 'A')
         {
             temp2 = 1;
         }
