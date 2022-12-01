@@ -5,7 +5,7 @@
 /* *** Konstruktor/Kreator *** */
 void CreateEmptyStackTower(Stackhanoi *S)
 {
-    Top(*S) = Nil;
+    TopTower(*S) = Nil;
     for (int i = 0; i < MaxEl; i++)
     {
         (*S).T[i] = 0;
@@ -19,20 +19,20 @@ void CreateEmptyStackTower(Stackhanoi *S)
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 boolean IsStackTowerEmpty(Stackhanoi S)
 {
-    return (Top(S) == Nil);
+    return (TopTower(S) == Nil);
 }
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 boolean IsStackTowerFull(Stackhanoi S)
 {
-    return (Top(S) == MaxEl - 1);
+    return (TopTower(S) == MaxEl - 1);
 }
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
 void PushTower(Stackhanoi *S, stacktowerinfotype X)
 {
-    Top(*S) += 1;
-    InfoTop(*S) = X;
+    TopTower(*S) += 1;
+    InfoTopTower(*S) = X;
 }
 /* Menambahkan X sebagai elemen Stack S. */
 /* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
@@ -41,9 +41,9 @@ void PushTower(Stackhanoi *S, stacktowerinfotype X)
 /* ************ Menghapus sebuah elemen Stack ************ */
 void PopTower(Stackhanoi *S, stacktowerinfotype *X)
 {
-    *X = InfoTop(*S);
-    InfoTop(*S) = 0;
-    Top(*S) -= 1;
+    *X = InfoTopTower(*S);
+    InfoTopTower(*S) = 0;
+    TopTower(*S) -= 1;
 }
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
@@ -83,6 +83,6 @@ int topless(Stackhanoi S)
     }
     else
     {
-        return InfoTop(S);
+        return InfoTopTower(S);
     }
 }
