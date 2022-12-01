@@ -19,7 +19,7 @@ typedef int address; /* indeks tabel */
 typedef struct
 {
     stacktowerinfotype T[MaxEl]; /* tabel penyimpan elemen */
-    address TOP;                 /* alamat TOP: elemen puncak */
+    address TOPTOWER;                 /* alamat TOP: elemen puncak */
 } Stackhanoi;
 /* Definisi stack S kosong : S.TOP = Nil */
 /* Elemen yang dipakai menyimpan nilai Stack T[0]..T[MaxEl-1] */
@@ -28,8 +28,8 @@ typedef struct
 /* S.TOP adalah alamat elemen TOP */
 
 /* Definisi akses dengan Selektor : Set dan Get */
-#define Top(S) (S).TOP
-#define InfoTop(S) (S).T[(S).TOP]
+#define TopTower(S) (S).TOPTOWER
+#define InfoTopTower(S) (S).T[(S).TOPTOWER]
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
