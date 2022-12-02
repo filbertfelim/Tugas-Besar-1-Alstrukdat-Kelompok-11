@@ -7,6 +7,7 @@ void CreateGame(TabStr *T, TabMap *arr_sb)
     printf("Masukkan nama game yang akan ditambahkan: ");
     char *namagame;
     namagame = STARTINPUT();
+    namagame = touppercase(namagame);
     boolean exists = false;
     int i = 0;
     while (!exists && i < (*T).Neff)

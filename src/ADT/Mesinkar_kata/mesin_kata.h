@@ -72,4 +72,12 @@ int countblank(char *strg);
 /*
    menghitung banyak blank dalam suatu string
 */
+char *tolowercase(char *strg);
+/*
+   mengubah string menjadi huruf kecil
+*/
+char *touppercase(char *strg);
+/*
+   mengubah string menjadi huruf besar
+*/
 #endif

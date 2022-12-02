@@ -125,7 +125,6 @@ char *FirstWord(char *strg)
         i++;
     }
     *(firstword + i) = '\0';
-    
 
     return firstword;
 }
@@ -144,7 +143,7 @@ char *SecondWord(char *strg)
     }
     while (strg[i] != '\0')
     {
-        *(secondword + idx) = strg[i+1];
+        *(secondword + idx) = strg[i + 1];
         idx++;
         i++;
     }
@@ -170,4 +169,49 @@ int countblank(char *strg)
 }
 /*
    menghitung banyak blank dalam suatu string
+*/
+
+char *tolowercase(char *strg)
+{
+    char *strg1 = (char *)malloc(50 * sizeof(char));
+    int i = 0;
+    while (i < str_len(strg))
+    {
+        if (('A' <= strg[i] && strg[i] <= 'Z'))
+        {
+            strg1[i] = (char)(strg[i] + 32);
+        }
+        else
+        {
+            strg1[i] = strg[i];
+        }
+        i++;
+    }
+    strg1[i] = '\0';
+    return strg1;
+}
+/*
+   mengubah string menjadi huruf kecil
+*/
+char *touppercase(char *strg)
+{
+    char *strg1 = (char *)malloc(50 * sizeof(char));
+    int i = 0;
+    while (i < str_len(strg))
+    {
+        if (('a' <= strg[i] && strg[i] <= 'z'))
+        {
+            strg1[i] = (char)(strg[i] - 32);
+        }
+        else
+        {
+            strg1[i] = strg[i];
+        }
+        i++;
+    }
+    strg1[i] = '\0';
+    return strg1;
+}
+/*
+   mengubah string menjadi huruf besar
 */
