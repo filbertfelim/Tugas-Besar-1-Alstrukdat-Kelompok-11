@@ -57,12 +57,16 @@ char *STARTINPUT()
 
 void ADV()
 {
-    retval = fscanf(pita, "%c", &currentChar);
-    EOP = retval < 0;
-    if (EOP)
-    {
-        fclose(pita);
+    if (pita != NULL){
+    	retval = fscanf(pita, "%c", &currentChar);
+    	EOP = retval < 0;
+    	if (EOP && pita != NULL)
+    	{
+        	fclose(pita);
+        	pita = NULL;
+    	}
     }
+    
 }
 /* Pita dimajukan satu karakter.
    I.S. : Karakter pada jendela = currentChar, currentChar != MARK

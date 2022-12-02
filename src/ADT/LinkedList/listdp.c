@@ -45,6 +45,7 @@ addresslist Alokasi(listinfotype X)
 void Dealokasi(addresslist P)
 {
     free(P);
+    P = ListNil;
 }
 /* I.S. P terdefinisi */
 /* F.S. P dikembalikan ke sistem */
