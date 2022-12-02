@@ -61,7 +61,10 @@ void CopyWord()
     {
         currentWord.TabWord[i] = currentChar;
         ADV();
-        i++;
+        if (currentWord.TabWord[i] != '\r')
+        {
+            i++;
+        }
     }
     currentWord.Length = i;
 }
