@@ -466,6 +466,41 @@ void IsFoodHit(List *Snake, List *Food, boolean *GameOver, int *snakeLength, int
     }
 }
 
+void IsStuck(List Snake, List Meteor, boolean *isGameOver, int *loseFlag)
+{
+    addresslist loc = Head(Snake);
+    Point toCheckRight = Info(loc);
+    Point toCheckLeft = Info(loc);
+    Point toCheckUp = Info(loc);
+    Point toCheckDown = Info(loc);
+    toCheckRight.posX++;
+    toCheckLeft.posX--;
+    toCheckUp.posY--;
+    toCheckDown.posY++;
+    if (toCheckRight.posX > 4)
+    {
+        toCheckRight.posX = 0;
+    }
+    if (toCheckLeft.posX < 0)
+    {
+        toCheckLeft.posX = 4;
+    }
+    if (toCheckUp.posY < 0)
+    {
+        toCheckUp.posY = 4;
+    }
+    if (toCheckDown.posY > 4)
+    {
+        toCheckDown.posY = 0;
+    }
+
+    if ((Search(Meteor, toCheckLeft) || Search(Snake, toCheckLeft)) && (Search(Meteor, toCheckRight) || Search(Snake, toCheckRight)) && (Search(Meteor, toCheckUp) || Search(Snake, toCheckUp)) && (Search(Meteor, toCheckDown) || Search(Snake, toCheckDown)))
+    {
+        (*isGameOver) = true;
+        (*loseFlag) = 4;
+    }
+}
+
 void SpawnMeteor(List *Meteor)
 {
     Point meteorPos = GenerateRandomPos();
@@ -499,6 +534,11 @@ void GameUpdate(List *Snake, List *Food, List *Meteor, List Obstacles, boolean *
     if (*turn > 1)
     {
         SpawnMakanan(*Snake, Food, *Meteor, Obstacles);
+    }
+    IsStuck(*Snake, *Meteor, isGameOver, loseFlag);
+    if (*isGameOver)
+    {
+        return;
     }
     if (*turn != 0)
     {
@@ -623,7 +663,11 @@ void SnakeOnMeteor(int *score)
             }
             else if (loseFlag == 3)
             {
-                printf("Anda menabrak obstacle! Permainan berakhir\n");
+                printf("Anda menabrak obstacle! Permainan berakhir!\n");
+            }
+            else if (loseFlag == 4)
+            {
+                printf("Anda tidak dapat bergerak kemanapun! Permainan berakhir!\n");
             }
             printf("Skor Anda: %d\n", skor);
             (*score) = skor;

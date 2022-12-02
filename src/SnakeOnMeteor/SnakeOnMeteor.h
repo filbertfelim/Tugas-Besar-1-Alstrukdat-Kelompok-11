@@ -31,6 +31,8 @@ void AdjustBody(List *Snake);
 
 void IsFoodHit(List *Snake, List *Food, boolean *GameOver, int *snakeLength, int *loseFlag);
 
+void IsStuck(List Snake, List Meteor, boolean *isGameOver, int *loseFlag);
+
 void SpawnMeteor(List *Meteor);
 
 void IsMeteorHit(List *Snake, List Meteor, boolean *GameOver, boolean *hitbyMeteor, int *loseFlag);
